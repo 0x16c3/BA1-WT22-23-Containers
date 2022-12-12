@@ -42,6 +42,15 @@ public class PlayerGrab : MonoBehaviour
     void Start()
     {
         _locomotion = GetComponent<PlayerLocomotion>();
+        if (_locomotion == null)
+            Debug.LogError("PlayerLocomotion script not found on player");
+    }
+
+    void OnValidate()
+    {
+        _locomotion = GetComponent<PlayerLocomotion>();
+        if (_locomotion == null)
+            Debug.LogError("PlayerLocomotion script not found on player");
     }
 
     void Update()

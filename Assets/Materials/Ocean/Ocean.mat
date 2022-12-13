@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: "OceanD\u0130splace"
+  m_Name: Ocean
   m_Shader: {fileID: -6465566751694194690, guid: af84d38538f4dae428dc2d22d0f0385c, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -94,7 +94,7 @@ Material:
     - _Cull: 2
     - _Cutoff: 0.5
     - _DepthFade: 4.1
-    - _Depth_Fade: 2.4
+    - _Depth_Fade: 2.3
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -105,12 +105,14 @@ Material:
     - _Metallic: 0
     - _Occlusion: 1
     - _OcclusionStrength: 1
+    - _Opacity: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _RefractStrength: 1
-    - _Refraction: 0.444
+    - _Refraction: 0.455
+    - _Refraction_Speed: 1
     - _Smoothnes: 0.8
     - _Smoothness: 0.8
     - _SmoothnessTextureChannel: 0
@@ -121,7 +123,7 @@ Material:
     - _WaveHeight: 1.43
     - _WaveSpeed: 0.05
     - _WaveStrength: 4
-    - _Wave_Height: 4.12
+    - _Wave_Height: 5
     - _Wave_Speed: 0.05
     - _Wave_Strength: 4
     - _WorkflowMode: 1
@@ -129,7 +131,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Deep_Color: {r: 0, g: 0.14659691, b: 1, a: 0}
+    - _Deep_Color: {r: 0, g: 0.7042556, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Shallow_Color: {r: 0, g: 0.9612417, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

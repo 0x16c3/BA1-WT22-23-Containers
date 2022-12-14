@@ -2682,7 +2682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3ee9d868d096a4cb2058832028e9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: SampleScene
+  gameScene: SampleScene
   optionsMenu: {fileID: 1869744636}
   mainMenu: {fileID: 1270959612}
 --- !u!4 &1259405311

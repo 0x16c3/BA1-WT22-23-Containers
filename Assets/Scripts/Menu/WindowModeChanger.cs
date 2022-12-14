@@ -11,7 +11,6 @@ public class WindowModeChanger : MonoBehaviour
     {
         // Get the selected window mode from the DropDown element
         var selectedWindowMode = dropdown.options[newValue].text;
-
         // Set the window mode to the selected window mode
         if (selectedWindowMode == "Windowed")
         {

@@ -6,17 +6,21 @@ using UnityEngine;
 public class AudioController : MonoBehaviour
 {
     AudioSource audioSource;
-    private void Start(){
-        
+
+    private void Start()
+    { 
         gameObject.SetActive(false);
     }
+
     private void OnEnable()
     {
         audioSource = GetComponent<AudioSource>();
         // Wait for the audio to finish playing before deactivating the game object
         StartCoroutine(DeactivateAfterAudioFinish(audioSource.clip.length));
     }
-    private void Update(){
+
+    private void Update()
+    {
         if (gameObject.tag == "AudioMusic"){
             audioSource.volume = AudioVolumeController.MusicVolume / 100;
         }
@@ -25,8 +29,8 @@ public class AudioController : MonoBehaviour
         }  
     }
 
-
-    IEnumerator DeactivateAfterAudioFinish(float delay){
+    IEnumerator DeactivateAfterAudioFinish(float delay)
+    {
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
     }

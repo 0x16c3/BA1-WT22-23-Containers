@@ -6,27 +6,28 @@ using UnityEngine.UI;
 
 public class AudioVolumeController : MonoBehaviour
 {
-    Slider VolumeSlider;
-    TextMeshProUGUI VolumeValue;
+    Slider volumeSlider;
+    TextMeshProUGUI volumeValue;
     public static float MusicVolume = 100f;
     public static float AmbianceVolume = 100f;
 
     void Start()
     {
-        VolumeSlider = GetComponent<Slider>();
-        VolumeValue = GetComponent<TextMeshProUGUI>();
-        VolumeSlider.value = MusicVolume;
-        VolumeValue.text = MusicVolume.ToString();
+        volumeSlider = GetComponent<Slider>();
+        volumeValue = GetComponent<TextMeshProUGUI>();
+        volumeSlider.value = MusicVolume;
+        volumeValue.text = MusicVolume.ToString();
+    }
+
+    public void UpdateAmbianceVolume(float value)
+    {
+        AmbianceVolume = value;
+        volumeValue.text = AmbianceVolume.ToString();
     }
 
     public void UpdateMusicVolume(float value)
     {
         MusicVolume = value;
-        VolumeValue.text = MusicVolume.ToString();
-    }
-    public void UpdateAmbianceVolume(float value)
-    {
-        AmbianceVolume = value;
-        VolumeValue.text = AmbianceVolume.ToString();
+        volumeValue.text = MusicVolume.ToString();
     }
 }

@@ -17,6 +17,8 @@ public class WanderingContainer : MonoBehaviour
     
     private bool _idle = true;
 
+    private bool _idlingIsHappening = false;
+
     private float _posx;
     
     private float _posz;
@@ -25,28 +27,31 @@ public class WanderingContainer : MonoBehaviour
     void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
-        InvokeRepeating(nameof(RNG), 0, maxWaitTime);
     }
-
     void Update()
     {
-        switch (_idle)
+        if (transform.parent != null)
         {
-            case true:
-                StartCoroutine(nameof(Idling));
-                break;
-
-            case false:
-                Wandering();
-                break;
+            _agent.enabled = false;
+            _idle = true;
         }
-    }
+        else
+        {
+            if (_agent.enabled == false)
+            {
+                Invoke(nameof(PathfindReactivation), 0);
+            }
+            
+            if (_idle == true)
+            {
+                StartCoroutine(nameof(Idling));
+            }
+            else
+            {
+                Wandering();
+            }
+        }
 
-    // RNG method changes the values of the variables everytime it is invoked
-    void RNG()
-    {
-        _posx = transform.position.x + Random.Range(-radius, radius);
-        _posz = transform.position.z + Random.Range(-radius, radius);
     }
 
     // Wandering method points to the target and sets the agent towards it
@@ -59,17 +64,32 @@ public class WanderingContainer : MonoBehaviour
         _agent.SetDestination(_target);
 
         // checks if agent has made it to its destination
-        if (_agent.pathStatus == NavMeshPathStatus.PathComplete)
+        if (_agent.remainingDistance <= 0.5f)
         {
+            _agent.ResetPath();
+            Debug.Log("path complete");
             _idle = true;
         }
     }
 
-    // Idling method waits an amount based on the waiting times
+    // Idling method waits an amount based on the waiting times, it also changes the position it will target next to a random one
     IEnumerator Idling()
     {
-        yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
-        _idle = false;
+
+        if (_idlingIsHappening == false)
+        {
+            _idlingIsHappening = true;
+            yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
+            _posx = transform.position.x + Random.Range(-radius, radius);
+            _posz = transform.position.z + Random.Range(-radius, radius);
+            _idle = false;
+            _idlingIsHappening = false;
+        }
+    }
+
+    private void PathfindReactivation()
+    {
+        _agent.enabled = true;
     }
 
     private void OnDrawGizmos()

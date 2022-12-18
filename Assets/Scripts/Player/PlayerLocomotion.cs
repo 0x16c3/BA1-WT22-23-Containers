@@ -26,10 +26,14 @@ public class PlayerLocomotion : MonoBehaviour
 
     Rigidbody _rb;
     Vector3 _inputVector;
+    PlayerGrab _grab;
+
+    bool _switchedCells = false;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _grab = GetComponent<PlayerGrab>();
     }
 
     void Update()
@@ -92,7 +96,39 @@ public class PlayerLocomotion : MonoBehaviour
     void SaveDirection()
     {
         if (_inputVector.magnitude == 0)
+        {
+            _switchedCells = false;
             return;
+        }
+
+        if (_grab && _grab.GrabbableHasGridEffect())
+        {
+            // calculate the direction from the player to the next grid cell in the input direction
+            ContainerGrid grid = _grab.GetActiveGrid();
+            if (grid == null)
+                return;
+
+            if (_switchedCells)
+                return;
+
+            ContainerGridCell curCell = _grab.GetActiveContainer().CurrentCell;
+            ContainerGridCell nextCell = grid.GetCellInDirection(curCell, _inputVector);
+
+            if (nextCell != null)
+            {
+                Vector3 direction = nextCell.transform.position - transform.position;
+                direction.y = 0;
+
+                if (direction.magnitude > 1)
+                    direction.Normalize();
+
+                Direction = direction;
+
+                nextCell.AdoptGrabbable(_grab.GetActiveContainer());
+                _switchedCells = true;
+            }
+            return;
+        }
 
         Direction = _inputVector;
         Direction.y = 0;

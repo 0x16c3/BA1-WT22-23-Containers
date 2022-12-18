@@ -32,8 +32,6 @@ public class PlayerGrab : MonoBehaviour
     [Range(0f, 10f)]
     public float DecelerationMultiplier = 3.5f;
 
-    string GRABBABLE_TAG = "Grabbable";
-
     GameObject _grabbedObject;
     PlayerLocomotion _locomotion;
 
@@ -125,7 +123,7 @@ public class PlayerGrab : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray[0], ray[1], out hit, range))
             {
-                if (hit.collider.gameObject.tag == GRABBABLE_TAG)
+                if (hit.collider.gameObject.tag == "Grabbable")
                     return hit.collider.gameObject;
             }
         }
@@ -144,15 +142,13 @@ public class PlayerGrab : MonoBehaviour
         if (colliders.Count == 0)
             return null;
 
-        if (!colliders.Any(c => c.gameObject.tag == GRABBABLE_TAG))
-            return null;
-
+        // THERE IS A BETTER WAY TO DO THIS - emir
         float closestDistance = -1f;
         GameObject closestObject = null;
 
         foreach (Collider collider in colliders)
         {
-            if (collider.gameObject.tag != GRABBABLE_TAG)
+            if (collider.gameObject.tag != "Grabbable")
                 continue;
 
             float distance = Vector3.Distance(transform.position, collider.transform.position);
@@ -160,6 +156,28 @@ public class PlayerGrab : MonoBehaviour
             {
                 closestObject = collider.gameObject;
                 closestDistance = distance;
+            }
+        }
+
+        if (closestObject == null)
+            return null;
+
+        float ceilingDistance = 3f;
+        Collider[] aboveColliders = Physics.OverlapBox(closestObject.transform.position + Vector3.up * ceilingDistance / 2f, new Vector3(0.5f, ceilingDistance / 2f, 0.5f));
+
+        // Check if there is a grabbable object above the closest one and keep getting the closest one
+        if (aboveColliders.Length > 0)
+        {
+            // Get the highest object
+            GameObject highestObject = null;
+
+            foreach (Collider collider in aboveColliders)
+            {
+                if (collider.gameObject.tag != "Grabbable")
+                    continue;
+
+                if (highestObject == null || collider.transform.position.y > highestObject.transform.position.y)
+                    highestObject = closestObject = collider.gameObject;
             }
         }
 
@@ -198,5 +216,29 @@ public class PlayerGrab : MonoBehaviour
                 Gizmos.DrawRay(ray[0], ray[1] * ScanDistance);
             }
         }
+    }
+
+    public ContainerGrid GetActiveGrid()
+    {
+        if (_grabbedObject == null) return null;
+
+        ContainerGeneric container = _grabbedObject.GetComponent<ContainerGeneric>();
+        return container == null ? null : container.CurrentCell.transform.parent.GetComponent<ContainerGrid>();
+    }
+
+    public ContainerGeneric GetActiveContainer()
+    {
+        if (_grabbedObject == null) return null;
+
+        ContainerGeneric container = _grabbedObject.GetComponent<ContainerGeneric>();
+        return container == null ? null : container;
+    }
+
+    public bool GrabbableHasGridEffect()
+    {
+        if (_grabbedObject == null) return false;
+
+        ContainerGeneric container = _grabbedObject.GetComponent<ContainerGeneric>();
+        return container == null ? false : container.HasGridEffect;
     }
 }

@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveInterval: 3
-  moveForce: 8
+  moveForce: 5
 --- !u!54 &1846378105
 Rigidbody:
   m_ObjectHideFlags: 0

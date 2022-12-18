@@ -6,25 +6,16 @@ using UnityEngine.SceneManagement;
 public class MainMenuController : MonoBehaviour
 {
     // The name of the scene that we want to switch to
-    public string gameScene;
+    public string GameScene;
     public GameObject optionsMenu;
     public GameObject mainMenu;
 
-    // This function will be called when the user presses the PLAY button
-    public void PlayOnClick(){
-        // Load the scene with the given name
-        SceneManager.LoadScene(gameScene);
+    private void Start()
+    {
+        optionsMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
-    public void OptionsOnClick(){
-        // Hides the main menu screen and Unhides the options screen
-        
-        optionsMenu.SetActive(true);
-        mainMenu.SetActive(false);
-    }
-    public void ExitOnClick(){
-        // Exits Application    
-        Application.Quit();
-    }
+
     public void BackOnClick()
     {
         // Red Button that pushes the tab back to the previous one (from options to Main as its the only extra tab currently)
@@ -32,10 +23,23 @@ public class MainMenuController : MonoBehaviour
         mainMenu.SetActive(true);
     }
 
-    private void Start()
+    public void ExitOnClick()
     {
-        optionsMenu.SetActive(false);
-        mainMenu.SetActive(true);
+        // Exits Application    
+        Application.Quit();
+    }
+
+    public void OptionsOnClick()
+    {
+        // Hides the main menu screen and Unhides the options screen
+
+        optionsMenu.SetActive(true);
+        mainMenu.SetActive(false);
+    }
+
+    public void PlayOnClick(){
+        // Load the scene with the given name
+        SceneManager.LoadScene(GameScene);
     }
 }
 

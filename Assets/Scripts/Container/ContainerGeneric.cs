@@ -14,10 +14,10 @@ public class ContainerGeneric : MonoBehaviour
     public float DecelerationMultiplier = 3.5f;
 
     [HideInInspector]
-    public ContainerGridCell ParentCell = null;
+    public ContainerGridCell ParentCell = null; // Realitme parent cell - can be null
 
     [HideInInspector]
-    public ContainerGridCell CurrentCell = null; // This will always be an object while the object is targeting a cell
+    public ContainerGridCell CurrentCell = null; // This will always be set to an object while the object is targeting a cell
 
     [HideInInspector]
     public bool HasGridEffect = false;

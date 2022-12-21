@@ -36,9 +36,6 @@ GraphicsSettings:
   - {fileID: 15106, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10770, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: -6465566751694194690, guid: 9926fe84913dc0341ae1378ec0724cb9, type: 3}
-  - {fileID: -6465566751694194690, guid: 0c6631c34d4ab3343b0b44a87efcf9c2, type: 3}
-  - {fileID: -6465566751694194690, guid: dd905f2c6046820418eed7430c9f941e, type: 3}
   m_PreloadedShaders: []
   m_PreloadShadersBatchTimeLimit: -1
   m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
@@ -64,6 +61,6 @@ GraphicsSettings:
   m_LightsUseLinearIntensity: 1
   m_LightsUseColorTemperature: 1
   m_DefaultRenderingLayerMask: 1
-  m_LogWhenShaderIsCompiled: 0
+  m_LogWhenShaderIsCompiled: 1
   m_SRPDefaultSettings:
     UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: f6d2a7f082b6a794b9866c205b277f42, type: 2}

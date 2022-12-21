@@ -91,9 +91,19 @@ public class ContainerGeneric : MonoBehaviour
         // Distance to parent cell ignoring y axis
         float distance = Vector3.Distance(Vector2D(transform.position), Vector2D(ParentCell.transform.position));
 
+        // Limit the force so it is always less than gravity
+        Vector3 force = direction * Acceleration * Time.deltaTime;
+
+        if (force.magnitude > Physics.gravity.magnitude)
+            force = force.normalized * Physics.gravity.magnitude;
+
+        // Disable force if we're touching the ground so it doesnt float
+        if (distance < 0.1f)
+            force = Vector3.zero;
+
         if (distance > 0.1f)
         {
-            GetComponent<Rigidbody>().AddForce(direction * Acceleration * Time.deltaTime);
+            GetComponent<Rigidbody>().AddForce(force);
         }
         else
         {

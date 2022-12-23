@@ -175,12 +175,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66cfb113a10dc84e873a11bb29f7a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveInterval: 1
-  moveForce: 5
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  detectionRadius: 1.5
+  IntervalMin: 1
+  IntervalMax: 3
+  MovementSpeed: 3
+  DetectionRadius: 1
 --- !u!54 &646046
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2948,7 +2946,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892375657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
@@ -2966,17 +2964,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892375657}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d66cfb113a10dc84e873a11bb29f7a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveInterval: 1
-  moveForce: 5
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2147483647
-  detectionRadius: 1.5
+  IntervalMin: 1
+  IntervalMax: 3
+  MovementSpeed: 3
+  DetectionRadius: 0
 --- !u!54 &1892375660
 Rigidbody:
   m_ObjectHideFlags: 0

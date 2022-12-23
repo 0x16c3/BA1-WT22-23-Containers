@@ -67,7 +67,7 @@ public class PlayerGrab : MonoBehaviour
                 GrabbedObject.transform.SetParent(transform);
 
                 // Set direction to object
-                _locomotion.ForceDirection(GrabbedObject.transform.position - transform.position);
+                _locomotion.Direction = GrabbedObject.transform.position - transform.position;
 
                 // Disable collisions only with the player and disable gravity
                 Physics.IgnoreCollision(GrabbedObject.GetComponent<Collider>(), GetComponent<Collider>());

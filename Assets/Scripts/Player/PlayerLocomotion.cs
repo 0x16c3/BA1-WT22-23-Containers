@@ -17,21 +17,36 @@ public class PlayerLocomotion : MonoBehaviour
     [Range(0f, 1000f)]
     public float MaxAccelerationForce = 150f;
 
-    [HideInInspector]
-    public Vector3 Direction;
+    public bool LockCursor = false;
+
     [HideInInspector]
     public bool IsInAir = false;
     [HideInInspector]
     public bool IsRunning = false;
 
-    public bool LockCursor = false;
-
     Rigidbody _rb;
+    Vector3 _direction;
     Vector3 _inputVector;
     Vector3 _mouseVector;
     PlayerGrab _grab;
 
     bool _switchedCells = false;
+
+    public Vector3 Direction
+    {
+        get
+        {
+            return _direction;
+        }
+        set
+        {
+            _direction = value;
+            _direction.y = 0;
+
+            if (_direction.magnitude > 1)
+                _direction.Normalize();
+        }
+    }
 
     public Vector3 Velocity
     {
@@ -118,30 +133,14 @@ public class PlayerLocomotion : MonoBehaviour
         // Get mouse position
         Vector3 mousePos = Input.mousePosition;
 
-        // raycast to mouse position
+        // Raycast to mouse position
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
         RaycastHit hit;
 
-        // TODO: Ignore grabbable layer
-
-        if (Physics.Raycast(ray, out hit))
+        // Trace to ground layer
+        if (Physics.Raycast(ray, out hit, 100, 1 << 3))
         {
-            Vector3 direction;
-
-            // Calculate direction from player to mouse position
-            if (hit.collider.gameObject.tag == "Grabbable")
-            {
-                // Return a direction to the grabbable
-                direction = hit.collider.transform.position - transform.position;
-                direction.y = 0;
-
-                if (direction.magnitude > 1)
-                    direction.Normalize();
-
-                return direction;
-            }
-
-            direction = hit.point - transform.position;
+            Vector3 direction = hit.point - transform.position;
             direction.y = 0;
 
             if (direction.magnitude > 1)
@@ -190,29 +189,8 @@ public class PlayerLocomotion : MonoBehaviour
         }
 
         if (_mouseVector.magnitude > 0 && !LockCursor)
-        {
             Direction = _mouseVector;
-            Direction.y = 0;
-
-            if (Direction.magnitude > 1)
-                Direction.Normalize();
-        }
-
-        if (!LockCursor) return;
-
-        Direction = _inputVector;
-        Direction.y = 0;
-
-        if (Direction.magnitude > 1)
-            Direction.Normalize();
-    }
-
-    public void ForceDirection(Vector3 direction)
-    {
-        Direction = direction;
-        Direction.y = 0;
-
-        if (Direction.magnitude > 1)
-            Direction.Normalize();
+        else if (LockCursor)
+            Direction = _inputVector;
     }
 }

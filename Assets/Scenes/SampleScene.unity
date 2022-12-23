@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 106488764}
   - component: {fileID: 106488763}
   - component: {fileID: 106488762}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,10 +400,9 @@ MonoBehaviour:
   AirStrafeSpeed: 3
   Acceleration: 200
   MaxAccelerationForce: 150
-  Direction: {x: 0, y: 0, z: 0}
+  LockCursor: 1
   IsInAir: 0
   IsRunning: 0
-  LockCursor: 1
 --- !u!114 &694396273
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,9 +5,9 @@ using UnityEditor;
 
 public class PlayerGrab : MonoBehaviour
 {
-    [Header("Auto Grab Settings")]
+    [Header("Grab Settings")]
 
-    [Tooltip("Scans for grabbable objects in a radius around the player and grabs the closest one")]
+    [Tooltip("Scans for grabbable objects in a radius around the player and grabs the closest one"), ReadOnly]
     public bool AutoGrab = true;
 
     [Range(0f, 10f)]
@@ -32,7 +32,9 @@ public class PlayerGrab : MonoBehaviour
     [Range(0f, 10f)]
     public float DecelerationMultiplier = 3.5f;
 
-    GameObject _grabbedObject;
+    [HideInInspector]
+    public GameObject GrabbedObject;
+
     PlayerLocomotion _locomotion;
 
     float _lastScanTime = 0f;
@@ -62,33 +64,33 @@ public class PlayerGrab : MonoBehaviour
             if (closestObject == null && !AutoGrab)
                 closestObject = ScanForGrabbable(ScanDistance);
 
-            if (closestObject != null && _grabbedObject == null)
+            if (closestObject != null && GrabbedObject == null)
             {
-                _grabbedObject = closestObject;
-                _grabbedObject.transform.SetParent(transform);
+                GrabbedObject = closestObject;
+                GrabbedObject.transform.SetParent(transform);
 
                 // Set direction to object
-                _locomotion.ForceDirection(_grabbedObject.transform.position - transform.position);
+                _locomotion.ForceDirection(GrabbedObject.transform.position - transform.position);
 
                 // Disable collisions only with the player and disable gravity
-                Physics.IgnoreCollision(_grabbedObject.GetComponent<Collider>(), GetComponent<Collider>());
-                _grabbedObject.GetComponent<Rigidbody>().useGravity = false;
+                Physics.IgnoreCollision(GrabbedObject.GetComponent<Collider>(), GetComponent<Collider>());
+                GrabbedObject.GetComponent<Rigidbody>().useGravity = false;
             }
-            else if (_grabbedObject != null)
+            else if (GrabbedObject != null)
             {
                 // Enable collisions with the player and gravity
-                Physics.IgnoreCollision(_grabbedObject.GetComponent<Collider>(), GetComponent<Collider>(), false);
-                _grabbedObject.GetComponent<Rigidbody>().useGravity = true;
+                Physics.IgnoreCollision(GrabbedObject.GetComponent<Collider>(), GetComponent<Collider>(), false);
+                GrabbedObject.GetComponent<Rigidbody>().useGravity = true;
 
-                _grabbedObject.transform.SetParent(null);
-                _grabbedObject = null;
+                GrabbedObject.transform.SetParent(null);
+                GrabbedObject = null;
             }
         }
     }
 
     void FixedUpdate()
     {
-        if (_grabbedObject != null)
+        if (GrabbedObject != null)
             MoveObject();
     }
 
@@ -191,14 +193,14 @@ public class PlayerGrab : MonoBehaviour
 
         // Calculate goal position and distance to it
         Vector3 goalPosition = transform.position + (direction * 2f) + Vector3.up * FloatAmount;
-        Vector3 goalDir = goalPosition - _grabbedObject.transform.position;
-        float distance = Vector3.Distance(goalPosition, _grabbedObject.transform.position);
+        Vector3 goalDir = goalPosition - GrabbedObject.transform.position;
+        float distance = Vector3.Distance(goalPosition, GrabbedObject.transform.position);
 
         // Add acceleration towards goal position, but only if the object is not already there, decrease speed while getting closer
-        _grabbedObject.GetComponent<Rigidbody>().AddForce(goalDir * Acceleration * (distance * 0.5f) * Time.fixedDeltaTime, ForceMode.Acceleration); // TEST: GetComponent performance hit?
+        GrabbedObject.GetComponent<Rigidbody>().AddForce(goalDir * Acceleration * (distance * 0.5f) * Time.fixedDeltaTime, ForceMode.Acceleration); // TEST: GetComponent performance hit?
 
         // Apply negative force to keep the object in place
-        _grabbedObject.GetComponent<Rigidbody>().AddForce(-_grabbedObject.GetComponent<Rigidbody>().velocity * DecelerationMultiplier, ForceMode.Acceleration);
+        GrabbedObject.GetComponent<Rigidbody>().AddForce(-GrabbedObject.GetComponent<Rigidbody>().velocity * DecelerationMultiplier, ForceMode.Acceleration);
     }
 
     void DebugVisuals()
@@ -220,25 +222,25 @@ public class PlayerGrab : MonoBehaviour
 
     public ContainerGrid GetActiveGrid()
     {
-        if (_grabbedObject == null) return null;
+        if (GrabbedObject == null) return null;
 
-        ContainerGeneric container = _grabbedObject.GetComponent<ContainerGeneric>();
+        ContainerGeneric container = GrabbedObject.GetComponent<ContainerGeneric>();
         return container == null ? null : container.CurrentCell.transform.parent.GetComponent<ContainerGrid>();
     }
 
     public ContainerGeneric GetActiveContainer()
     {
-        if (_grabbedObject == null) return null;
+        if (GrabbedObject == null) return null;
 
-        ContainerGeneric container = _grabbedObject.GetComponent<ContainerGeneric>();
+        ContainerGeneric container = GrabbedObject.GetComponent<ContainerGeneric>();
         return container == null ? null : container;
     }
 
     public bool GrabbableHasGridEffect()
     {
-        if (_grabbedObject == null) return false;
+        if (GrabbedObject == null) return false;
 
-        ContainerGeneric container = _grabbedObject.GetComponent<ContainerGeneric>();
+        ContainerGeneric container = GrabbedObject.GetComponent<ContainerGeneric>();
         return container == null ? false : container.HasGridEffect;
     }
 }

@@ -13,6 +13,9 @@ public class ContainerGeneric : MonoBehaviour
     [Range(0f, 10f)]
     public float DecelerationMultiplier = 3.5f;
 
+    [Tooltip("Maximum velocity of the player when grabbing an object")]
+    public int MaxPlayerVelocity = 5;
+
     [HideInInspector]
     public ContainerGridCell ParentCell = null; // Realitme parent cell - can be null
 
@@ -28,10 +31,20 @@ public class ContainerGeneric : MonoBehaviour
 
     float COYOTE_TIME = 0.3f;
 
+    Rigidbody _rb;
+
+    void Start()
+    {
+        _rb = GetComponent<Rigidbody>();
+        if (_rb == null)
+            Debug.LogError("Rigidbody not found on object");
+    }
+
     void Update()
     {
         PushTowardsParentCell();
         ProcessCoyoteTime();
+        CorrectRotation();
     }
 
     void ProcessCoyoteTime()
@@ -86,6 +99,16 @@ public class ContainerGeneric : MonoBehaviour
         if (ParentCell == null)
             return;
 
+        // Don't apply forces if the player is running faster than the max velocity
+        if (transform.parent)
+        {
+            // Get playerlocomotion
+            PlayerLocomotion locomotion = transform.parent.GetComponent<PlayerLocomotion>();
+
+            if (locomotion != null && locomotion.Velocity.magnitude > MaxPlayerVelocity)
+                return;
+        }
+
         Vector3 direction = Vector2D((ParentCell.transform.position - new Vector3(0, ParentCell.CellSize / 2, 0)) - transform.position).normalized;
 
         // Distance to parent cell ignoring y axis
@@ -97,10 +120,6 @@ public class ContainerGeneric : MonoBehaviour
         if (force.magnitude > Physics.gravity.magnitude)
             force = force.normalized * Physics.gravity.magnitude;
 
-        // Disable force if we're touching the ground so it doesnt float
-        if (distance < 0.1f)
-            force = Vector3.zero;
-
         if (distance > 0.1f)
         {
             GetComponent<Rigidbody>().AddForce(force);
@@ -111,5 +130,29 @@ public class ContainerGeneric : MonoBehaviour
             Rigidbody rigidbody = GetComponent<Rigidbody>();
             rigidbody.AddForce(-Vector2D(rigidbody.velocity) * DecelerationMultiplier, ForceMode.Acceleration);
         }
+    }
+
+    void CorrectRotation()
+    {
+        if (ParentCell == null)
+            return;
+
+        if (_rb.velocity.magnitude < 0.1f)
+            return;
+
+        if (transform.parent)
+        {
+            PlayerGrab playerGrab = transform.parent ? null : transform.parent.GetComponent<PlayerGrab>();
+
+            if (playerGrab == null)
+                return;
+
+            if (playerGrab.GrabbedObject == gameObject)
+                return;
+        }
+
+        Quaternion targetRotation = Quaternion.Euler(0, ParentCell.transform.rotation.eulerAngles.y, 0);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+
     }
 }

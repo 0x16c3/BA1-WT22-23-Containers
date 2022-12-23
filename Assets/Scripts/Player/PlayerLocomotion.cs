@@ -30,6 +30,12 @@ public class PlayerLocomotion : MonoBehaviour
 
     bool _switchedCells = false;
 
+    public Vector3 Velocity
+    {
+        get { return _rb.velocity; }
+        set { _rb.velocity = value; }
+    }
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();

@@ -1,29 +1,14 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class PlayerGrab : MonoBehaviour
 {
     [Header("Grab Settings")]
-
-    [Tooltip("Scans for grabbable objects in a radius around the player and grabs the closest one"), ReadOnly]
-    public bool AutoGrab = true;
-
     [Range(0f, 10f)]
     public float AutoGrabRadius = 1f;
 
-    [Tooltip("Ray cast distance to scan for grabbable objects in player's forward direction, backup if Auto Grab is disabled")]
-    [Range(0f, 10f)]
-    public float ScanDistance = 2f;
-
-    [Range(0, 360)]
-    public int ScanAngle = 30;
-
-    public int ScanDivisions = 15;
-
     [Header("Air Movement Settings")]
-
     public float FloatAmount = 3f;
 
     [Range(0f, 1000f)]
@@ -32,12 +17,14 @@ public class PlayerGrab : MonoBehaviour
     [Range(0f, 10f)]
     public float DecelerationMultiplier = 3.5f;
 
+    [Header("Visualization Settings")]
+    public Material OutlineMaterial;
+
     [HideInInspector]
     public GameObject GrabbedObject;
 
+    GameObject _lastClosestObject = null;
     PlayerLocomotion _locomotion;
-
-    float _lastScanTime = 0f;
 
     void Start()
     {
@@ -55,15 +42,25 @@ public class PlayerGrab : MonoBehaviour
 
     void Update()
     {
-        GameObject closestObject = AutoGrab ? ScanForGrabbables(AutoGrabRadius) : null;
+        GameObject closestObject = ScanForGrabbables(AutoGrabRadius);
+
+        // Remove outline from the previous closest object
+        if (closestObject != null && closestObject != _lastClosestObject)
+        {
+            MatSystem.AddMaterial(closestObject, OutlineMaterial);
+            if (_lastClosestObject != null)
+                MatSystem.RemoveMaterial(_lastClosestObject, OutlineMaterial);
+
+            _lastClosestObject = closestObject;
+        }
+        else if (closestObject == null && _lastClosestObject != null)
+        {
+            MatSystem.RemoveMaterial(_lastClosestObject, OutlineMaterial);
+            _lastClosestObject = null;
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            // If no closes object + auto grab is disabled
-            // Scan for grabbable objects in front of the player
-            if (closestObject == null && !AutoGrab)
-                closestObject = ScanForGrabbable(ScanDistance);
-
             if (closestObject != null && GrabbedObject == null)
             {
                 GrabbedObject = closestObject;
@@ -99,61 +96,32 @@ public class PlayerGrab : MonoBehaviour
         DebugVisuals();
     }
 
-    IEnumerable<Vector3[]> ScanRays(int angle, int divisions)
-    {
-        Vector3 direction = _locomotion.Direction;
-
-        for (int i = 0; i < divisions; i++)
-        {
-            yield return new Vector3[]
-            {
-                transform.position,
-                Quaternion.AngleAxis(-angle / 2f + i * angle / divisions, Vector3.up) * direction
-            };
-        }
-    }
-
-    GameObject ScanForGrabbable(float range)
-    {
-        _lastScanTime = Time.time;
-
-        Vector3 direction = _locomotion.Direction;
-
-        // Check for 15 ray casts in a 15 degree angle
-        foreach (Vector3[] ray in ScanRays(ScanAngle, ScanDivisions))
-        {
-            RaycastHit hit;
-            if (Physics.Raycast(ray[0], ray[1], out hit, range))
-            {
-                if (hit.collider.gameObject.tag == "Grabbable")
-                    return hit.collider.gameObject;
-            }
-        }
-
-        return null;
-    }
-
     GameObject ScanForGrabbables(float radius)
     {
-        if (!AutoGrab)
-            return null;
-
         // Get a list of all colliders in the radius
         List<Collider> colliders = new List<Collider>(Physics.OverlapSphere(transform.position, radius));
 
         if (colliders.Count == 0)
             return null;
 
-        // THERE IS A BETTER WAY TO DO THIS - emir
         float closestDistance = -1f;
         GameObject closestObject = null;
-
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.tag != "Grabbable")
                 continue;
 
             float distance = Vector3.Distance(transform.position, collider.transform.position);
+
+            // Apply weight according to _locomotion.MouseVector
+            Vector3 direction = _locomotion.MouseVector;
+
+            // Get the angle between the player's direction and the object's direction
+            float angle = Vector3.Angle(direction, collider.transform.position - transform.position);
+
+            // Apply weight according to the angle
+            distance *= 1f + angle / 180f;
+
             if (closestDistance == -1f || distance < closestDistance)
             {
                 closestObject = collider.gameObject;
@@ -182,7 +150,6 @@ public class PlayerGrab : MonoBehaviour
                     highestObject = closestObject = collider.gameObject;
             }
         }
-
         return closestObject;
     }
 
@@ -205,19 +172,7 @@ public class PlayerGrab : MonoBehaviour
 
     void DebugVisuals()
     {
-        if (AutoGrab)
-            Gizmos.DrawWireSphere(transform.position, AutoGrabRadius);
-        else
-        {
-            if (_lastScanTime + 0.1f < Time.time)
-                return;
-
-            // Check for 15 ray casts in a 15 degree angle
-            foreach (Vector3[] ray in ScanRays(ScanAngle, ScanDivisions))
-            {
-                Gizmos.DrawRay(ray[0], ray[1] * ScanDistance);
-            }
-        }
+        Gizmos.DrawWireSphere(transform.position, AutoGrabRadius);
     }
 
     public ContainerGrid GetActiveGrid()

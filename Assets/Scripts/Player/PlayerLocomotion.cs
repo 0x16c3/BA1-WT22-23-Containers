@@ -39,6 +39,16 @@ public class PlayerLocomotion : MonoBehaviour
         set { _rb.velocity = value; }
     }
 
+    public Vector3 InputVector
+    {
+        get { return _inputVector; }
+    }
+
+    public Vector3 MouseVector
+    {
+        get { return _mouseVector; }
+    }
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -116,8 +126,22 @@ public class PlayerLocomotion : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit))
         {
-            // calculate direction from player to mouse position
-            Vector3 direction = hit.point - transform.position;
+            Vector3 direction;
+
+            // Calculate direction from player to mouse position
+            if (hit.collider.gameObject.tag == "Grabbable")
+            {
+                // Return a direction to the grabbable
+                direction = hit.collider.transform.position - transform.position;
+                direction.y = 0;
+
+                if (direction.magnitude > 1)
+                    direction.Normalize();
+
+                return direction;
+            }
+
+            direction = hit.point - transform.position;
             direction.y = 0;
 
             if (direction.magnitude > 1)
@@ -131,27 +155,14 @@ public class PlayerLocomotion : MonoBehaviour
 
     void SaveDirection()
     {
-        if (_mouseVector.magnitude > 0 && !LockCursor)
-        {
-            Direction = _mouseVector;
-            Direction.y = 0;
-
-            if (Direction.magnitude > 1)
-                Direction.Normalize();
-
-            return;
-        }
-
         if (_inputVector.magnitude == 0)
-        {
             _switchedCells = false;
-            return;
-        }
-
 
         if (_grab && _grab.GrabbableHasGridEffect())
         {
-            // calculate the direction from the player to the next grid cell in the input direction
+            if (_inputVector.magnitude == 0)
+                return;
+
             ContainerGrid grid = _grab.GetActiveGrid();
             if (grid == null)
                 return;
@@ -176,6 +187,15 @@ public class PlayerLocomotion : MonoBehaviour
                 _switchedCells = true;
             }
             return;
+        }
+
+        if (_mouseVector.magnitude > 0 && !LockCursor)
+        {
+            Direction = _mouseVector;
+            Direction.y = 0;
+
+            if (Direction.magnitude > 1)
+                Direction.Normalize();
         }
 
         if (!LockCursor) return;

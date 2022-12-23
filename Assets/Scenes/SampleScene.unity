@@ -416,14 +416,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0858a8c012c59c49bed8648e80ac0a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoGrab: 1
   AutoGrabRadius: 1
-  ScanDistance: 2
-  ScanAngle: 30
-  ScanDivisions: 15
   FloatAmount: 3
   Acceleration: 500
   DecelerationMultiplier: 3.5
+  OutlineMaterial: {fileID: 2100000, guid: 310a5dadcb0aeaa42b8cc005cf97724c, type: 2}
   GrabbedObject: {fileID: 0}
 --- !u!1 &705507993
 GameObject:

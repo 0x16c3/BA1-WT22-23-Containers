@@ -9,11 +9,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Grabbable
   - Water
   - UI
-  - Outlined
-  - No outline
+  - 
+  - 
   - 
   - 
   - 

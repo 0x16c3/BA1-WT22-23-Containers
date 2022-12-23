@@ -24,8 +24,11 @@ public class PlayerLocomotion : MonoBehaviour
     [HideInInspector]
     public bool IsRunning = false;
 
+    public bool LockCursor = false;
+
     Rigidbody _rb;
     Vector3 _inputVector;
+    Vector3 _mouseVector;
     PlayerGrab _grab;
 
     bool _switchedCells = false;
@@ -45,6 +48,7 @@ public class PlayerLocomotion : MonoBehaviour
     void Update()
     {
         _inputVector = InputToVector();
+        _mouseVector = MousePosToVector();
         IsRunning = Input.GetKey(KeyCode.LeftShift);
 
         SaveDirection();
@@ -99,13 +103,51 @@ public class PlayerLocomotion : MonoBehaviour
         return forceVector;
     }
 
+    Vector3 MousePosToVector()
+    {
+        // Get mouse position
+        Vector3 mousePos = Input.mousePosition;
+
+        // raycast to mouse position
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+        RaycastHit hit;
+
+        // TODO: Ignore grabbable layer
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            // calculate direction from player to mouse position
+            Vector3 direction = hit.point - transform.position;
+            direction.y = 0;
+
+            if (direction.magnitude > 1)
+                direction.Normalize();
+
+            return direction;
+        }
+
+        return Vector3.zero;
+    }
+
     void SaveDirection()
     {
+        if (_mouseVector.magnitude > 0 && !LockCursor)
+        {
+            Direction = _mouseVector;
+            Direction.y = 0;
+
+            if (Direction.magnitude > 1)
+                Direction.Normalize();
+
+            return;
+        }
+
         if (_inputVector.magnitude == 0)
         {
             _switchedCells = false;
             return;
         }
+
 
         if (_grab && _grab.GrabbableHasGridEffect())
         {
@@ -135,6 +177,8 @@ public class PlayerLocomotion : MonoBehaviour
             }
             return;
         }
+
+        if (!LockCursor) return;
 
         Direction = _inputVector;
         Direction.y = 0;

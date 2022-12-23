@@ -403,6 +403,7 @@ MonoBehaviour:
   Direction: {x: 0, y: 0, z: 0}
   IsInAir: 0
   IsRunning: 0
+  LockCursor: 1
 --- !u!114 &694396273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,6 +424,7 @@ MonoBehaviour:
   FloatAmount: 3
   Acceleration: 500
   DecelerationMultiplier: 3.5
+  GrabbedObject: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +611,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  - {fileID: 2100000, guid: 310a5dadcb0aeaa42b8cc005cf97724c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -668,6 +669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Acceleration: 1000
   DecelerationMultiplier: 1.5
+  MaxPlayerVelocity: 5
   ParentCell: {fileID: 0}
   CurrentCell: {fileID: 0}
   HasGridEffect: 0
@@ -957,6 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Acceleration: 1000
   DecelerationMultiplier: 1.5
+  MaxPlayerVelocity: 5
   ParentCell: {fileID: 0}
   CurrentCell: {fileID: 0}
   HasGridEffect: 0
@@ -1123,6 +1126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Acceleration: 1000
   DecelerationMultiplier: 1.5
+  MaxPlayerVelocity: 5
   ParentCell: {fileID: 0}
   CurrentCell: {fileID: 0}
   HasGridEffect: 0

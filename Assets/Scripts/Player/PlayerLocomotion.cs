@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Tilemaps;
 
 public class PlayerLocomotion : MonoBehaviour
 {
@@ -54,20 +55,19 @@ public class PlayerLocomotion : MonoBehaviour
         set { _rb.velocity = value; }
     }
 
-    public Vector3 InputVector
-    {
-        get { return _inputVector; }
-    }
-
-    public Vector3 MouseVector
-    {
-        get { return _mouseVector; }
-    }
+    public Vector3 InputVector => _inputVector;
+    public Vector3 MouseVector => _mouseVector;
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _grab = GetComponent<PlayerGrab>();
+
+        if (_rb == null)
+            Debug.LogError("Rigidbody not found on object");
+
+        if (_grab == null)
+            Debug.LogError("PlayerGrab not found on object");
     }
 
     void Update()
@@ -120,7 +120,7 @@ public class PlayerLocomotion : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
 
         // Calculate force vector
-        Vector3 forceVector = new Vector3(h, 0, v);
+        var forceVector = new Vector3(h, 0, v);
 
         if (forceVector.magnitude > 1)
             forceVector.Normalize();
@@ -162,15 +162,11 @@ public class PlayerLocomotion : MonoBehaviour
             if (_inputVector.magnitude == 0)
                 return;
 
-            ContainerGrid grid = _grab.GetActiveGrid();
-            if (grid == null)
-                return;
-
             if (_switchedCells)
                 return;
 
             ContainerGridCell curCell = _grab.GetActiveContainer().CurrentCell;
-            ContainerGridCell nextCell = grid.GetCellInDirection(curCell, _inputVector);
+            ContainerGridCell nextCell = curCell.Tile.GetNext<ContainerGridCell>(curCell.Tile.GridPosition, _inputVector);
 
             if (nextCell != null)
             {
@@ -190,7 +186,7 @@ public class PlayerLocomotion : MonoBehaviour
 
         if (_mouseVector.magnitude > 0 && !LockCursor)
             Direction = _mouseVector;
-        else if (LockCursor)
+        if (LockCursor && _inputVector.magnitude > 0)
             Direction = _inputVector;
     }
 }

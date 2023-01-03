@@ -80,11 +80,11 @@ public class ContainerGeneric : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Vector3 textPosition = transform.position + new Vector3(0, 0.5f, 0);
+        var textPosition = transform.position + new Vector3(0, 0.5f, 0);
 
         if (ParentCell != null)
         {
-            Handles.Label(textPosition, "Parent: " + ParentCell.GetPos2D());
+            Handles.Label(textPosition, "Parent: " + ParentCell.Tile.GridPosition);
             textPosition += new Vector3(0, 0.2f, 0);
         }
     }
@@ -102,14 +102,14 @@ public class ContainerGeneric : MonoBehaviour
         // Don't apply forces if the player is running faster than the max velocity
         if (transform.parent)
         {
-            // Get playerlocomotion
-            PlayerLocomotion locomotion = transform.parent.GetComponent<PlayerLocomotion>();
+            var locomotion = transform.parent.GetComponent<PlayerLocomotion>();
 
             if (locomotion != null && locomotion.Velocity.magnitude > MaxPlayerVelocity)
                 return;
         }
 
-        Vector3 direction = Vector2D((ParentCell.transform.position - new Vector3(0, ParentCell.CellSize / 2, 0)) - transform.position).normalized;
+        var tilemap = (TilemapGeneric)(ParentCell.Tilemap);
+        Vector3 direction = Vector2D((ParentCell.transform.position - new Vector3(0, tilemap.CellSize.x / 2, 0)) - transform.position).normalized;
 
         // Distance to parent cell ignoring y axis
         float distance = Vector3.Distance(Vector2D(transform.position), Vector2D(ParentCell.transform.position));
@@ -127,7 +127,7 @@ public class ContainerGeneric : MonoBehaviour
         else
         {
             // Apply negative force to keep the object in place
-            Rigidbody rigidbody = GetComponent<Rigidbody>();
+            var rigidbody = GetComponent<Rigidbody>();
             rigidbody.AddForce(-Vector2D(rigidbody.velocity) * DecelerationMultiplier, ForceMode.Acceleration);
         }
     }
@@ -142,7 +142,7 @@ public class ContainerGeneric : MonoBehaviour
 
         if (transform.parent)
         {
-            PlayerGrab playerGrab = transform.parent ? null : transform.parent.GetComponent<PlayerGrab>();
+            var playerGrab = transform.parent ? null : transform.parent.GetComponent<PlayerGrab>();
 
             if (playerGrab == null)
                 return;

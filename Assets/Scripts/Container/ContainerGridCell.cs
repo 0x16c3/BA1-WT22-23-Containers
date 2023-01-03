@@ -1,26 +1,34 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
+using UnityEngine.Tilemaps;
 
+[ExecuteInEditMode]
 public class ContainerGridCell : MonoBehaviour
 {
-    public float CellSize = 1f;
-    public float CellHeight = 3f;
+    public float CellHeightMax = 3f;
 
     public List<ContainerGeneric> Grabbables = new List<ContainerGeneric>();
 
     Collider _collider = null;
+    public TilemapGeneric Tilemap;
+    public TileGeneric Tile;
 
     void Start()
     {
         _collider = GetComponent<Collider>();
 
+        Tilemap = TilemapGeneric.FindTilemap();
+        Tile = Tilemap.GetTile(transform.position);
+
+        // Set current size
+        transform.localScale = new Vector3(Tilemap.CellSize.x, CellHeightMax, Tilemap.CellSize.y);
+
         // If no collider, add one
         if (_collider == null)
         {
             _collider = gameObject.AddComponent<BoxCollider>();
-            _collider.transform.localScale = new Vector3(CellSize / 2, CellHeight, CellSize / 2);
+            _collider.transform.position = transform.position + Vector3.up * CellHeightMax / 2;
+            _collider.transform.localScale = new Vector3(Tilemap.cellSize.x / 2, CellHeightMax, Tilemap.cellSize.y / 2);
         }
 
         _collider.isTrigger = true;
@@ -28,7 +36,13 @@ public class ContainerGridCell : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireCube(transform.position, new Vector3(CellSize, CellHeight, CellSize));
+        if (Tilemap == null)
+        {
+            Tilemap = (TilemapGeneric)GetComponentInChildren<Tilemap>();
+            return;
+        }
+
+        Gizmos.DrawWireCube(transform.position, new Vector3(Tilemap.cellSize.x, CellHeightMax, Tilemap.cellSize.y));
     }
 
     void OnTriggerEnter(Collider collider)
@@ -36,7 +50,7 @@ public class ContainerGridCell : MonoBehaviour
         if (collider.tag != "Grabbable")
             return;
 
-        ContainerGeneric container = collider.GetComponent<ContainerGeneric>();
+        var container = collider.GetComponent<ContainerGeneric>();
 
         if (container == null)
         {
@@ -53,7 +67,7 @@ public class ContainerGridCell : MonoBehaviour
         if (collider.tag != "Grabbable")
             return;
 
-        ContainerGeneric container = collider.GetComponent<ContainerGeneric>();
+        var container = collider.GetComponent<ContainerGeneric>();
 
         if (container == null)
         {
@@ -72,7 +86,6 @@ public class ContainerGridCell : MonoBehaviour
         if (container == null)
             return;
 
-        // Add to list
         if (!Grabbables.Contains(container))
             Grabbables.Add(container);
 
@@ -85,15 +98,9 @@ public class ContainerGridCell : MonoBehaviour
         if (container == null || (!force && container.ParentCell != this))
             return;
 
-        // remove from list
         if (Grabbables.Contains(container))
             Grabbables.Remove(container);
 
         container.ParentCell = null;
-    }
-
-    public Vector2 GetPos2D()
-    {
-        return transform.parent.GetComponent<ContainerGrid>().GetCellPos2D(this);
     }
 }

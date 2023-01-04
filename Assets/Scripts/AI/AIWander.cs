@@ -22,11 +22,13 @@ public class AIWander : MonoBehaviour
 
     Rigidbody _rb;
     PathFinder _pathFinder;
-    TilemapGeneric _tilemap;
+    TileGrid _tilemap;
     TileGeneric _tile;
     List<PathTile> _paths = new List<PathTile>();
     Vector3 _lastRandPoint;
     PathTile _currentTarget;
+
+    bool Ready => _tilemap != null;
 
     void OnEnable()
     {
@@ -35,7 +37,7 @@ public class AIWander : MonoBehaviour
         Collider collider = GetComponent<Collider>();
         Vector3 size = collider.bounds.extents;
 
-        _tilemap = TilemapGeneric.FindTilemap();
+        _tilemap = TileGrid.FindTilemap();
         _tile = _tilemap.GetTile(transform.position);
 
         _pathFinder = new PathFinder(_tilemap, this.gameObject);
@@ -77,6 +79,9 @@ public class AIWander : MonoBehaviour
 
     void Update()
     {
+        if (!_tilemap)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Wander();
@@ -96,11 +101,11 @@ public class AIWander : MonoBehaviour
             return;
 
         // If close to current target, get next target
-        if (_currentTarget != null && Vector3.Distance(transform.position, _currentTarget.GetWorldPosition()) < 0.5f)
-            _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
+        //if (_currentTarget != null && Vector3.Distance(transform.position, _pathFinder.GetNextInPath(_currentTarget.GridPosition).GetWorldPosition()) < 0.5f)
+        //    _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
 
         if (_currentTarget == null || _currentTarget.GridPosition == _tile.GridPosition)
-            _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);    
+            _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
 
         MoveTowards(_currentTarget);
     }
@@ -148,13 +153,22 @@ public class AIWander : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        if (_tilemap == null)
+            return;
+
         if (_pathFinder != null)
             _pathFinder.OnDrawGizmos();
 
-        Gizmos.color = Color.magenta;
         if (_tile != null)
         {
+            Gizmos.color = Color.magenta;
             Gizmos.DrawWireSphere(_tile.GetWorldPosition(), 0.5f);
+        }
+
+        if (_currentTarget != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(_currentTarget.GetWorldPosition(), 0.5f);
         }
     }
 }

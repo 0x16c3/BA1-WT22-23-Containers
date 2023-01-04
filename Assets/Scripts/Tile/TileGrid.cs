@@ -1,10 +1,34 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using System.Collections.Generic;
 
-public class TilemapGeneric : GridLayout
+[RequireComponent(typeof(Tilemap))]
+public class TileGrid : MonoBehaviour
 {
     public Tilemap Tilemap;
+
+    public Vector3 cellSize => Tilemap.cellSize;
+    public Vector3 CellToWorld(Vector2Int gridPosition) => CellToWorld(new Vector3Int(gridPosition.x, gridPosition.y, 0));
+    public Vector3 CellToWorld(Vector3Int gridPosition) => Tilemap.CellToWorld(gridPosition);
+
+    public void OnEnable()
+    {
+        Tilemap = GetComponent<Tilemap>();
+        if (Tilemap == null)
+            Debug.LogError("TilemapGeneric: OnEnable: Tilemap is null");
+    }
+
+    public static explicit operator TileGrid(Tilemap v)
+    {
+        if (v == null)
+            return null;
+
+        // Get the tilemap generic component
+        var tilemapGeneric = v.GetComponent<TileGrid>();
+        if (tilemapGeneric == null)
+            tilemapGeneric = v.gameObject.AddComponent<TileGrid>();
+
+        return tilemapGeneric;
+    }
 
     public Vector2 CellSize
     {
@@ -18,14 +42,6 @@ public class TilemapGeneric : GridLayout
 
             return new Vector2(Tilemap.cellSize.x, Tilemap.cellSize.y);
         }
-    }
-
-    public static explicit operator TilemapGeneric(Tilemap v)
-    {
-        var tilemapGeneric = new TilemapGeneric();
-        tilemapGeneric.Tilemap = v;
-
-        return tilemapGeneric;
     }
 
     public TileGeneric GetTile(Vector3 worldPosition)
@@ -57,7 +73,7 @@ public class TilemapGeneric : GridLayout
         return new TileGeneric(tile, Tilemap, gridPosition);
     }
 
-    public static TilemapGeneric FindTilemap()
+    public static TileGrid FindTilemap()
     {
         Tilemap[] tilemaps = FindObjectsOfType<Tilemap>();
 
@@ -67,6 +83,6 @@ public class TilemapGeneric : GridLayout
             return null;
         }
 
-        return (TilemapGeneric)(tilemaps[0]);
+        return (TileGrid)tilemaps[0];
     }
 }

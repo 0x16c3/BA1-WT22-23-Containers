@@ -5,7 +5,7 @@ using System.Linq;
 
 public class PathFinder
 {
-    public TilemapGeneric Tilemap;
+    public TileGrid Tilemap;
     public PathTile StartTile { get; private set; }
     public PathTile EndTile { get; private set; }
     public GameObject GameObject;
@@ -19,7 +19,7 @@ public class PathFinder
     public delegate void FunctionTrigger();
     public event FunctionTrigger OnPathReset;
 
-    public PathFinder(TilemapGeneric tilemap, GameObject gameObject)
+    public PathFinder(TileGrid tilemap, GameObject gameObject)
     {
         Tilemap = tilemap;
         GameObject = gameObject;
@@ -27,7 +27,7 @@ public class PathFinder
 
     public PathFinder(Tilemap tilemap, GameObject gameObject)
     {
-        Tilemap = (TilemapGeneric)tilemap;
+        Tilemap = (TileGrid)tilemap;
         GameObject = gameObject;
     }
 
@@ -75,6 +75,7 @@ public class PathFinder
         ToSearch = new List<PathTile>() { StartTile };
         Searched = new List<PathTile>();
         Path = null;
+
         OnPathReset?.Invoke();
     }
 

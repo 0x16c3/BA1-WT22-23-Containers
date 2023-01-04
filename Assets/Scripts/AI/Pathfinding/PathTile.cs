@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class PathTile : TileGeneric
 {
     Tile _tile;
-    Tilemap _tilemap;
+    TileGrid _tilemap;
 
     public PathTile Connection; // Previous tile in path
     public float G; // Cost from start to current tile
@@ -15,7 +15,7 @@ public class PathTile : TileGeneric
 
     GameObject _gameObject;
 
-    public PathTile(Tile tile, Tilemap tilemap, Vector2Int pos, GameObject ignore = null) : base(tile, tilemap, pos)
+    public PathTile(Tile tile, TileGrid tilemap, Vector2Int pos, GameObject ignore = null) : base(tile, tilemap.Tilemap, pos)
     {
         _tile = tile;
         _tilemap = tilemap;
@@ -33,7 +33,7 @@ public class PathTile : TileGeneric
         get
         {
             var neighbors = new List<PathTile>();
-            var tilemapGeneric = (TilemapGeneric)_tilemap;
+            var TileGrid = (TileGrid)_tilemap;
 
             for (int x = -1; x <= 1; x++)
             {
@@ -43,7 +43,7 @@ public class PathTile : TileGeneric
                         continue;
 
                     var neighborPos = new Vector2Int(GridPosition.x + x, GridPosition.y + y);
-                    var neighbor = PathTile.FromTile(tilemapGeneric.GetTile(neighborPos), _gameObject);
+                    var neighbor = PathTile.FromTile(TileGrid.GetTile(neighborPos), _gameObject);
 
                     if (neighbor == null)
                         continue;

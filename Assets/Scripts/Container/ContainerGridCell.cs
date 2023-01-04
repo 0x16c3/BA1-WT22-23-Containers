@@ -10,14 +10,14 @@ public class ContainerGridCell : MonoBehaviour
     public List<ContainerGeneric> Grabbables = new List<ContainerGeneric>();
 
     Collider _collider = null;
-    public TilemapGeneric Tilemap;
+    public TileGrid Tilemap;
     public TileGeneric Tile;
 
     void Start()
     {
         _collider = GetComponent<Collider>();
 
-        Tilemap = TilemapGeneric.FindTilemap();
+        Tilemap = TileGrid.FindTilemap();
         Tile = Tilemap.GetTile(transform.position);
 
         // Set current size
@@ -38,7 +38,7 @@ public class ContainerGridCell : MonoBehaviour
     {
         if (Tilemap == null)
         {
-            Tilemap = (TilemapGeneric)GetComponentInChildren<Tilemap>();
+            Tilemap = (TileGrid)GetComponentInChildren<Tilemap>();
             return;
         }
 

@@ -5,13 +5,14 @@ using System.Collections.Generic;
 public class TileGeneric
 {
     public Tile Tile;
-    public Tilemap Tilemap;
+    public TileGrid Tilemap;
+
     public Vector2Int GridPosition;
 
     public TileGeneric(Tile tile, Tilemap tilemap, Vector2Int gridPosition)
     {
         Tile = tile;
-        Tilemap = tilemap;
+        Tilemap = (TileGrid)tilemap;
         GridPosition = gridPosition;
     }
 
@@ -81,7 +82,7 @@ public class TileGeneric
     public GameObject GetNext(Vector2Int position, Vector3Int direction)
     {
         var nextPos = position + new Vector2Int(direction.x, direction.y);
-        TileGeneric tile = ((TilemapGeneric)Tilemap).GetTile(nextPos);
+        TileGeneric tile = Tilemap.GetTile(nextPos);
 
         if (tile == null)
             return null;
@@ -102,8 +103,8 @@ public class TileGeneric
 
     public T GetNext<T>(Vector2Int position, Vector3Int direction) where T : Component
     {
-        var nextPos = position + new Vector2Int(direction.x, direction.y);
-        TileGeneric tile = ((TilemapGeneric)Tilemap).GetTile(nextPos);
+        var nextPos = position + new Vector2Int(direction.x, direction.z);
+        TileGeneric tile = Tilemap.GetTile(nextPos);
 
         if (tile == null)
             return null;

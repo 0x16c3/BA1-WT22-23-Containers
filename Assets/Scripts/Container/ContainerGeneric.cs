@@ -32,12 +32,15 @@ public class ContainerGeneric : MonoBehaviour
     float COYOTE_TIME = 0.3f;
 
     Rigidbody _rb;
+    TileGrid _tilemap;
 
-    void Start()
+    void OnEnable()
     {
         _rb = GetComponent<Rigidbody>();
         if (_rb == null)
             Debug.LogError("Rigidbody not found on object");
+
+        _tilemap = TileGrid.FindTilemap();
     }
 
     void Update()
@@ -108,8 +111,7 @@ public class ContainerGeneric : MonoBehaviour
                 return;
         }
 
-        var tilemap = (TilemapGeneric)(ParentCell.Tilemap);
-        Vector3 direction = Vector2D((ParentCell.transform.position - new Vector3(0, tilemap.CellSize.x / 2, 0)) - transform.position).normalized;
+        Vector3 direction = Vector2D((ParentCell.transform.position - new Vector3(0, _tilemap.CellSize.x / 2, 0)) - transform.position).normalized;
 
         // Distance to parent cell ignoring y axis
         float distance = Vector3.Distance(Vector2D(transform.position), Vector2D(ParentCell.transform.position));

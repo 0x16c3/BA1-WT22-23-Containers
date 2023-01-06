@@ -99,7 +99,7 @@ public class PlayerGrab : MonoBehaviour
     GameObject ScanForGrabbables(float radius)
     {
         // Get a list of all colliders in the radius
-        List<Collider> colliders = new List<Collider>(Physics.OverlapSphere(transform.position, radius));
+        var colliders = new List<Collider>(Physics.OverlapSphere(transform.position, radius));
 
         if (colliders.Count == 0)
             return null;
@@ -175,19 +175,11 @@ public class PlayerGrab : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, AutoGrabRadius);
     }
 
-    public ContainerGrid GetActiveGrid()
-    {
-        if (GrabbedObject == null) return null;
-
-        ContainerGeneric container = GrabbedObject.GetComponent<ContainerGeneric>();
-        return container == null ? null : container.CurrentCell.transform.parent.GetComponent<ContainerGrid>();
-    }
-
     public ContainerGeneric GetActiveContainer()
     {
         if (GrabbedObject == null) return null;
 
-        ContainerGeneric container = GrabbedObject.GetComponent<ContainerGeneric>();
+        var container = GrabbedObject.GetComponent<ContainerGeneric>();
         return container == null ? null : container;
     }
 
@@ -195,7 +187,7 @@ public class PlayerGrab : MonoBehaviour
     {
         if (GrabbedObject == null) return false;
 
-        ContainerGeneric container = GrabbedObject.GetComponent<ContainerGeneric>();
+        var container = GrabbedObject.GetComponent<ContainerGeneric>();
         return container == null ? false : container.HasGridEffect;
     }
 }

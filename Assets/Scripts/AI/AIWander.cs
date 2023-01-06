@@ -1,90 +1,174 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class AIWander : MonoBehaviour
 {
     public float IntervalMin = 1.0f;
     public float IntervalMax = 3.0f;
-    public float MovementSpeed = 10.0f;
-    public float DetectionRadius;
+    public float MovementRadius = 6.0f;
+    public float MinMovementRadius = 3.0f;
 
-    Vector3 _previousDirection;
+    [Range(0f, 25f)]
+    public float MovementSpeed = 9f;
+
+    [Range(0f, 1000f)]
+    public float Acceleration = 200f;
+
+    [Range(0f, 1000f)]
+    public float MaxAccelerationForce = 150f;
+
+    public LayerMask obstacles;
+
     Rigidbody _rb;
+    PathFinder _pathFinder;
+    TileGrid _tilemap;
+    TileGeneric _tile;
+    List<PathTile> _paths = new List<PathTile>();
+    Vector3 _lastRandPoint;
+    PathTile _currentTarget;
 
-    void Start()
+    bool Ready => _tilemap != null;
+
+    void OnEnable()
     {
         _rb = GetComponent<Rigidbody>();
-        InvokeRepeating("Move", 0.0f, IntervalMin);
+
+        Collider collider = GetComponent<Collider>();
+        Vector3 size = collider.bounds.extents;
+
+        _tilemap = TileGrid.FindTilemap();
+        _tile = _tilemap.GetTile(transform.position);
+
+        _pathFinder = new PathFinder(_tilemap, this.gameObject);
+
+        _pathFinder.OnPathReset += ResetPathData;
+
+        Wander();
     }
 
-    void Move()
+    void OnDisable()
     {
-        if (transform.parent != null)
+        _pathFinder.OnPathReset -= ResetPathData;
+    }
+
+    void Wander()
+    {
+        Vector3 randomPoint = GetRandomPoint();
+        while (Vector3.Distance(randomPoint, _lastRandPoint) < MinMovementRadius || Vector3.Distance(randomPoint, transform.position) < MinMovementRadius)
+        {
+            randomPoint = GetRandomPoint();
+        }
+
+        _lastRandPoint = randomPoint;
+
+        TileGeneric randomTile = _tilemap.GetTile(randomPoint);
+
+        _pathFinder.SetStart(_tile.GridPosition);
+        _pathFinder.SetTarget(randomTile.GridPosition);
+        _pathFinder.InitPath();
+    }
+
+    void ResetPathData()
+    {
+        _tile = _tilemap.GetTile(transform.position);
+        _lastRandPoint = Vector3.zero;
+        _currentTarget = null;
+        _paths = new List<PathTile>();
+    }
+
+    void Update()
+    {
+        if (!_tilemap)
             return;
 
-        List<Vector3> directions = GetAvaliableDirections();
-
-        if (directions.Count == 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Generate a random direction
-            int randDirection = Random.Range(1, 4);
-            transform.eulerAngles = new Vector3(0.0f, randDirection * 90, 0.0f);
-            Vector3 moveDirection = transform.forward;
-
-            // Apply force to the rigid body in the generated direction
-            _rb.AddForce(moveDirection * MovementSpeed * 2, ForceMode.Impulse);
+            Wander();
         }
-        else
-        {
-            // Pick a Direction from the collected available ones in the detection phase
-            int randDirection = Random.Range(0, directions.Count);
-            Vector3 direction = directions[randDirection];
 
-            // If it is chosen to move backwards, try to find an alternative path and use it instead. If there is none, move backwards.
-            while (direction == -_previousDirection && directions.Count > 1)
-            {
-                randDirection = Random.Range(0, directions.Count);
-                direction = directions[randDirection];
-            }
+        _pathFinder.SetStart(_tile.GridPosition);
 
-            _rb.AddForce(direction * MovementSpeed, ForceMode.Impulse);
-            _previousDirection = direction;
-        }
+        _pathFinder.FindPath();
+        _paths = _pathFinder.Path;
+
+        _tile = _tilemap.GetTile(transform.position);
     }
 
-    List<Vector3> GetAvaliableDirections()
+    void FixedUpdate()
     {
-        List<Vector3> directions = new List<Vector3>();
-        for (int i = 0; i < 360; i += 90)
-        {
-            // Convert the angle to a direction vector
-            Vector3 angle = Quaternion.Euler(0, i, 0) * Vector3.forward;
+        if (_paths == null || _paths.Count == 0)
+            return;
 
-            // Check if the direction is clear by casting rays in a cone of 45 degrees
-            bool isClear = true;
-            for (int j = -10; j <= 10; j += 2)
-            {
-                // Raycast in the direction
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, Quaternion.Euler(0, j, 0) * angle, out hit, DetectionRadius))
-                {
-                    // An obstacle was hit, so this direction is not clear
-                    isClear = false;
-                    break;
-                }
-            }
+        // If close to current target, get next target
+        //if (_currentTarget != null && Vector3.Distance(transform.position, _pathFinder.GetNextInPath(_currentTarget.GridPosition).GetWorldPosition()) < 0.5f)
+        //    _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
 
-            if (!isClear)
-                continue;
+        if (_currentTarget == null || _currentTarget.GridPosition == _tile.GridPosition)
+            _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
 
-            directions.Add(angle);
-        }
+        MoveTowards(_currentTarget);
+    }
 
-        return directions;
+    void MoveTowards(PathTile tile)
+    {
+        if (tile == null)
+            return;
+
+        Vector3 goalVelocity = (tile.GetWorldPosition() - transform.position).normalized * MovementSpeed;
+        Vector3 acceleration = goalVelocity - _rb.velocity;
+        acceleration = Vector3.ClampMagnitude(acceleration, MaxAccelerationForce);
+
+        _rb.AddForce(acceleration * Acceleration * Time.fixedDeltaTime, ForceMode.Acceleration);
+    }
+
+    void Fidget()
+    {
+        // Fidgeting animation with rotation and small movement using physics
+
+        // Store current position and rotation
+        Vector3 oldPosition = transform.position;
+        Quaternion oldRotation = transform.rotation;
+
+        var strength = Random.Range(0.1f, 0.5f);
+        var direction = Random.insideUnitSphere;
+        direction.y = 0;
+
+        _rb.AddForce(direction * strength, ForceMode.Impulse);
+
+        var rotation = Random.Range(-90f, 90f);
+        Vector3 torque = new Vector3(0, rotation, 0);
+
+        _rb.AddTorque(torque, ForceMode.Impulse);
+    }
+
+    Vector3 GetRandomPoint()
+    {
+        Vector3 randomPoint = Random.insideUnitSphere * MovementRadius;
+        randomPoint += transform.position;
+        randomPoint.y = 0;
+
+        return randomPoint;
     }
 
     void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(transform.position, DetectionRadius);
+        if (_tilemap == null)
+            return;
+
+        if (_pathFinder != null)
+            _pathFinder.OnDrawGizmos();
+
+        if (_tile != null)
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(_tile.GetWorldPosition(), 0.5f);
+        }
+
+        if (_currentTarget != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(_currentTarget.GetWorldPosition(), 0.5f);
+        }
     }
 }

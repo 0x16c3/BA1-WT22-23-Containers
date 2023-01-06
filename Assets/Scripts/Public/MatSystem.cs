@@ -59,7 +59,7 @@ public class MatSystem
             return;
 
         Material[] materials = obj.GetComponent<Renderer>().materials;
-        List<Material> newMaterials = new List<Material>();
+        var newMaterials = new List<Material>();
 
         for (int i = 0; i < materials.Length; i++)
         {

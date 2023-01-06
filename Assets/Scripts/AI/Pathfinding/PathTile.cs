@@ -35,11 +35,16 @@ public class PathTile : TileGeneric
             var neighbors = new List<PathTile>();
             var TileGrid = (TileGrid)_tilemap;
 
+
             for (int x = -1; x <= 1; x++)
             {
                 for (int y = -1; y <= 1; y++)
                 {
                     if (x == 0 && y == 0)
+                        continue;
+
+                    // Skip diagonals
+                    if (x != 0 && y != 0)
                         continue;
 
                     var neighborPos = new Vector2Int(GridPosition.x + x, GridPosition.y + y);

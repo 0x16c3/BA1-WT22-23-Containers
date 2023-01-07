@@ -18,6 +18,7 @@ public class AIVolcanoCat : MonoBehaviour
     void OnEnable()
     {
         _collider = GetComponent<Collider>();
+        _lastFired = -1f;
     }
 
     void Update()

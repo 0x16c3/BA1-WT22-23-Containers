@@ -1271,8 +1271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51680bb203c9fa4da8d91e1fefb8da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 3
-  lavaClumpPrefab: {fileID: 1535833795023934868, guid: bd6c5bbeca111c34ab73ea494ac9ddab, type: 3}
+  FireRate: 3
+  ProjectileRadius: 3
+  ProjectileAngle: 45
+  ProjectilePrefab: {fileID: 1535833795023934868, guid: bd6c5bbeca111c34ab73ea494ac9ddab, type: 3}
 --- !u!65 &478099257
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1344,7 +1346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478099255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8047874, y: 1, z: -2.72}
+  m_LocalPosition: {x: 2.31, y: 1.19, z: -6.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -15,6 +15,8 @@ public class TileGrid : MonoBehaviour
         Tilemap = GetComponent<Tilemap>();
         if (Tilemap == null)
             Debug.LogError("TilemapGeneric: OnEnable: Tilemap is null");
+
+        Tilemap.ClearAllTiles();
     }
 
     public static explicit operator TileGrid(Tilemap v)

@@ -4,17 +4,31 @@ using UnityEngine;
 
 public class EventController : MonoBehaviour
 {
-    public GameObject lightning;
+    public GameObject lightningColliderPrefab;
 
-    public float eventInterval;
+    public int lightningAmount;
 
-    // Start is called before the first frame update
-    void Start()
+    public int deltaTimeLightning;
+
+    public float eventInterval; // not currently in use
+
+    private float _timePassed;
+
+    private void Update()
     {
-        InvokeRepeating(nameof(Lightning), eventInterval, eventInterval);
+        _timePassed += Time.deltaTime;
+        if (_timePassed >= deltaTimeLightning)
+        {
+            if (lightningAmount > 0)
+            {
+                Lightning();
+                lightningAmount--;
+            }
+            _timePassed = 0;
+        }
     }
     void Lightning()
     {
-        Instantiate(lightning);
+        Instantiate(lightningColliderPrefab);
     }
 }

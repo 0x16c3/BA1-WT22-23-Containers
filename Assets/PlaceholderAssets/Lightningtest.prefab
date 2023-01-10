@@ -70,8 +70,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningDamage: 3
-  damageInterval: 0
-  lightning: {fileID: 5919594687828523438, guid: 7a5361bbb37c341bb9d2eaa93dbfb4e3, type: 3}
+  fireInterval: 1
+  lightningVFX: {fileID: 5919594687828523438, guid: 7a5361bbb37c341bb9d2eaa93dbfb4e3, type: 3}
 --- !u!54 &8747034852760910607
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -18,6 +18,9 @@ public class PlayerLocomotion : MonoBehaviour
     [Range(0f, 1000f)]
     public float MaxAccelerationForce = 150f;
 
+    [HideInInspector]
+    public float InitialSpeed;
+
     public bool LockCursor = false;
 
     [HideInInspector]
@@ -32,6 +35,8 @@ public class PlayerLocomotion : MonoBehaviour
     PlayerGrab _grab;
 
     bool _switchedCells = false;
+
+    
 
     public Vector3 Direction
     {
@@ -60,6 +65,8 @@ public class PlayerLocomotion : MonoBehaviour
 
     void Start()
     {
+        InitialSpeed = MovementSpeed;
+
         _rb = GetComponent<Rigidbody>();
         _grab = GetComponent<PlayerGrab>();
 

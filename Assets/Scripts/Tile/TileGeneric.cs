@@ -66,11 +66,35 @@ public class TileGeneric
 
     public T GetInstantiatedObject<T>(Vector2Int gridPosition) where T : Component
     {
+        // todo: make this a static method
+
+        TileGeneric tile = Tilemap.GetTile(gridPosition);
         List<GameObject> objects = GetObjects();
 
-        if (objects.Count > 0)
+        if (objects.Count == 0) return null;
+
+        // Iterate through objects and return first object that matches type
+        foreach (var objectInstance in objects)
         {
-            T cell = objects[0].GetComponent<T>();
+            T cell = objectInstance.GetComponent<T>();
+
+            if (cell != null)
+                return cell;
+        }
+
+        return null;
+    }
+
+    public T GetInstantiatedObject<T>() where T : Component
+    {
+        List<GameObject> objects = GetObjects();
+
+        if (objects.Count == 0) return null;
+
+        // Iterate through objects and return first object that matches type
+        foreach (var objectInstance in objects)
+        {
+            T cell = objectInstance.GetComponent<T>();
 
             if (cell != null)
                 return cell;

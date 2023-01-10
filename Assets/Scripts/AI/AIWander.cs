@@ -9,6 +9,8 @@ public class AIWander : MonoBehaviour
     public float MovementRadius = 6.0f;
     public float MinMovementRadius = 3.0f;
 
+    public bool Suicidal = true;
+
     [Range(0f, 25f)]
     public float MovementSpeed = 9f;
 
@@ -17,6 +19,7 @@ public class AIWander : MonoBehaviour
 
     [Range(0f, 1000f)]
     public float MaxAccelerationForce = 150f;
+
 
     public LayerMask obstacles;
 
@@ -147,6 +150,15 @@ public class AIWander : MonoBehaviour
         Vector3 randomPoint = Random.insideUnitSphere * MovementRadius;
         randomPoint += transform.position;
         randomPoint.y = 0;
+
+        if (Suicidal)
+            return randomPoint;
+
+        // Check if there is a ContainerGridCell at that point
+        var tile = _tilemap.GetTile(randomPoint);
+
+        if (!tile.GetInstantiatedObject<ContainerGridCell>())
+            return GetRandomPoint();
 
         return randomPoint;
     }

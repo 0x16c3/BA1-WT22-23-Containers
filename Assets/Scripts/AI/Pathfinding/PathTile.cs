@@ -73,6 +73,9 @@ public class PathTile : TileGeneric
                 if (objects[i].layer == 3)
                     continue;
 
+                if (objects[i].GetComponent<ContainerGridCell>() != null)
+                    continue;
+
                 // Ignore if current tile is the object
                 if (objects[i] == _gameObject)
                     continue;

@@ -1,59 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class AIVolcanoCatProjectile : MonoBehaviour
 {
-    public float horizontalSpeed;
-
-    public float gravity;
-
-    TileGrid _tileMap;
-
-    TileGeneric _tile;
-
     Rigidbody _rigidbody;
+    Vector3 _target;
 
-    Vector3 _tileCenter;
-
-    private float _verticalSpeed;
-
-    private int _xpos;
-
-    private int _ypos;
-
-    void OnEnable()
+    void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-        _tileMap = TileGrid.FindTilemap();
-        // Selects a random tile (THE RANDOM SELECTION SHOULD BE BETWEEN 0 AND THE MAX LENGTH OF THE SIDE. NOT YET IMPLEMENTED)
-        _xpos = Random.Range(0, 5);
-        _ypos = Random.Range(0, 5);
-        _tile = _tileMap.GetTile(new Vector2Int(_xpos, _ypos));
-        _tileCenter = _tile.WorldCenter;
+        var parent = transform.parent;
 
-        ParabolaCalc();
-        _rigidbody.AddForce(new Vector3(0, _verticalSpeed), ForceMode.VelocityChange);
-        
+        var VolcanoCat = parent.GetComponent<AIVolcanoCat>();
+        if (VolcanoCat == null)
+            Debug.LogError("No AIVolcanoCat component found on parent");
+
+        var radius = VolcanoCat.ProjectileRadius;
+        var angle = VolcanoCat.ProjectileAngle;
+        JumpTowards(GetRandomPoint(radius), angle);
     }
 
-    void Update()
+    Vector3 GetRandomPoint(float radius)
     {
-        _tileCenter.y = transform.position.y;
-        transform.position = Vector3.MoveTowards(transform.position, _tileCenter, horizontalSpeed * Time.deltaTime);
+        var parentBounds = transform.parent.GetComponent<Collider>().bounds;
 
-        // Pulls the object down
-        _rigidbody.AddForce(new Vector3(0, gravity * Time.deltaTime), ForceMode.VelocityChange);
+        // Get random point in radius, can be negative as well
+        var randomDirection = Random.insideUnitCircle * transform.parent.position;
+        var randomDistance = Random.Range(parentBounds.size.magnitude, radius);
+
+        // Convert to world point
+        var worldPoint = transform.parent.position + new Vector3(randomDirection.x, 0, randomDirection.y) * randomDistance;
+
+        // If inside parent's bounds, retry
+        if (parentBounds.Contains(worldPoint))
+            return GetRandomPoint(radius);
+
+        return worldPoint;
     }
 
-    private void ParabolaCalc()
+    void JumpTowards(Vector3 target, float initialAngle)
     {
-        // Calculates the force required to create a parabola between the object and the target
-        float _z = _tileCenter.z - transform.position.z;
-        float _x = _tileCenter.x - transform.position.x;
-        float _distance = Mathf.Sqrt(_x * _x + _z * _z);
-        float _time = _distance / horizontalSpeed;
-        _verticalSpeed = -(gravity * _time/2);
+        float gravity = Physics.gravity.magnitude;
+        float angle = initialAngle * Mathf.Deg2Rad;
+
+        Vector3 planarTarget = new Vector3(target.x, 0, target.z);
+        Vector3 planarPostion = new Vector3(transform.position.x, 0, transform.position.z);
+
+        // Distance between the objects on the same plane
+        float distance = Vector3.Distance(planarTarget, planarPostion);
+        float yOffset = transform.position.y - target.y;
+
+        // Calculate the initial velocity needed to land the projectile on the target object
+        float initialVelocity = (1 / Mathf.Cos(angle)) * Mathf.Sqrt((0.5f * gravity * Mathf.Pow(distance, 2)) / (distance * Mathf.Tan(angle) + yOffset));
+        Vector3 velocity = new Vector3(0, initialVelocity * Mathf.Sin(angle), initialVelocity * Mathf.Cos(angle));
+
+        // Apply rotation to the initial velocity
+        float angleBetweenObjects = Vector3.Angle(Vector3.forward, planarTarget - planarPostion) * (target.x > transform.position.x ? 1 : -1);
+        Vector3 finalVelocity = Quaternion.AngleAxis(angleBetweenObjects, Vector3.up) * velocity;
+
+        _rigidbody.AddForce(finalVelocity * _rigidbody.mass, ForceMode.Impulse);
     }
 }

@@ -1,30 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
 
 public class AIVolcanoCat : MonoBehaviour
 {
-    public float fireRate;
+    public float FireRate = 3f;
 
-    public GameObject lavaClumpPrefab;
+    [Range(1f, 5f)]
+    public float ProjectileRadius = 10f;
+    [Range(1f, 90f)]
+    public float ProjectileAngle = 45f;
 
-    private Vector3 _projectilePosition;
+    public GameObject ProjectilePrefab;
 
-    private float _projectileHeight = 0f;
+    Collider _collider;
 
-    
-    // Start is called before the first frame update
-    void Start()
+    float _lastFired = -1f;
+
+    void OnEnable()
     {
-        InvokeRepeating(nameof(VolcanoMortar), fireRate, fireRate);
-        
+        _collider = GetComponent<Collider>();
+        _lastFired = -1f;
     }
-    void VolcanoMortar()
+
+    void Update()
     {
-        _projectilePosition = new Vector3(transform.position.x, transform.position.y + _projectileHeight, transform.position.z);
-        Instantiate(lavaClumpPrefab, _projectilePosition, Quaternion.identity);
+        if (Time.time - _lastFired > FireRate + Random.Range(-1f, 1f))
+        {
+            var projectile = Instantiate(ProjectilePrefab, transform.position + new Vector3(0, _collider.bounds.size.y, 0), Quaternion.identity);
+            projectile.transform.parent = transform;
+            _lastFired = Time.time;
+        }
     }
 }

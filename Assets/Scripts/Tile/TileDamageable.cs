@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TileDamageable : MonoBehaviour, IDamageable
 {
+    public GameObject firePrefab;
+
+    private GameObject _localFire;
+
     public float tileHealth;
 
     public bool isFireEternal;
@@ -19,6 +23,12 @@ public class TileDamageable : MonoBehaviour, IDamageable
     private float _singleDamage;
 
     private float _damageDealt;
+
+    private void Start()
+    {
+        _localFire = Instantiate(firePrefab, transform);
+        _localFire.SetActive(false);
+    }
 
     private void Update()
     {
@@ -37,9 +47,9 @@ public class TileDamageable : MonoBehaviour, IDamageable
         {
             // tileTotalDamage is 0 unless Damage() method has been called by a damaging force
             _singleDamage = _tileTotalDamage / 5f;
-            _isDamaged = true;
             _timePassed = _timeBetweenDamage;
-            // fire vfx to be enabled here
+            _isDamaged = true;
+            _localFire.SetActive(true);
         }
     }
 
@@ -55,7 +65,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
         // this method can be called by other behaviors like a water bucket to end the damage over time of fire for example.
         _tileTotalDamage = 0;
         _isDamaged = false;
-        // fire vfx to be disabled here
+        _localFire.SetActive(false);
     }
 
     void Damaging()

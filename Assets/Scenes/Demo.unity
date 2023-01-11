@@ -7329,7 +7329,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792044e597d90f34ba17a82e2b04ef5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightning: {fileID: 8747034852760910710, guid: 5825326d87c154644bdbac5e3d2931c0, type: 3}
+  lightningColliderPrefab: {fileID: 8747034852760910710, guid: 5825326d87c154644bdbac5e3d2931c0, type: 3}
+  lightningAmount: 5
+  deltaTimeLightning: 2
   eventInterval: 3
 --- !u!114 &828057849
 MonoBehaviour:

@@ -172,4 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd43e8d3545168c4cbcfdf0bda168b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePrefab: {fileID: 7355393745511474259, guid: b2954b777851f45a4b24123f0428c14a, type: 3}
   tileHealth: 3
+  isFireEternal: 0

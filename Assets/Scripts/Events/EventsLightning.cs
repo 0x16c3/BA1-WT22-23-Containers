@@ -6,9 +6,15 @@ public class EventsLightning : MonoBehaviour
 {
     public float lightningDamage;
 
-    public float fireInterval;
+    public float damageInterval;
+
+    public float timeBetweenWarningAndLightning = 1;
 
     public GameObject lightningVFX;
+
+    public GameObject lightningWarningVFX;
+
+    GameObject _localGlow;
 
     TileGrid _tileMap;
 
@@ -34,16 +40,19 @@ public class EventsLightning : MonoBehaviour
         _tile = _tileMap.GetTile(new Vector2Int(_tileXPosition, _tileYPosition));
         _tileCenter = _tile.WorldCenter;
         transform.position = _tileCenter;
+
+        _localGlow = Instantiate(lightningWarningVFX, transform);
+        _localGlow.transform.position = new Vector3 (transform.position.x, transform.position.y + 0.05f, transform.position.z);
     }
     private void Update()
     {
         _timePassed += Time.deltaTime;
-        if (_timePassed >= 1)
+        if (_timePassed >= timeBetweenWarningAndLightning)
         {
             Debug.Log("time passed");
             _colliderTrigger.enabled = true;
         }
-        if (_timePassed > 1 + Time.fixedDeltaTime)
+        if (_timePassed > timeBetweenWarningAndLightning + 0.1f)
         {
             _timePassed = 0;
             Destroy(gameObject);
@@ -56,7 +65,7 @@ public class EventsLightning : MonoBehaviour
         IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            damageable.Damage(lightningDamage,fireInterval,lightningVFX);
+            damageable.Damage(lightningDamage,damageInterval,lightningVFX);
         }
     }
 }

@@ -70,8 +70,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightningDamage: 3
-  fireInterval: 1
+  damageInterval: 2
+  timeBetweenWarningAndLightning: 2
   lightningVFX: {fileID: 5919594687828523438, guid: 7a5361bbb37c341bb9d2eaa93dbfb4e3, type: 3}
+  lightningWarningVFX: {fileID: 6137954409669389721, guid: 85091465cb5ea4f83bb19ee84995de5d, type: 3}
 --- !u!54 &8747034852760910607
 Rigidbody:
   m_ObjectHideFlags: 0

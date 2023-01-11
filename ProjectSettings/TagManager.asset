@@ -7,6 +7,7 @@ TagManager:
   - Grabbable
   - Barrel
   - Chest
+  - Grass
   layers:
   - Default
   - TransparentFX

@@ -102,6 +102,10 @@ public class ContainerGeneric : MonoBehaviour
         if (ParentCell == null)
             return;
 
+        // If has AI agent, don't apply forces
+        if (gameObject.GetComponent<AIWander>() != null)
+            return;
+
         // Don't apply forces if the player is running faster than the max velocity
         if (transform.parent)
         {

@@ -18,6 +18,7 @@ public class PathFinder
 
     public delegate void FunctionTrigger();
     public event FunctionTrigger OnPathReset;
+    public event FunctionTrigger OnPathFound;
 
     public PathFinder(TileGrid tilemap, GameObject gameObject)
     {
@@ -167,6 +168,7 @@ public class PathFinder
         if (current.GridPosition == EndTile.GridPosition)
         {
             Path = PathProgress;
+            OnPathFound?.Invoke();
             return;
         }
 

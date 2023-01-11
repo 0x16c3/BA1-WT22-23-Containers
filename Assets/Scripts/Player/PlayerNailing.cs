@@ -30,6 +30,9 @@ public class PlayerNailing : MonoBehaviour
         if (nailsBox == null)
             nailsBox = GameObject.Find("NailsBox");
 
+        if (NailsPerOnce == 0)
+            NailsPerOnce = 10;
+
         nailsBox.SetActive(false);
     }
     void Update()
@@ -88,7 +91,7 @@ public class PlayerNailing : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Barrel"))
+        if (other.CompareTag("Chest"))
         {
             //display hint "Press X to pick up"
             _nearBarrel = true;
@@ -97,7 +100,7 @@ public class PlayerNailing : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Barrel"))
+        if (other.CompareTag("Chest"))
             _nearBarrel = false;
     }
 

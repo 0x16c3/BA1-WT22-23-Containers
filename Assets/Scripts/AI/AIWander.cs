@@ -31,6 +31,8 @@ public class AIWander : MonoBehaviour
     Vector3 _lastRandPoint;
     PathTile _currentTarget;
 
+    bool _markClearTarget = false;
+
     bool Ready => _tilemap != null;
 
     void OnEnable()
@@ -76,8 +78,8 @@ public class AIWander : MonoBehaviour
     {
         _tile = _tilemap.GetTile(transform.position);
         _lastRandPoint = Vector3.zero;
-        _currentTarget = null;
         _paths = new List<PathTile>();
+        _markClearTarget = true;
     }
 
     void Update()
@@ -103,14 +105,25 @@ public class AIWander : MonoBehaviour
         if (_paths == null || _paths.Count == 0)
             return;
 
-        // If close to current target, get next target
-        //if (_currentTarget != null && Vector3.Distance(transform.position, _pathFinder.GetNextInPath(_currentTarget.GridPosition).GetWorldPosition()) < 0.5f)
-        //    _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
+        if (_currentTarget == null)
+            _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
 
-        if (_currentTarget == null || _currentTarget.GridPosition == _tile.GridPosition)
+        if (_currentTarget == null)
+            return;
+
+        var distanceWorld = Vector3.Distance(transform.position, _currentTarget.WorldCenter);
+        if (distanceWorld < 0.1f)
             _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
 
         MoveTowards(_currentTarget);
+
+        if (_markClearTarget)
+        {
+            if (_currentTarget != _pathFinder.EndTile)
+                _currentTarget = null;
+
+            _markClearTarget = false;
+        }
     }
 
     void MoveTowards(PathTile tile)
@@ -118,7 +131,7 @@ public class AIWander : MonoBehaviour
         if (tile == null)
             return;
 
-        Vector3 goalVelocity = (tile.GetWorldPosition() - transform.position).normalized * MovementSpeed;
+        Vector3 goalVelocity = (tile.WorldCenter - transform.position).normalized * MovementSpeed;
         Vector3 acceleration = goalVelocity - _rb.velocity;
         acceleration = Vector3.ClampMagnitude(acceleration, MaxAccelerationForce);
 

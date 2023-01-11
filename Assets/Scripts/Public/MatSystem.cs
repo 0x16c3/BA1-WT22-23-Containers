@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class MatSystem
 {
+    public static Renderer GetRenderer(GameObject obj)
+    {
+        // Get renderer
+        Renderer renderer = obj.GetComponent<Renderer>();
+
+        // If null, check each child
+        if (renderer == null)
+        {
+            foreach (Transform child in obj.transform)
+            {
+                renderer = child.GetComponent<Renderer>();
+
+                if (renderer != null)
+                    break;
+            }
+        }
+
+        return renderer;
+    }
+
     public static bool SameMaterial(Material mat1, Material mat2)
     {
         if (mat1 == mat2)
@@ -18,10 +38,10 @@ public class MatSystem
 
     public static bool HasMaterial(GameObject obj, Material mat)
     {
-        if (obj.GetComponent<Renderer>() == null)
+        if (GetRenderer(obj) == null)
             return false;
 
-        Material[] materials = obj.GetComponent<Renderer>().materials;
+        Material[] materials = GetRenderer(obj).materials;
 
         foreach (Material material in materials)
         {
@@ -37,10 +57,10 @@ public class MatSystem
 
     public static void AddMaterial(GameObject obj, Material mat)
     {
-        if (obj.GetComponent<Renderer>() == null)
+        if (GetRenderer(obj) == null)
             return;
 
-        Material[] materials = obj.GetComponent<Renderer>().materials;
+        Material[] materials = GetRenderer(obj).materials;
 
         if (HasMaterial(obj, mat))
             return;
@@ -50,15 +70,15 @@ public class MatSystem
         materials.CopyTo(newMaterials, 0);
 
         newMaterials[materials.Length] = mat;
-        obj.GetComponent<Renderer>().materials = newMaterials;
+        GetRenderer(obj).materials = newMaterials;
     }
 
     public static void RemoveMaterial(GameObject obj, Material mat)
     {
-        if (obj.GetComponent<Renderer>() == null)
+        if (GetRenderer(obj) == null)
             return;
 
-        Material[] materials = obj.GetComponent<Renderer>().materials;
+        Material[] materials = GetRenderer(obj).materials;
         var newMaterials = new List<Material>();
 
         for (int i = 0; i < materials.Length; i++)
@@ -69,6 +89,6 @@ public class MatSystem
             newMaterials.Add(materials[i]);
         }
 
-        obj.GetComponent<Renderer>().materials = newMaterials.ToArray();
+        GetRenderer(obj).materials = newMaterials.ToArray();
     }
 }

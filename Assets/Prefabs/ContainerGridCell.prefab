@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2678523051848288514}
   - component: {fileID: 2678523051848288515}
   - component: {fileID: 8366429276378405197}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ContainerGridCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CellHeightMax: 3
+  Broken: 0
   Grabbables: []
   Tilemap: {fileID: 0}
 --- !u!65 &8366429276378405197

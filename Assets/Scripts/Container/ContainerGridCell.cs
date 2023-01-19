@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class ContainerGridCell : MonoBehaviour
 {
     public float CellHeightMax = 3f;
+    public bool Broken = false;
 
     public List<ContainerGeneric> Grabbables = new List<ContainerGeneric>();
 
@@ -13,7 +14,7 @@ public class ContainerGridCell : MonoBehaviour
     public TileGrid Tilemap;
     public TileGeneric Tile;
 
-    void Start()
+    void OnEnable()
     {
         _collider = GetComponent<Collider>();
 
@@ -102,5 +103,28 @@ public class ContainerGridCell : MonoBehaviour
             Grabbables.Remove(container);
 
         container.ParentCell = null;
+    }
+
+    public void Break()
+    {
+        Broken = true;
+        _collider.isTrigger = false;
+
+        // todo: play break animation
+
+        // Remove all grabbables
+        for (int i = 0; i < Grabbables.Count; i++)
+        {
+            DisownGrabbable(Grabbables[i], true);
+            // Maybe destroy the grabbables?
+        }
+    }
+
+    public void Repair()
+    {
+        Broken = false;
+        _collider.isTrigger = true;
+
+        // todo: play repair animation
     }
 }

@@ -29,21 +29,17 @@ public class PlayerLocomotion : MonoBehaviour
     public bool IsRunning = false;
 
     Rigidbody _rb;
-    Vector3 _direction;
-    Vector3 _inputVector;
-    Vector3 _mouseVector;
+    Vector3 _direction = Vector3.zero;
+    Vector3 _inputVector = Vector3.zero;
+    Vector3 _mouseVector = Vector3.zero;
+    GameObject _mouseHover;
     PlayerGrab _grab;
 
     bool _switchedCells = false;
 
-    
-
     public Vector3 Direction
     {
-        get
-        {
-            return _direction;
-        }
+        get => _direction;
         set
         {
             _direction = value;
@@ -56,12 +52,13 @@ public class PlayerLocomotion : MonoBehaviour
 
     public Vector3 Velocity
     {
-        get { return _rb.velocity; }
-        set { _rb.velocity = value; }
+        get => _rb.velocity;
+        set => _rb.velocity = value;
     }
 
     public Vector3 InputVector => _inputVector;
     public Vector3 MouseVector => _mouseVector;
+    public GameObject MouseHover => _mouseHover;
 
     void Start()
     {
@@ -101,11 +98,26 @@ public class PlayerLocomotion : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (Direction == Vector3.zero)
-            return;
-
-        Handles.color = Color.gray;
-        Handles.ArrowHandleCap(0, transform.position, Quaternion.LookRotation(Direction), 1f, EventType.Repaint);
+        if (Direction != Vector3.zero)
+        {
+            Handles.color = Color.gray;
+            Handles.ArrowHandleCap(0, transform.position, Quaternion.LookRotation(Direction), 1f, EventType.Repaint);
+        }
+        if (_inputVector != Vector3.zero)
+        {
+            Handles.color = Color.green;
+            Handles.ArrowHandleCap(0, transform.position, Quaternion.LookRotation(_inputVector), 1f, EventType.Repaint);
+        }
+        if (_mouseVector != Vector3.zero)
+        {
+            Handles.color = Color.red;
+            Handles.ArrowHandleCap(0, transform.position, Quaternion.LookRotation(_mouseVector), 1f, EventType.Repaint);
+        }
+        if (_mouseHover != null)
+        {
+            Handles.color = Color.yellow;
+            Handles.DrawWireCube(_mouseHover.transform.position, _mouseHover.transform.localScale);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -145,15 +157,17 @@ public class PlayerLocomotion : MonoBehaviour
         RaycastHit hit;
 
         // Trace to ground layer
-        if (Physics.Raycast(ray, out hit, 100, 1 << 3))
+        if (Physics.Raycast(ray, out hit))
         {
             Vector3 direction = hit.point - transform.position;
             direction.y = 0;
 
-            if (direction.magnitude > 1)
-                direction.Normalize();
+            if (hit.collider && hit.collider.gameObject.tag == "Grabbable")
+                _mouseHover = hit.collider.gameObject;
+            else
+                _mouseHover = null;
 
-            return direction;
+            return direction.normalized;
         }
 
         return Vector3.zero;
@@ -177,8 +191,11 @@ public class PlayerLocomotion : MonoBehaviour
 
             if (nextCell != null)
             {
-                Vector3 direction = nextCell.transform.position - transform.position;
+                Vector3 direction = nextCell.Tile.WorldCenter - transform.position;
                 direction.y = 0;
+
+                if (direction.magnitude > curCell.Tilemap.CellSize.x * (2f - 0.125f)) // allows approx. 3 tiles in radius
+                    return;
 
                 if (direction.magnitude > 1)
                     direction.Normalize();

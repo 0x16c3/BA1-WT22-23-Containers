@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class PlayerMachete : MonoBehaviour
 {
-    public GameObject Machete;
     //public int chopsPerGrass = 2;
 
+    GameObject _machete;
     GrassBehaviour _grassBehaviour;
     Animator _animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (Machete == null)
-            Machete = GameObject.Find("Machete");
+        _machete = GameObject.Find("Machete");
+        if (_machete == null)
+            Debug.LogWarning("No MACHETE object attached");
 
-        _animator = Machete.GetComponent<Animator>();
+        _animator = _machete.GetComponent<Animator>();
     }
 
     // Update is called once per frame

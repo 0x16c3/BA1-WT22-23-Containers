@@ -9,43 +9,44 @@ public class PlayerNailing : MonoBehaviour
     public GameObject MaterialsUI;
     [Tooltip("Amount of nails grabbed by one press")]
     public int NailsPerOnce;
-    [Tooltip("For slowing Player down")]
-    public PlayerLocomotion PlayerLocomotion;
-    [Tooltip("Object to be shown while holding nails")]
-    public GameObject nailsBox;
     [Tooltip("Prefab to spawn after dropping nails box")]
-    public GameObject nailsBoxPrefab;
+    public GameObject _nailsBoxPrefab;
     [HideInInspector]
     public int AmountRepaired = 0;
 
+    GameObject _nailsBox;
+    PlayerLocomotion _playerLocomotion;
     int _nailsAmount = 0;
     bool _nearBarrel = false, _repairing = false;
     float _timePassed = 0, _repairTime = 2f;
 
     private void Start()
     {
-        if (PlayerLocomotion == null)
-            PlayerLocomotion = gameObject.GetComponent<PlayerLocomotion>();
+        _playerLocomotion = gameObject.GetComponent<PlayerLocomotion>();
 
-        if (nailsBox == null)
-            nailsBox = GameObject.Find("NailsBox");
+        if (_playerLocomotion == null)
+            Debug.LogWarning("No PlayerLocomotion component attached");
+
+        _nailsBox = transform.Find("NailsBox").gameObject;
+        if (_nailsBox == null)
+            Debug.LogWarning("No NAILS BOX object attached");
 
         if (NailsPerOnce == 0)
             NailsPerOnce = 10;
 
-        nailsBox.SetActive(false);
+        _nailsBox.SetActive(false);
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && _nearBarrel)
         {
             _nailsAmount += NailsPerOnce;
-            nailsBox.SetActive(true);
+            _nailsBox.SetActive(true);
         }
 
         if (_nailsAmount != 0)
         {
-            PlayerLocomotion.MovementSpeed = 6f;
+            _playerLocomotion.MovementSpeed = 6f;
 
             if (_nailsAmount >= NailsPerOnce)
                 _nailsAmount = NailsPerOnce;
@@ -53,17 +54,17 @@ public class PlayerNailing : MonoBehaviour
         }
         else if (_nailsAmount <= 0)
         {
-            nailsBox.SetActive(false);
-            PlayerLocomotion.MovementSpeed = PlayerLocomotion.InitialSpeed;
+            _nailsBox.SetActive(false);
+            _playerLocomotion.MovementSpeed = _playerLocomotion.InitialSpeed;
         }
         else if (_nailsAmount < 0)
             _nailsAmount = 0;
 
-        if(Input.GetKeyDown(KeyCode.X))
+        if(Input.GetKeyDown(KeyCode.X) && _nailsAmount > 0)
         {
-            nailsBox.SetActive(false);
+            _nailsBox.SetActive(false);
             _nailsAmount = 0;
-            GameObject _instantiatedObj = Instantiate(nailsBoxPrefab);
+            GameObject _instantiatedObj = Instantiate(_nailsBoxPrefab);
             _instantiatedObj.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         }
 

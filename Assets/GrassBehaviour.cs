@@ -64,7 +64,7 @@ public class GrassBehaviour : MonoBehaviour
         if (other.CompareTag("Player"))
             OnStopCut();
     }
-
+    /*
     private void OnGUI()
     {
         GUI.skin.GetStyle("label").fontSize = 20;
@@ -77,4 +77,5 @@ public class GrassBehaviour : MonoBehaviour
             _GUItext = "";
         GUILayout.Label(_GUItext);
     }
+    */
 }

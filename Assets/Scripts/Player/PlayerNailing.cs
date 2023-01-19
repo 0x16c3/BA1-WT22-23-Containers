@@ -106,6 +106,7 @@ public class PlayerNailing : MonoBehaviour
 
     private void OnGUI()
     {
+        /*
         GUI.skin.GetStyle("label").fontSize = 20;
         GUILayout.Label("Nails: " + _nailsAmount);
         
@@ -115,5 +116,6 @@ public class PlayerNailing : MonoBehaviour
         else
             _GUItext = "";
         GUILayout.Label(_GUItext);
+        */
     }
 }

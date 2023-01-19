@@ -87,9 +87,12 @@ public class PathFinder
 
         // Get the tile at the given position, compare grid positions without using .Contains
         var tile = PathProgress.FirstOrDefault(t => t.GridPosition == gridPos);
-
         if (tile == null)
             return null;
+
+        // If last tile in path, return
+        if (tile == EndTile)
+            return EndTile;
 
         // Get next tile in path
         var nextTile = PathProgress.FirstOrDefault(t => t.Connection == tile);
@@ -168,6 +171,8 @@ public class PathFinder
         if (current.GridPosition == EndTile.GridPosition)
         {
             Path = PathProgress;
+            Path.Reverse();
+
             OnPathFound?.Invoke();
             return;
         }

@@ -28,6 +28,39 @@ public class PathTile : TileGeneric
         return new PathTile(tile.Tile, tile.Tilemap, tile.GridPosition, ignore);
     }
 
+    public static bool operator ==(PathTile a, PathTile b)
+    {
+        if (ReferenceEquals(a, b))
+            return true;
+
+        if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+            return false;
+
+        return a.GridPosition == b.GridPosition;
+    }
+
+    public static bool operator !=(PathTile a, PathTile b)
+    {
+        return !(a == b);
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (obj == null)
+            return false;
+
+        PathTile tile = obj as PathTile;
+        if ((System.Object)tile == null)
+            return false;
+
+        return GridPosition == tile.GridPosition;
+    }
+
+    public override int GetHashCode()
+    {
+        return GridPosition.GetHashCode();
+    }
+
     public List<PathTile> Neighbors
     {
         get

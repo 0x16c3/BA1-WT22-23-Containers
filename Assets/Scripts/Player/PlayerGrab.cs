@@ -7,6 +7,8 @@ public class PlayerGrab : MonoBehaviour
     [Header("Grab Settings")]
     [Range(0f, 10f)]
     public float AutoGrabRadius = 1f;
+    public float ContainerDistanceWeight = 0.5f;
+    public float MouseDirectionWeight = 0.5f;
 
     [Header("Air Movement Settings")]
     public float FloatAmount = 3f;
@@ -25,6 +27,7 @@ public class PlayerGrab : MonoBehaviour
 
     GameObject _lastClosestObject = null;
     PlayerLocomotion _locomotion;
+    ContainerGeneric _grabbedContainer;
 
     void Start()
     {
@@ -88,7 +91,17 @@ public class PlayerGrab : MonoBehaviour
     void FixedUpdate()
     {
         if (GrabbedObject != null)
+        {
             MoveObject();
+
+            if (_grabbedContainer == null)
+                _grabbedContainer = GrabbedObject.GetComponent<ContainerGeneric>();
+
+            if (_grabbedContainer != null)
+                _grabbedContainer.RenderDecal();
+        }
+
+        _grabbedContainer = null;
     }
 
     void OnDrawGizmos()
@@ -98,59 +111,59 @@ public class PlayerGrab : MonoBehaviour
 
     GameObject ScanForGrabbables(float radius)
     {
-        // Get a list of all colliders in the radius
-        var colliders = new List<Collider>(Physics.OverlapSphere(transform.position, radius));
-
-        if (colliders.Count == 0)
+        // Get all colliders in radius
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        if (colliders.Length == 0)
             return null;
 
-        float closestDistance = -1f;
+        // Apply weights to objects using the distance and player mouse direction
+        float bestWeight = float.MaxValue;
         GameObject closestObject = null;
+
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject.tag != "Grabbable")
                 continue;
 
-            float distance = Vector3.Distance(transform.position, collider.transform.position);
+            GameObject obj = collider.gameObject;
 
-            // Apply weight according to _locomotion.MouseVector
-            Vector3 direction = _locomotion.MouseVector;
+            float distance = Vector3.Distance(transform.position, obj.transform.position);
+            float mouseDirection = Vector3.Dot(_locomotion.MouseVector, (obj.transform.position - transform.position).normalized);
 
-            // Get the angle between the player's direction and the object's direction
-            float angle = Vector3.Angle(direction, collider.transform.position - transform.position);
+            float weight = distance * ContainerDistanceWeight - mouseDirection * MouseDirectionWeight;
 
-            // Apply weight according to the angle
-            distance *= 1f + angle / 180f;
-
-            if (closestDistance == -1f || distance < closestDistance)
+            if (weight < bestWeight)
             {
-                closestObject = collider.gameObject;
-                closestDistance = distance;
+                bestWeight = weight;
+                closestObject = obj;
             }
         }
 
-        if (closestObject == null)
+        return GetHighestInCell(closestObject);
+    }
+
+    GameObject GetHighestInCell(GameObject obj)
+    {
+        if (obj == null)
             return null;
 
         float ceilingDistance = 3f;
-        Collider[] aboveColliders = Physics.OverlapBox(closestObject.transform.position + Vector3.up * ceilingDistance / 2f, new Vector3(0.5f, ceilingDistance / 2f, 0.5f));
+        Collider[] aboveColliders = Physics.OverlapBox(obj.transform.position + Vector3.up * ceilingDistance / 2f, new Vector3(0.2f, ceilingDistance / 2f - 0.1f, 0.2f));
 
-        // Check if there is a grabbable object above the closest one and keep getting the closest one
-        if (aboveColliders.Length > 0)
+        if (aboveColliders.Length == 0)
+            return obj;
+
+        GameObject highestObject = obj;
+        foreach (Collider collider in aboveColliders)
         {
-            // Get the highest object
-            GameObject highestObject = null;
+            if (collider.gameObject.tag != "Grabbable")
+                continue;
 
-            foreach (Collider collider in aboveColliders)
-            {
-                if (collider.gameObject.tag != "Grabbable")
-                    continue;
-
-                if (highestObject == null || collider.transform.position.y > highestObject.transform.position.y)
-                    highestObject = closestObject = collider.gameObject;
-            }
+            if (highestObject == null || collider.transform.position.y > highestObject.transform.position.y)
+                highestObject = collider.gameObject;
         }
-        return closestObject;
+
+        return highestObject;
     }
 
     void MoveObject()
@@ -159,7 +172,7 @@ public class PlayerGrab : MonoBehaviour
         Vector3 direction = _locomotion.Direction;
 
         // Calculate goal position and distance to it
-        Vector3 goalPosition = transform.position + (direction * 2f) + Vector3.up * FloatAmount;
+        Vector3 goalPosition = transform.position + direction + Vector3.up * FloatAmount;
         Vector3 goalDir = goalPosition - GrabbedObject.transform.position;
         float distance = Vector3.Distance(goalPosition, GrabbedObject.transform.position);
 

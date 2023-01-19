@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Rendering.Universal;
 
 public class ContainerGeneric : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class ContainerGeneric : MonoBehaviour
 
     [Tooltip("Maximum velocity of the player when grabbing an object")]
     public int MaxPlayerVelocity = 5;
+
+    public GameObject DecalPrefab = null;
 
     [HideInInspector]
     public ContainerGridCell ParentCell = null; // Realitme parent cell - can be null
@@ -33,6 +36,17 @@ public class ContainerGeneric : MonoBehaviour
 
     Rigidbody _rb;
     TileGrid _tilemap;
+    PlayerGrab _playerGrab;
+    GameObject _decalObject = null;
+    DecalProjector _decalProjector = null;
+
+    bool _renderDecal = false;
+    float _lastRenderedDecal = 0f;
+
+    public bool IsGrabbed
+    {
+        get => _playerGrab != null && _playerGrab.GrabbedObject == gameObject;
+    }
 
     void OnEnable()
     {
@@ -40,14 +54,29 @@ public class ContainerGeneric : MonoBehaviour
         if (_rb == null)
             Debug.LogError("Rigidbody not found on object");
 
+        if (DecalPrefab == null)
+            DecalPrefab = Resources.Load("Prefabs/CrossDecal") as GameObject;
+
+        if (DecalPrefab == null)
+            Debug.LogError("Decal prefab not found (Prefabs/CrossDecal)");
+
+        if (GetComponentInChildren<DecalProjector>() != null)
+            _decalObject = GetComponentInChildren<DecalProjector>().gameObject;
+        else
+            _decalObject = Instantiate(DecalPrefab, transform);
+
+        _decalProjector = _decalObject.GetComponentInChildren<DecalProjector>();
         _tilemap = TileGrid.FindTilemap();
     }
 
     void Update()
     {
+        _playerGrab = transform.parent == null ? null : transform.parent.GetComponent<PlayerGrab>();
+
         PushTowardsParentCell();
         ProcessCoyoteTime();
         CorrectRotation();
+        UpdateDecal();
     }
 
     void ProcessCoyoteTime()
@@ -59,7 +88,7 @@ public class ContainerGeneric : MonoBehaviour
         }
 
         // Reset current cell if it's been changed externally
-        if (ParentCell != null && CurrentCell != null && CurrentCell != ParentCell)
+        if (ParentCell != null && CurrentCell != ParentCell)
         {
             CurrentCell = ParentCell;
             _disableEffect = false;
@@ -143,22 +172,48 @@ public class ContainerGeneric : MonoBehaviour
         if (ParentCell == null)
             return;
 
+        // If has AI agent, don't apply forces
+        if (gameObject.GetComponent<AIWander>() != null)
+            return;
+
         if (_rb.velocity.magnitude < 0.1f)
             return;
 
-        if (transform.parent)
-        {
-            var playerGrab = transform.parent ? null : transform.parent.GetComponent<PlayerGrab>();
+        if (_playerGrab != null && _playerGrab.GrabbedObject == gameObject)
+            return;
 
-            if (playerGrab == null)
-                return;
+        // Round to nearest 90 degrees considering all 3 axis
+        Vector3 idealAngle = transform.rotation.eulerAngles; // i couldnt find any function to do this in one line :(
+        idealAngle.x = Mathf.Round(idealAngle.x / 90) * 90;
+        idealAngle.y = Mathf.Round(idealAngle.y / 90) * 90;
+        idealAngle.z = Mathf.Round(idealAngle.z / 90) * 90;
 
-            if (playerGrab.GrabbedObject == gameObject)
-                return;
-        }
-
-        Quaternion targetRotation = Quaternion.Euler(0, ParentCell.transform.rotation.eulerAngles.y, 0);
+        Quaternion targetRotation = Quaternion.Euler(idealAngle.x, idealAngle.y, idealAngle.z);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+    }
 
+    void UpdateDecal()
+    {
+        if (_decalProjector == null) return;
+
+        _decalObject.transform.position = Vector3.Lerp(_decalObject.transform.position, transform.position + Vector3.down * 0.3f, Time.deltaTime * 5f);
+        _decalObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        if (_renderDecal) _decalProjector.enabled = true;
+        else _decalProjector.enabled = false;
+
+        if (_lastRenderedDecal + 0.1f < Time.time)
+        {
+            _renderDecal = false;
+        }
+    }
+
+    public void RenderDecal()
+    {
+        if (_decalProjector == null)
+            return;
+
+        _renderDecal = true;
+        _lastRenderedDecal = Time.time;
     }
 }

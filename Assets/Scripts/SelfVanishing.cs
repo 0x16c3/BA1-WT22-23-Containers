@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class SelfVanishing : MonoBehaviour
 {
-    public float VanishTime = 90f;
+    [Tooltip("How long does it take for obj to vanish")]
+    public float VanishTime = 60f;
+    //[Tooltip("Time from object existing and starts to disappear")]
+    //public float VanishDelay = 0f;
+    public bool DieAfterVanish = false;
 
     float _timePassed = 0;
     Color _matColor;
@@ -20,7 +24,7 @@ public class SelfVanishing : MonoBehaviour
         float percentageComplete = _timePassed / VanishTime;
         _matColor.a = Mathf.Lerp(1, 0, percentageComplete);
         GetComponent<MeshRenderer>().material.color = _matColor;
-        if (_matColor.a == 0)
+        if (_matColor.a == 0 && DieAfterVanish)
             Destroy(gameObject);
     }
 }

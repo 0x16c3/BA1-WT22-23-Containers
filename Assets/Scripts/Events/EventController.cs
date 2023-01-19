@@ -4,31 +4,94 @@ using UnityEngine;
 
 public class EventController : MonoBehaviour
 {
-    public GameObject lightningColliderPrefab;
 
-    public int lightningAmount;
+    [Header("General Controller")]
+    public int ChancePercent;
+    public float ChanceAttemptInterval;
+    public float EventInterval;
+    [Space(20)]
+    [Header("Lightning Event")]
+    public GameObject LightningEffectColliderPrefab;
+    public int LightningAmount;
+    public int LightningEventDuration;
+    public float LightningMinimumInterval;
 
-    public int deltaTimeLightning;
+    private float _eventTimePassed;
+    private float _timeBetweenEvents;
+    private float _chanceTimer;
+    private int _randomEvent;
 
-    public float eventInterval; // not currently in use
+    private int _lightningAmountSet;
 
-    private float _timePassed;
-
+    private void Start()
+    {
+       _lightningAmountSet = LightningAmount;
+    }
     private void Update()
     {
-        _timePassed += Time.deltaTime;
-        if (_timePassed >= deltaTimeLightning)
+        if (_timeBetweenEvents >= EventInterval)
         {
-            if (lightningAmount > 0)
-            {
-                Lightning();
-                lightningAmount--;
-            }
-            _timePassed = 0;
+            //Reset Amounts
+            LightningAmount = _lightningAmountSet;
+
+            //Pick a random number tied to an event
+            _randomEvent = Random.Range(0, 1);
         }
+
+        switch (_randomEvent)
+        {
+            case 0:
+                if (LightningAmount > 0)
+                {
+                    LightningEvent();
+                }
+
+                break;
+
+            case 1:
+                //other event
+                Debug.LogError("Range Exceeded.");
+                break;
+            case 2:
+                //other event
+                break;
+        }
+
     }
-    void Lightning()
+
+    void LightningEvent()
     {
-        Instantiate(lightningColliderPrefab);
+        _eventTimePassed += Time.deltaTime;
+        // If lightning has not happened for the length of the event divided by the amount of lightning, it will happen
+        if (_eventTimePassed >= LightningEventDuration / _lightningAmountSet)
+        {
+            LightningStrike();
+        }
+
+        // Chance for lightning to strike after a minimum waiting time between strikes
+        else if (_eventTimePassed >= LightningMinimumInterval)
+        {
+            _chanceTimer += Time.deltaTime;
+            if (_chanceTimer >= ChanceAttemptInterval)
+            {
+                float lightningChance = Random.Range(0, 100);
+                _chanceTimer = 0;
+                if (lightningChance <= ChancePercent)
+                {
+                    LightningStrike();
+                }
+
+            }
+
+        }
+
+    }
+
+    void LightningStrike()
+    {
+        Vector3 outOfBounds = new Vector3(0, 0, 10);
+        Instantiate(LightningEffectColliderPrefab, outOfBounds, Quaternion.identity);
+        LightningAmount--;
+        _eventTimePassed = 0;
     }
 }

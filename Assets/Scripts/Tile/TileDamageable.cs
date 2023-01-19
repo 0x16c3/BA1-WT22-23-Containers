@@ -6,22 +6,17 @@ public class TileDamageable : MonoBehaviour, IDamageable
 {
     public GameObject firePrefab;
 
+    public float TileHealth;
+    public bool IsFireEternal;
+
     private GameObject _localFire;
-
-    public float tileHealth;
-
-    public bool isFireEternal;
 
     private bool _isDamaged;
 
     private float _tileTotalDamage;
-
     private float _timeBetweenDamage;
-
     private float _timePassed;
-
     private float _singleDamage;
-
     private float _damageDealt;
 
     private void Start()
@@ -32,7 +27,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (tileHealth <= 0)
+        if (TileHealth <= 0)
         {
             // If health is below 0, tile is destroyed
             Object.Destroy(gameObject);
@@ -43,6 +38,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
             
             Damaging();
         }
+
         else if (_tileTotalDamage != 0)
         {
             // tileTotalDamage is 0 unless Damage() method has been called by a damaging force
@@ -51,18 +47,19 @@ public class TileDamageable : MonoBehaviour, IDamageable
             _isDamaged = true;
             _localFire.SetActive(true);
         }
+
     }
 
-    public void Damage(float damage, float interval, UnityEngine.GameObject particleEffect) 
+    public void Damage(float damage, float interval) 
     {
-            _tileTotalDamage = damage;
-            _timeBetweenDamage = interval;
-            Instantiate(particleEffect,transform.parent);
+        _tileTotalDamage = damage;
+        _timeBetweenDamage = interval;
+        // Instantiate(particleEffect,transform.parent);
     }
 
     public void DamageOver()
     {
-        // this method can be called by other behaviors like a water bucket to end the damage over time of fire for example.
+        // this method can be called by other behaviors like a water bucket to end the damage over time of fire.
         _tileTotalDamage = 0;
         _isDamaged = false;
         _localFire.SetActive(false);
@@ -71,15 +68,17 @@ public class TileDamageable : MonoBehaviour, IDamageable
     void Damaging()
     {
         _timePassed += Time.deltaTime;
-        if (_damageDealt >= _tileTotalDamage && isFireEternal == false)
+        if (_damageDealt >= _tileTotalDamage && IsFireEternal == false)
         {
             DamageOver();
         }
+
         else if (_timeBetweenDamage <= _timePassed)
         {
-            tileHealth -= _singleDamage;
+            TileHealth -= _singleDamage;
             _damageDealt += _singleDamage;
             _timePassed = 0;
         }
+
     }
 }

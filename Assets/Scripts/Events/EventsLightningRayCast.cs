@@ -149,7 +149,7 @@ public class EventsLightningRayCast : MonoBehaviour
         }
         else
         {
-            
+            Debug.Log("no damageable was hit.");
         }
     }
 

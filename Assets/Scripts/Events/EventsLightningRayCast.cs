@@ -24,7 +24,6 @@ public class EventsLightningRayCast : MonoBehaviour
     Vector3 _tileCenter;
     Vector3 _lightningofset;
 
-    private bool _hasEnteredContact = false;
     private bool _hasTriggeredVFX = false;
 
     private void OnEnable()
@@ -33,13 +32,9 @@ public class EventsLightningRayCast : MonoBehaviour
         LightningSelector();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {      
-        if (_hasEnteredContact == true)
-        {
-            TimePassed += Time.deltaTime;
-        }
-
+        TimePassed += Time.deltaTime;
         if (TimePassed >= TimeBetweenWarningAndLightning && _hasTriggeredVFX == false)
         {
             _hasTriggeredVFX = true;
@@ -139,7 +134,6 @@ public class EventsLightningRayCast : MonoBehaviour
             IDamageable damageable = hit.collider.GetComponent<IDamageable>();
             if ( damageable != null)
             {
-                _hasEnteredContact = true;
                 Vector3 hitPosition = new Vector3(originPosition.x, originPosition.y - hit.distance + 0.1f, originPosition.z);
                 GameObject instantiatedObject = Instantiate(instantiation, transform);
                 instantiatedObject.transform.position = hitPosition;

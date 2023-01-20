@@ -6697,6 +6697,7 @@ MonoBehaviour:
   firePrefab: {fileID: 7355393745511474259, guid: b2954b777851f45a4b24123f0428c14a, type: 3}
   TileHealth: 9
   IsFireEternal: 0
+  _isDamaged: 0
 --- !u!114 &777581399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7478,11 +7479,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792044e597d90f34ba17a82e2b04ef5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LightningColliderPrefab: {fileID: 8747034852760910710, guid: 5825326d87c154644bdbac5e3d2931c0, type: 3}
   ChancePercent: 20
   ChanceAttemptInterval: 0.5
   EventInterval: 2
-  LightningAmount: 10
+  LightningEffectColliderPrefab: {fileID: 8747034852760910710, guid: 7b8416e2d1f96fc46ba1b10d3a64b07d, type: 3}
+  LightningAmount: 25
   LightningEventDuration: 60
   LightningMinimumInterval: 0
 --- !u!114 &828057849

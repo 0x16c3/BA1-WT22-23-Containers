@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2678523051848288514}
   - component: {fileID: 2678523051848288515}
   - component: {fileID: 8366429276378405197}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ContainerGridCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,3 +175,4 @@ MonoBehaviour:
   firePrefab: {fileID: 7355393745511474259, guid: b2954b777851f45a4b24123f0428c14a, type: 3}
   TileHealth: 12
   IsFireEternal: 0
+  _isDamaged: 0

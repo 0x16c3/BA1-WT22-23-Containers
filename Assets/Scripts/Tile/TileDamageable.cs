@@ -11,7 +11,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
     private GameObject _localFire;
 
-    private bool _isDamaged;
+    [HideInInspector] public bool _isDamaged;
 
     private float _tileTotalDamage;
     private float _timeBetweenDamage;
@@ -54,7 +54,6 @@ public class TileDamageable : MonoBehaviour, IDamageable
     {
         _tileTotalDamage = damage;
         _timeBetweenDamage = interval;
-        // Instantiate(particleEffect,transform.parent);
     }
 
     public void DamageOver()

@@ -42,6 +42,7 @@ public class AIWander : MonoBehaviour
     bool _containerGrabbed => _container != null && _container.IsGrabbed;
     bool _containerWasGrabbed = false;
     bool _containerDropped = true;
+    bool _grounded => !_containerGrabbed && Mathf.Abs(_rb.velocity.y) < 0.1f;
 
     void OnEnable()
     {
@@ -112,6 +113,9 @@ public class AIWander : MonoBehaviour
 
         if (_currentTarget == null)
             _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
+
+        if (!_grounded)
+            return;
 
         SwitchTarget();
         FaceDirection(_pathFinder.GetNextInPath(_tile.GridPosition)); // Next tile in path independent of current target
@@ -224,7 +228,8 @@ public class AIWander : MonoBehaviour
             _containerDropped = true;
         }
 
-        if (_containerDropped && _rb.velocity.magnitude < 0.1f)
+        // if not falling & dropped
+        if (_containerDropped && _grounded)
         {
             _containerDropped = false;
             _pathFinder.SetStart(_tile.GridPosition);

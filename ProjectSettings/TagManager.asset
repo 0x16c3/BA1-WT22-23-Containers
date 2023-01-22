@@ -9,6 +9,7 @@ TagManager:
   - Chest
   - Grass
   - Bucket
+  - FloorTile
   layers:
   - Default
   - TransparentFX

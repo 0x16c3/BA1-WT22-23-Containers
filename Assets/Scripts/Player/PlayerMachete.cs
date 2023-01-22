@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMachete : MonoBehaviour
 {
-    //public int chopsPerGrass = 2;
+    public int Damage = 3;
 
     GameObject _machete;
     GrassBehaviour _grassBehaviour;
@@ -28,7 +28,7 @@ public class PlayerMachete : MonoBehaviour
             _animator.SetBool("Cutting", true);
 
             if (_grassBehaviour != null)
-                _grassBehaviour.OnCut();
+                _grassBehaviour.OnCut(Damage);
         }
         else if (Input.GetKeyUp(KeyCode.Mouse0))
             _animator.SetBool("Cutting", false);

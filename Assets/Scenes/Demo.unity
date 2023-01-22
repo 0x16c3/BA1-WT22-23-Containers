@@ -4315,9 +4315,10 @@ MonoBehaviour:
   MinMovementRadius: 3
   Suicidal: 0
   MovementSpeed: 4
-  RotationSpeed: 3
-  Acceleration: 10
-  MaxAccelerationForce: 50
+  RotationSpeed: 1
+  RotationDecelerationMultiplier: 10
+  Acceleration: 200
+  MaxAccelerationForce: 150
 --- !u!114 &343240918
 MonoBehaviour:
   m_ObjectHideFlags: 0

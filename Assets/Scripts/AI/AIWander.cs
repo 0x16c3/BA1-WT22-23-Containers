@@ -16,8 +16,10 @@ public class AIWander : MonoBehaviour
     [Header("Movement Settings")]
     [Range(0f, 25f)]
     public float MovementSpeed = 9f;
-    [Range(0f, 25f)]
-    public float RotationSpeed = 4f;
+    [Range(0f, 10f)]
+    public float RotationSpeed = 1f;
+    [Range(0f, 50f)]
+    public float RotationDecelerationMultiplier = 10f;
     [Range(0f, 1000f)]
     public float Acceleration = 200f;
     [Range(0f, 1000f)]
@@ -35,7 +37,6 @@ public class AIWander : MonoBehaviour
     PathTile _currentTarget;
 
     bool _reachedTarget => _paths.Count > 0 && _tile.GridPosition == _paths[_paths.Count - 1].GridPosition;
-    bool _reachedTargetPrecise => _reachedTarget && Vector3.Distance(transform.position, _paths[_paths.Count - 1].WorldCenter) < 0.1f;
 
     bool _correctedRotation = false;
     bool _containerGrabbed => _container != null && _container.IsGrabbed;
@@ -86,6 +87,7 @@ public class AIWander : MonoBehaviour
         _lastRandPoint = Vector3.zero;
         _paths = new List<PathTile>();
         _currentTarget = null;
+        _correctedRotation = false;
     }
 
     void Update()
@@ -112,6 +114,7 @@ public class AIWander : MonoBehaviour
             _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
 
         SwitchTarget();
+        FaceDirection(_pathFinder.GetNextInPath(_tile.GridPosition)); // Next tile in path independent of current target
         MoveTowards(_currentTarget);
     }
 
@@ -133,49 +136,36 @@ public class AIWander : MonoBehaviour
         return randomPoint;
     }
 
-    void MoveTowards(PathTile tile)
+    void FaceDirection(PathTile tile)
     {
         if (tile == null)
-            tile = _paths[_paths.Count - 1];
-
-        if (_reachedTargetPrecise) return;
-
-        Vector3 targetDir = tile.WorldCenter - transform.position;
-        targetDir.y = 0;
-
-        Vector3 tileEdge = tile.WorldCenter + targetDir.normalized * _tilemap.CellSize.x;
-
-        if (_correctedRotation && !_containerGrabbed)
-        {
-            // Calculate goal velocity
-            Vector3 goalVelocity = (tileEdge - transform.position).normalized * MovementSpeed;
-
-            // Calculate acceleration
-            Vector3 acceleration = goalVelocity - _rb.velocity;
-            acceleration = Vector3.ClampMagnitude(acceleration, MaxAccelerationForce);
-
-            // Remove all XZ plane rotation, it is being handled by the rotation code
-            acceleration.y = 0;
-
-            _rb.AddForce(acceleration * Acceleration * Time.fixedDeltaTime, ForceMode.Acceleration);
-        }
-
-        if (targetDir == Vector3.zero)
             return;
 
-        if (!_reachedTarget)
-            LookTowards(targetDir);
+        // Calculate direction towards target
+        Vector3 direction = tile.WorldCenter - transform.position;
+        direction.y = 0;
+        direction.Normalize();
 
-        if (Vector3.Angle(transform.forward, targetDir) < 1f)
+        // Rotate towards target
+        ApplyTorque(direction);
+
+        // If direction is low enough, mark it as corrected
+        if (Vector3.Angle(transform.forward, direction) < 1f)
             _correctedRotation = true;
     }
 
-    void LookTowards(Vector3 targetDir)
+    void MoveTowards(PathTile tile)
     {
-        Quaternion targetRotation = Quaternion.LookRotation(targetDir);
-        Quaternion target = Quaternion.Lerp(transform.rotation, targetRotation, RotationSpeed * Time.fixedDeltaTime * (_containerGrabbed ? 0.5f : 1f));
+        if (tile == null)
+            return;
 
-        _rb.MoveRotation(target);
+        // Calculate direction towards target
+        Vector3 direction = _currentTarget.WorldCenter - transform.position;
+        direction.y = 0;
+        direction.Normalize();
+
+        // Apply force if rotation is correct
+        ApplyForce(direction, MovementSpeed);
     }
 
     void SwitchTarget()
@@ -186,12 +176,41 @@ public class AIWander : MonoBehaviour
         if (_currentTarget == _paths[_paths.Count - 1])
             return;
 
+        // If we're not facing the right direction, don't switch
+        if (!_correctedRotation)
+            return;
+
         var distanceWorld = Vector3.Distance(transform.position, _currentTarget.WorldCenter + Vector3.up * _tilemap.CellSize.x);
-        if (distanceWorld < 0.5f)
+        if (distanceWorld < _tilemap.cellSize.x / 2)
         {
             _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
             _correctedRotation = false;
         }
+    }
+
+    void ApplyForce(Vector3 dirNormalized, float speed)
+    {
+        // Calculate goal velocity
+        Vector3 goalVelocity = dirNormalized * speed;
+
+        // Calculate acceleration
+        Vector3 acceleration = goalVelocity - _rb.velocity;
+        acceleration = Vector3.ClampMagnitude(acceleration, MaxAccelerationForce);
+
+        // Apply acceleration
+        _rb.AddForce(acceleration * Acceleration * Time.fixedDeltaTime, ForceMode.Acceleration);
+    }
+
+    void ApplyTorque(Vector3 dirNormalized)
+    {
+        // Make object look at direction using torque, forcemode velocitychange to make it instant
+        Vector3 torque = Vector3.Cross(transform.forward, dirNormalized);
+
+        // Apply torque
+        _rb.AddTorque(torque * RotationSpeed, ForceMode.VelocityChange);
+
+        // Apply inverse torque so it doesn't keep spinning
+        _rb.AddTorque(-_rb.angularVelocity * RotationDecelerationMultiplier * Time.fixedDeltaTime, ForceMode.VelocityChange);
     }
 
     void UpdateContainerStates()

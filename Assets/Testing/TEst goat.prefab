@@ -163,5 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interval: 2
-  Duration: 8
+  AmountPerTimeShitting: 4
+  TimeElapsedTillDiahrrea: 60
+  PoopingSessionsCooldown: 10
   GrassPrefab: {fileID: 246455426674856529, guid: a3f4379716ee5a242a0f0bd556f7e1da, type: 3}

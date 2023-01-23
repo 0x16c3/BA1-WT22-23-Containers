@@ -27,6 +27,9 @@ public class PlayerLocomotion : MonoBehaviour
     public bool IsInAir = false;
     [HideInInspector]
     public bool IsRunning = false;
+    [HideInInspector]
+    public bool IsDebuffed = false;
+
 
     Rigidbody _rb;
     Vector3 _direction = Vector3.zero;

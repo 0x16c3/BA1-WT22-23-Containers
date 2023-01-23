@@ -275,10 +275,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NumberOfStages: 4
   GrowTime: 5
-  CurrCut: 0
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  SpeedReductionsPercent:
+  - 40
+  - 50
+  - 60
+  - 0
 --- !u!65 &246455426674856530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -290,7 +291,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.54618645, y: 0.63079345, z: 0.46212786}
+  m_Size: {x: 0.9, y: 0.63079345, z: 0.9}
   m_Center: {x: 0, y: 0.2657476, z: 0}
 --- !u!114 &246455426674856621
 MonoBehaviour:

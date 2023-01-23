@@ -11,8 +11,9 @@ public class Damageable : MonoBehaviour, IDamageable
 
     private GameObject _localFire;
 
-    [HideInInspector] public bool _isDamaged;
+    [HideInInspector] public bool IsDamaged;
     [HideInInspector] public float TimeBetweenDamage;
+    [HideInInspector] public float SelectedHealth;
 
     private float _totalDamageReceived;
     private float _timePassed;
@@ -21,6 +22,7 @@ public class Damageable : MonoBehaviour, IDamageable
 
     private void Start()
     {
+        SelectedHealth = Health;
         _localFire = Instantiate(firePrefab, transform);
         _localFire.SetActive(false);
     }
@@ -33,7 +35,7 @@ public class Damageable : MonoBehaviour, IDamageable
             Object.Destroy(gameObject);
         }
 
-        if (_isDamaged == true)
+        if (IsDamaged == true)
         {
             
             Damaging();
@@ -44,7 +46,7 @@ public class Damageable : MonoBehaviour, IDamageable
             // tileTotalDamage is 0 unless Damage() method has been called by a damaging force
             _singleDamage = _totalDamageReceived / 5f;
             _timePassed = TimeBetweenDamage;
-            _isDamaged = true;
+            IsDamaged = true;
             _localFire.SetActive(true);
         }
 
@@ -60,7 +62,7 @@ public class Damageable : MonoBehaviour, IDamageable
     {
         // this method can be called by other behaviors like a water bucket to end the damage over time of fire.
         _totalDamageReceived = 0;
-        _isDamaged = false;
+        IsDamaged = false;
         _localFire.SetActive(false);
     }
 

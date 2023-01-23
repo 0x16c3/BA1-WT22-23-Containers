@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,7 +90,6 @@ public class GrassBehaviour : MonoBehaviour
                 {
                     Debug.Log("found older grass, combining");
                     previousGrass.Health += 3;
-                    Destroy(gameObject);
                     willBeDestroyed = true;
                     break;
                 }
@@ -104,6 +104,11 @@ public class GrassBehaviour : MonoBehaviour
 
         if (willBeDestroyed)
         {
+            /*for (int i = 0, imax = hits.Length; i < imax; i++)
+            {
+                Debug.Log(Convert.ToString(hits[i].gameObject.name));
+                Debug.Log(Convert.ToString(hits[i].gameObject.tag));
+            }*/
             Debug.Log("destroying");
             Destroy(gameObject);
         }

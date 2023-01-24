@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2678523051848288514}
   - component: {fileID: 2678523051848288515}
   - component: {fileID: 8366429276378405197}
+  - component: {fileID: 9008664339629098149}
   m_Layer: 2
   m_Name: ContainerGridCell
   m_TagString: Untagged
@@ -62,6 +63,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9008664339629098149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2678523051848288512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd43e8d3545168c4cbcfdf0bda168b28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireDuration: {x: 5, y: 10}
+  FireTickInterval: 1
+  FireDamagePerTick: 1
+  FirePrefab: {fileID: 744365245683425063, guid: 6111f169173e54462abfce6ed91ea34f, type: 3}
 --- !u!1 &9206923064491606071
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +91,6 @@ GameObject:
   - component: {fileID: 1456425625299003370}
   - component: {fileID: 4198460377586434532}
   - component: {fileID: 3971319377132130960}
-  - component: {fileID: 2692311054582524965}
   m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
@@ -160,19 +176,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2692311054582524965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9206923064491606071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd43e8d3545168c4cbcfdf0bda168b28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePrefab: {fileID: 7355393745511474259, guid: b2954b777851f45a4b24123f0428c14a, type: 3}
-  TileHealth: 12
-  IsFireEternal: 0
-  _isDamaged: 0

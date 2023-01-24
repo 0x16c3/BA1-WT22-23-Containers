@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public interface IDamageable
 {
-    void Damage(float damage, float interval);
+    int Health { get; }
+
+    void Damage(int damage);
+    void Heal(int heal);
 }

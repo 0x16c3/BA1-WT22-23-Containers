@@ -28,7 +28,7 @@ public class PathTile : TileGeneric
         return new PathTile(tile.Tile, tile.Tilemap, tile.GridPosition, ignore);
     }
 
-    public List<PathTile> Neighbors
+    public new List<PathTile> Neighbors
     {
         get
         {

@@ -1,83 +1,92 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GD.MinMaxSlider;
 
 public class TileDamageable : MonoBehaviour, IDamageable
 {
-    public GameObject firePrefab;
-
-    public float TileHealth;
-    public bool IsFireEternal;
-
-    private GameObject _localFire;
-
-    [HideInInspector] public bool _isDamaged;
-
-    private float _tileTotalDamage;
-    private float _timeBetweenDamage;
-    private float _timePassed;
-    private float _singleDamage;
-    private float _damageDealt;
-
-    private void Start()
+    int _health = 12;
+    public int Health
     {
-        _localFire = Instantiate(firePrefab, transform);
+        get => _health;
+        private set => _health = value;
+    }
+
+    [Header("Fire Settings")]
+    [MinMaxSlider(0f, 60f)]
+    public Vector2 FireDuration = new Vector2(5f, 10f);
+    public float FireTickInterval = 1f;
+    public int FireDamagePerTick = 1;
+
+    public GameObject FirePrefab;
+
+    TileGrid _grid;
+    TileGeneric _tile;
+    GameObject _localFire;
+
+    bool _onFire = false;
+    int _maxHealth = -1;
+
+    float _lastFireTick = -1f;
+
+    void OnEnable()
+    {
+        _grid = TileGrid.FindTilemap();
+        _tile = _grid.GetTile(transform.position);
+        if (_tile == null)
+        {
+            Debug.LogError("TileDamageable: No tile found at position " + transform.position);
+            return;
+        }
+
+        _localFire = Instantiate(FirePrefab, transform);
+        _localFire.transform.position = _tile.WorldCenter;
+
         _localFire.SetActive(false);
+
+        _maxHealth = Health;
+    }
+
+    void OnDisable()
+    {
+        Destroy(_localFire);
+        _localFire = null;
     }
 
     private void Update()
     {
-        if (TileHealth <= 0)
+        if (Health == 0)
         {
-            // If health is below 0, tile is destroyed
-            Object.Destroy(gameObject);
+            Kill();
+            return;
         }
 
-        if (_isDamaged == true)
-        {
-            
-            Damaging();
-        }
-
-        else if (_tileTotalDamage != 0)
-        {
-            // tileTotalDamage is 0 unless Damage() method has been called by a damaging force
-            _singleDamage = _tileTotalDamage / 5f;
-            _timePassed = _timeBetweenDamage;
-            _isDamaged = true;
-            _localFire.SetActive(true);
-        }
-
+        if (_onFire)
+            FireDamage();
     }
 
-    public void Damage(float damage, float interval) 
+    void FireDamage()
     {
-        _tileTotalDamage = damage;
-        _timeBetweenDamage = interval;
+        if (_lastFireTick + FireTickInterval >= Time.time)
+            return;
+
+        Damage(FireDamagePerTick);
+        _lastFireTick = Time.time;
     }
 
-    public void DamageOver()
+    public void SetFire(bool onFire)
     {
-        // this method can be called by other behaviors like a water bucket to end the damage over time of fire.
-        _tileTotalDamage = 0;
-        _isDamaged = false;
-        _localFire.SetActive(false);
+        _onFire = onFire;
+        _localFire.SetActive(_onFire);
+        _lastFireTick = Time.time;
     }
 
-    void Damaging()
+    public void Damage(int damage) => Health = Mathf.Clamp(Health - damage, 0, _maxHealth);
+    public void Heal(int heal) => Health = Mathf.Clamp(Health + heal, 0, _maxHealth);
+
+    void Kill()
     {
-        _timePassed += Time.deltaTime;
-        if (_damageDealt >= _tileTotalDamage && IsFireEternal == false)
-        {
-            DamageOver();
-        }
-
-        else if (_timeBetweenDamage <= _timePassed)
-        {
-            TileHealth -= _singleDamage;
-            _damageDealt += _singleDamage;
-            _timePassed = 0;
-        }
-
+        // todo: fade out and enable collider
+        Destroy(gameObject);
     }
 }

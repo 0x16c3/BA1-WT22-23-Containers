@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class ContainerGeneric : MonoBehaviour
+public class ContainerGeneric : MonoBehaviour, IDamageable
 {
-    [Header("Grid Snap - Air Movement Settings")]
+    int _health = 6;
+    public int Health
+    {
+        get => _health;
+        private set => _health = value;
+    }
 
+    [Header("Grid Snap - Air Movement Settings")]
     [Range(0f, 1000f)]
     public float Acceleration = 150f;
 
@@ -34,6 +40,8 @@ public class ContainerGeneric : MonoBehaviour
     Rigidbody _rb;
     TileGrid _tilemap;
 
+    int _maxHealth = -1;
+
     void OnEnable()
     {
         _rb = GetComponent<Rigidbody>();
@@ -41,6 +49,8 @@ public class ContainerGeneric : MonoBehaviour
             Debug.LogError("Rigidbody not found on object");
 
         _tilemap = TileGrid.FindTilemap();
+
+        _maxHealth = Health;
     }
 
     void Update()
@@ -155,6 +165,8 @@ public class ContainerGeneric : MonoBehaviour
 
         Quaternion targetRotation = Quaternion.Euler(0, ParentCell.transform.rotation.eulerAngles.y, 0);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
-
     }
+
+    public void Damage(int damage) => Health = Mathf.Clamp(Health - damage, 0, _maxHealth);
+    public void Heal(int heal) => Health = Mathf.Clamp(Health + heal, 0, _maxHealth);
 }

@@ -40,6 +40,8 @@ public class TileGeneric
         }
     }
 
+    public List<TileGeneric> Neighbors => GetNeighbors();
+
     public Vector3 WorldCenter
     {
         get
@@ -122,5 +124,33 @@ public class TileGeneric
     {
         var cellPos = new Vector3Int(GridPosition.x, GridPosition.y, 0);
         return Tilemap.CellToWorld(cellPos) + Vector3.right * Tilemap.cellSize.x / 2 + Vector3.forward * Tilemap.cellSize.y / 2;
+    }
+
+    public List<TileGeneric> GetNeighbors(bool ignoreDiagonals = true)
+    {
+        var neighbors = new List<TileGeneric>();
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if (x == 0 && y == 0)
+                    continue;
+
+                // Skip diagonals
+                if (ignoreDiagonals && x != 0 && y != 0)
+                    continue;
+
+                var neighborPos = new Vector2Int(GridPosition.x + x, GridPosition.y + y);
+                var neighbor = Tilemap.GetTile(neighborPos);
+
+                if (neighbor == null)
+                    continue;
+
+                neighbors.Add(neighbor);
+            }
+        }
+
+        return neighbors;
     }
 }

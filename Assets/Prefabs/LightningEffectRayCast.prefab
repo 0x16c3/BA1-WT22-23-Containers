@@ -51,7 +51,7 @@ MonoBehaviour:
   WhiteLightningChanceWeight: 50
   BlueLightningChanceWeight: 30
   PurpleLightningChanceWeight: 10
-  LightningVFX: {fileID: 5919594687828523438, guid: 7a5361bbb37c341bb9d2eaa93dbfb4e3, type: 3}
+  LightningVFX: {fileID: 3702839712675264078, guid: 6db17dff6d7717c419ec1f6f5811ed32, type: 3}
   LightningWarningVFX: {fileID: 6137954409669389721, guid: 85091465cb5ea4f83bb19ee84995de5d, type: 3}
   LightningHitbox: {fileID: 5897891884364056314, guid: e454527e8cfd5c249b3300165c8a2822, type: 3}
   TimePassed: 0

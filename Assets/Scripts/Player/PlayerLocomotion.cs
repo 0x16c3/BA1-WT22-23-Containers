@@ -1,6 +1,9 @@
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.Tilemaps;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class PlayerLocomotion : MonoBehaviour
 {
@@ -98,6 +101,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     void OnDrawGizmos()
     {
+#if UNITY_EDITOR
         if (Direction != Vector3.zero)
         {
             Handles.color = Color.gray;
@@ -118,6 +122,7 @@ public class PlayerLocomotion : MonoBehaviour
             Handles.color = Color.yellow;
             Handles.DrawWireCube(_mouseHover.transform.position, _mouseHover.transform.localScale);
         }
+#endif
     }
 
     void OnCollisionEnter(Collision collision)

@@ -1,7 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.Tilemaps;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class AIWander : MonoBehaviour
 {
@@ -36,7 +39,9 @@ public class AIWander : MonoBehaviour
     Vector3 _lastRandPoint;
     PathTile _currentTarget;
 
-    bool _reachedTarget => _paths.Count > 0 && _tile.GridPosition == _paths[_paths.Count - 1].GridPosition;
+    bool _firstUpdate = false;
+    bool _reachedTarget = false;
+    bool _reachedCurrentTarget => _currentTarget != null && Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), _currentTarget.WorldCenter) < 0.05f;
 
     bool _correctedRotation = false;
     bool _containerGrabbed => _container != null && _container.IsGrabbed;
@@ -79,12 +84,13 @@ public class AIWander : MonoBehaviour
         _pathFinder.SetStart(_tile.GridPosition);
         _pathFinder.SetTarget(randomTile.GridPosition);
         _pathFinder.InitPath();
+
+        _reachedTarget = false;
+        _firstUpdate = true;
     }
 
     void ResetPathData()
     {
-        // todo: reset path data after it's been grabbed
-
         _lastRandPoint = Vector3.zero;
         _paths = new List<PathTile>();
         _currentTarget = null;
@@ -111,14 +117,16 @@ public class AIWander : MonoBehaviour
         if (_paths == null || _paths.Count == 0)
             return;
 
-        if (_currentTarget == null)
-            _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
+        if (_reachedTarget)
+            return;
 
         if (!_grounded)
             return;
 
+        var nextTile = _pathFinder.GetNextInPath(_tile.GridPosition);
+
         SwitchTarget();
-        FaceDirection(_pathFinder.GetNextInPath(_tile.GridPosition)); // Next tile in path independent of current target
+        FaceDirection(nextTile);
         MoveTowards(_currentTarget);
     }
 
@@ -140,27 +148,36 @@ public class AIWander : MonoBehaviour
         return randomPoint;
     }
 
-    void FaceDirection(PathTile tile)
+    void FaceDirection(PathTile target)
     {
-        if (tile == null)
+        if (target == null)
             return;
 
         // Calculate direction towards target
-        Vector3 direction = tile.WorldCenter - transform.position;
+        Vector3 direction = target.WorldCenter - transform.position;
         direction.y = 0;
         direction.Normalize();
+
+        float angle = Vector3.Angle(transform.forward, direction);
+
+        // This will let the AI make small adjustments to its rotation while moving towards the target
+        if (!_firstUpdate && !_reachedCurrentTarget && Mathf.Abs(angle) > 25f)
+        {
+            _correctedRotation = false;
+            return;
+        }
 
         // Rotate towards target
         ApplyTorque(direction);
 
         // If direction is low enough, mark it as corrected
-        if (Vector3.Angle(transform.forward, direction) < 1f)
+        if (angle < 0.05f)
             _correctedRotation = true;
     }
 
-    void MoveTowards(PathTile tile)
+    void MoveTowards(PathTile target)
     {
-        if (tile == null)
+        if (target == null)
             return;
 
         // Calculate direction towards target
@@ -174,21 +191,29 @@ public class AIWander : MonoBehaviour
 
     void SwitchTarget()
     {
-        if (_currentTarget == null)
+        //If the current target is not null and the target has not been reached, return.
+        if (_currentTarget != null && !_reachedCurrentTarget)
             return;
 
-        if (_currentTarget == _paths[_paths.Count - 1])
-            return;
+        //Get the next tile from the path finder.
+        var nextTile = _pathFinder.GetNextInPath(_tile.GridPosition);
 
-        // If we're not facing the right direction, don't switch
-        if (!_correctedRotation)
-            return;
-
-        var distanceWorld = Vector3.Distance(transform.position, _currentTarget.WorldCenter + Vector3.up * _tilemap.CellSize.x);
-        if (distanceWorld < _tilemap.cellSize.x / 2)
+        //If the rotation was corrected, set the current target to the next tile and set the correct rotation to false.
+        if (_correctedRotation)
         {
-            _currentTarget = _pathFinder.GetNextInPath(_tile.GridPosition);
+            _currentTarget = nextTile;
             _correctedRotation = false;
+
+            //If this is the first update, set the first update to false.
+            if (_firstUpdate)
+                _firstUpdate = false;
+        }
+
+        //If the next tile is null, halt the game and set the reached target to true.
+        if (nextTile == null)
+        {
+            Halt();
+            _reachedTarget = true;
         }
     }
 
@@ -217,6 +242,12 @@ public class AIWander : MonoBehaviour
         _rb.AddTorque(-_rb.angularVelocity * RotationDecelerationMultiplier * Time.fixedDeltaTime, ForceMode.VelocityChange);
     }
 
+    void Halt()
+    {
+        _rb.velocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+    }
+
     void UpdateContainerStates()
     {
         if (_containerGrabbed)
@@ -228,7 +259,7 @@ public class AIWander : MonoBehaviour
             _containerDropped = true;
         }
 
-        // if not falling & dropped
+        // If not falling & dropped
         if (_containerDropped && _grounded)
         {
             _containerDropped = false;
@@ -256,8 +287,10 @@ public class AIWander : MonoBehaviour
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(_currentTarget.GetWorldPosition(), 0.5f);
 
+#if UNITY_EDITOR
             var distanceWorld = Vector3.Distance(transform.position, _currentTarget.WorldCenter);
             Handles.Label(_currentTarget.WorldCenter, $"Distance: {distanceWorld}");
+#endif
         }
     }
 }

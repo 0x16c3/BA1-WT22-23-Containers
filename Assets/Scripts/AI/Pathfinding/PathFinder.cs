@@ -92,7 +92,7 @@ public class PathFinder
 
         // If last tile in path, return
         if (tile == EndTile)
-            return EndTile;
+            return null;
 
         // Get next tile in path
         var nextTile = PathProgress.FirstOrDefault(t => t.Connection == tile);

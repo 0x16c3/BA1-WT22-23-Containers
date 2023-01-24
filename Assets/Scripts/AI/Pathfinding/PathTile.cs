@@ -1,7 +1,10 @@
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class PathTile : TileGeneric
 {
@@ -140,6 +143,7 @@ public class PathTile : TileGeneric
 
     public void OnDrawGizmos(bool searched, bool selected, bool showLabels = true)
     {
+
         var pos = WorldCenter;
         var size = new Vector3(Tilemap.cellSize.x, 0.1f, Tilemap.cellSize.y);
 
@@ -167,7 +171,9 @@ public class PathTile : TileGeneric
         if (!showLabels)
             return;
 
+#if UNITY_EDITOR
         var label = $"G:{G.ToString("0.00")}\nH:{H.ToString("0.00")}\nF:{F.ToString("0.00")}";
         Handles.Label(pos, label);
+#endif
     }
 }

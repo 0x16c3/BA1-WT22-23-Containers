@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 using UnityEngine.Rendering.Universal;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class ContainerGeneric : MonoBehaviour
 {
@@ -112,6 +113,7 @@ public class ContainerGeneric : MonoBehaviour
 
     void OnDrawGizmos()
     {
+#if UNITY_EDITOR
         var textPosition = transform.position + new Vector3(0, 0.5f, 0);
 
         if (ParentCell != null)
@@ -119,6 +121,7 @@ public class ContainerGeneric : MonoBehaviour
             Handles.Label(textPosition, "Parent: " + ParentCell.Tile.GridPosition);
             textPosition += new Vector3(0, 0.2f, 0);
         }
+#endif      
     }
 
     Vector3 Vector2D(Vector3 vector)
@@ -132,7 +135,7 @@ public class ContainerGeneric : MonoBehaviour
             return;
 
         // If has AI agent, don't apply forces
-        if (gameObject.GetComponent<AIWander>() != null)
+        if (gameObject.GetComponent<AIWander>() != null && !IsGrabbed)
             return;
 
         // Don't apply forces if the player is running faster than the max velocity
@@ -173,7 +176,7 @@ public class ContainerGeneric : MonoBehaviour
             return;
 
         // If has AI agent, don't apply forces
-        if (gameObject.GetComponent<AIWander>() != null)
+        if (gameObject.GetComponent<AIWander>() != null && !IsGrabbed)
             return;
 
         if (_rb.velocity.magnitude < 0.1f)

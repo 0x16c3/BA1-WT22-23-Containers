@@ -25,28 +25,25 @@ public class LightningController : MonoBehaviour, IEvent
 
     TileGrid _tileGrid;
 
-    bool _enabled = false;
     bool _initialized = false;
 
-    void OnEnable()
+    void Initialize()
     {
-        _enabled = true;
+        // We cannot access _data in OnEnable, so we do it here
+        _tileGrid = TileGrid.FindTilemap();
+
+        for (int i = 0; i < Random.Range(MaxStrikes.x, MaxStrikes.y); i++)
+        {
+            _strikeTimes.Add(Random.Range(0f, _data.Duration));
+        }
+
+        _initialized = true;
     }
 
     void Update()
     {
-        if (_enabled && _data.Duration > 0)
-        {
-            _tileGrid = TileGrid.FindTilemap();
-
-            for (int i = 0; i < Random.Range(MaxStrikes.x, MaxStrikes.y); i++)
-            {
-                _strikeTimes.Add(Random.Range(0f, _data.Duration));
-            }
-
-            _enabled = false;
-            _initialized = true;
-        }
+        if (!_initialized && _data.Duration > 0)
+            Initialize();
 
         if (!_initialized)
             return;

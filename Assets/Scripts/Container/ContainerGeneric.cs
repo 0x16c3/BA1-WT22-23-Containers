@@ -5,8 +5,15 @@ using UnityEngine.Rendering.Universal;
 using UnityEditor;
 #endif
 
-public class ContainerGeneric : MonoBehaviour
+public class ContainerGeneric : MonoBehaviour, IDamageable
 {
+    int _health = 6;
+    public int Health
+    {
+        get => _health;
+        private set => _health = value;
+    }
+
     [Header("Grid Snap - Air Movement Settings")]
 
     [Range(0f, 1000f)]
@@ -44,6 +51,8 @@ public class ContainerGeneric : MonoBehaviour
     bool _renderDecal = false;
     float _lastRenderedDecal = 0f;
 
+    int _maxHealth = -1;
+
     public bool IsGrabbed
     {
         get => _playerGrab != null && _playerGrab.GrabbedObject == gameObject;
@@ -68,6 +77,8 @@ public class ContainerGeneric : MonoBehaviour
 
         _decalProjector = _decalObject.GetComponentInChildren<DecalProjector>();
         _tilemap = TileGrid.FindTilemap();
+
+        _maxHealth = Health;
     }
 
     void Update()
@@ -219,4 +230,7 @@ public class ContainerGeneric : MonoBehaviour
         _renderDecal = true;
         _lastRenderedDecal = Time.time;
     }
+
+    public void Damage(int damage) => Health = Mathf.Clamp(Health - damage, 0, _maxHealth);
+    public void Heal(int heal) => Health = Mathf.Clamp(Health + heal, 0, _maxHealth);
 }

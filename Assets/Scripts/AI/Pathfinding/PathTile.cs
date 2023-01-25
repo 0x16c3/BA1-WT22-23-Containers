@@ -64,13 +64,12 @@ public class PathTile : TileGeneric
         return GridPosition.GetHashCode();
     }
 
-    public List<PathTile> Neighbors
+    public new List<PathTile> Neighbors
     {
         get
         {
             var neighbors = new List<PathTile>();
             var TileGrid = (TileGrid)_tilemap;
-
 
             for (int x = -1; x <= 1; x++)
             {

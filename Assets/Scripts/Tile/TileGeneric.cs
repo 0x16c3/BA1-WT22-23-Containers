@@ -40,6 +40,8 @@ public class TileGeneric
         }
     }
 
+    public List<TileGeneric> Neighbors => GetNeighbors();
+
     public Vector3 WorldCenter
     {
         get
@@ -58,6 +60,10 @@ public class TileGeneric
         var objects = new List<GameObject>();
         for (int i = 0; i < colliders.Length; i++)
         {
+            // Ignore clip brushes
+            if (colliders[i].gameObject.layer == 6)
+                continue;
+
             objects.Add(colliders[i].gameObject);
         }
 
@@ -101,6 +107,34 @@ public class TileGeneric
         }
 
         return null;
+    }
+
+    public List<TileGeneric> GetNeighbors(bool ignoreDiagonals = true)
+    {
+        var neighbors = new List<TileGeneric>();
+
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if (x == 0 && y == 0)
+                    continue;
+
+                // Skip diagonals
+                if (ignoreDiagonals && x != 0 && y != 0)
+                    continue;
+
+                var neighborPos = new Vector2Int(GridPosition.x + x, GridPosition.y + y);
+                var neighbor = Tilemap.GetTile(neighborPos);
+
+                if (neighbor == null)
+                    continue;
+
+                neighbors.Add(neighbor);
+            }
+        }
+
+        return neighbors;
     }
 
     public GameObject GetNext(Vector2Int position, Vector3Int direction)

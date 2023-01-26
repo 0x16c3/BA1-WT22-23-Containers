@@ -19,9 +19,6 @@ public class PlayerGrab : MonoBehaviour
     [Range(0f, 10f)]
     public float DecelerationMultiplier = 3.5f;
 
-    [Header("Visualization Settings")]
-    public Material OutlineMaterial;
-
     [HideInInspector]
     public GameObject GrabbedObject;
 
@@ -50,16 +47,25 @@ public class PlayerGrab : MonoBehaviour
         // Remove outline from the previous closest object
         if (closestObject != null && closestObject != _lastClosestObject)
         {
-            MatSystem.AddMaterial(closestObject, OutlineMaterial);
+            Outline outline = closestObject.GetComponent<Outline>();
+            if (outline != null) outline.enabled = true;
             if (_lastClosestObject != null)
-                MatSystem.RemoveMaterial(_lastClosestObject, OutlineMaterial);
+            {
+                Outline lastOutline = _lastClosestObject.GetComponent<Outline>();
+                if (lastOutline != null) lastOutline.enabled = false;
+            }
 
             _lastClosestObject = closestObject;
         }
+        else if (closestObject != null && _lastClosestObject == closestObject)
+        {
+            Outline outline = closestObject.GetComponent<Outline>();
+            if (outline != null) outline.enabled = true;
+        }
         else if (closestObject == null && _lastClosestObject != null)
         {
-            MatSystem.RemoveMaterial(_lastClosestObject, OutlineMaterial);
-            _lastClosestObject = null;
+            Outline lastOutline = _lastClosestObject.GetComponent<Outline>();
+            if (lastOutline != null) lastOutline.enabled = false;
         }
 
         if (Input.GetKeyDown(KeyCode.E))

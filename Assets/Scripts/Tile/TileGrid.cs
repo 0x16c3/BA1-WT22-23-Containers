@@ -37,7 +37,7 @@ public class TileGrid : MonoBehaviour
         // We need to index all the tiles in the tilemap in order to create the tiles
 
         // Loop through every child ContainerGridCell
-        var containerGridCells = GetComponentsInChildren<ContainerGridCell>();
+        var containerGridCells = GetComponentsInChildren<TileGridCell>();
         foreach (var containerGridCell in containerGridCells)
         {
             var tile = GetTile(containerGridCell.transform.position, false);
@@ -108,7 +108,7 @@ public class TileGrid : MonoBehaviour
         return new TileGeneric(tile, Tilemap, gridPosition);
     }
 
-    public static TileGrid FindTilemap()
+    public static TileGrid FindTileGrid()
     {
         Tilemap[] tilemaps = FindObjectsOfType<Tilemap>();
 

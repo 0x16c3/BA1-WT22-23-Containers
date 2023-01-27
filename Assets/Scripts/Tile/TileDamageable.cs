@@ -31,7 +31,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
     TileGeneric _tile;
     GameObject _localFire;
 
-    ContainerGridCell _gridCell;
+    TileGridCell _gridCell;
 
     bool _onFire = false;
     int _maxHealth = -1;
@@ -42,7 +42,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
     void OnEnable()
     {
-        _grid = TileGrid.FindTilemap();
+        _grid = TileGrid.FindTileGrid();
         _tile = _grid.GetTile(transform.position);
         if (_tile == null)
         {
@@ -50,7 +50,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
             return;
         }
 
-        _gridCell = GetComponent<ContainerGridCell>();
+        _gridCell = GetComponent<TileGridCell>();
         if (_gridCell == null)
         {
             Debug.LogError("TileDamageable: No ContainerGridCell found at position " + transform.position);

@@ -30,7 +30,7 @@ public class LightningController : MonoBehaviour, IEvent
     void Initialize()
     {
         // We cannot access _data in OnEnable, so we do it here
-        _tileGrid = TileGrid.FindTilemap();
+        _tileGrid = TileGrid.FindTileGrid();
 
         for (int i = 0; i < Random.Range(MaxStrikes.x, MaxStrikes.y); i++)
         {

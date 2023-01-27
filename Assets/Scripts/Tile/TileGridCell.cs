@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [ExecuteInEditMode]
-public class ContainerGridCell : MonoBehaviour
+public class TileGridCell : MonoBehaviour
 {
     public float CellHeightMax = 3f;
     public bool Broken = false;
@@ -22,7 +22,7 @@ public class ContainerGridCell : MonoBehaviour
     {
         _collider = GetComponent<Collider>();
 
-        Tilemap = TileGrid.FindTilemap();
+        Tilemap = TileGrid.FindTileGrid();
         Tile = Tilemap.GetTile(transform.position);
 
         // Set current size

@@ -9,7 +9,7 @@ using UnityEditor;
 public class PathTile : TileGeneric
 {
     TileGeneric _tile;
-    TileGrid _tilemap;
+    TileGrid _tileGrid;
 
     public PathTile Connection; // Previous tile in path
     public float G; // Cost from start to current tile
@@ -23,7 +23,7 @@ public class PathTile : TileGeneric
     public PathTile(TileGeneric tile, TileGrid tilemap, Vector2Int pos, GameObject ignore = null) : base(tile.Tile, tilemap.Tilemap, pos)
     {
         _tile = tile;
-        _tilemap = tilemap;
+        _tileGrid = tilemap;
         GridPosition = pos;
         _gameObject = ignore;
     }
@@ -75,7 +75,7 @@ public class PathTile : TileGeneric
 
             for (int i = 0; i < neighbors.Count; i++)
             {
-                var pathTile = new PathTile(neighbors[i], _tilemap, neighbors[i].GridPosition, _gameObject);
+                var pathTile = new PathTile(neighbors[i], _tileGrid, neighbors[i].GridPosition, _gameObject);
                 if (!pathTile.Walkable)
                     continue;
 
@@ -98,7 +98,7 @@ public class PathTile : TileGeneric
                 if (objects[i].layer == 3)
                     continue;
 
-                var gridCell = objects[i].GetComponent<ContainerGridCell>();
+                var gridCell = objects[i].GetComponent<TileGridCell>();
                 if (gridCell != null && gridCell.Broken)
                     return false;
 

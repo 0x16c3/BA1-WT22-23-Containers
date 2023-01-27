@@ -191,8 +191,8 @@ public class PlayerLocomotion : MonoBehaviour
             if (_switchedCells)
                 return;
 
-            ContainerGridCell curCell = _grab.GetActiveContainer().CurrentCell;
-            ContainerGridCell nextCell = curCell.Tile.GetNext<ContainerGridCell>(curCell.Tile.GridPosition, _inputVector);
+            TileGridCell curCell = _grab.GetActiveContainer().CurrentCell;
+            TileGridCell nextCell = curCell.Tile.GetNext<TileGridCell>(curCell.Tile.GridPosition, _inputVector);
 
             if (nextCell != null)
             {

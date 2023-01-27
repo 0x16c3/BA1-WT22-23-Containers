@@ -146,7 +146,7 @@ public class LightningObject : MonoBehaviour
 
     void OnEnable()
     {
-        _tileGrid = TileGrid.FindTilemap();
+        _tileGrid = TileGrid.FindTileGrid();
         _centerTile = _tileGrid.GetTile(transform.position);
         _strikeTime = Time.time;
     }

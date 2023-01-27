@@ -28,10 +28,10 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
     public GameObject DecalPrefab = null;
 
     [HideInInspector]
-    public ContainerGridCell ParentCell = null; // Realitme parent cell - can be null
+    public TileGridCell ParentCell = null; // Realitme parent cell - can be null
 
     [HideInInspector]
-    public ContainerGridCell CurrentCell = null; // This will always be set to an object while the object is targeting a cell
+    public TileGridCell CurrentCell = null; // This will always be set to an object while the object is targeting a cell
 
     [HideInInspector]
     public bool HasGridEffect = false;
@@ -43,7 +43,7 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
     float COYOTE_TIME = 0.3f;
 
     Rigidbody _rb;
-    TileGrid _tilemap;
+    TileGrid _tileGrid;
     PlayerGrab _playerGrab;
     GameObject _decalObject = null;
     DecalProjector _decalProjector = null;
@@ -76,7 +76,7 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
             _decalObject = Instantiate(DecalPrefab, transform);
 
         _decalProjector = _decalObject.GetComponentInChildren<DecalProjector>();
-        _tilemap = TileGrid.FindTilemap();
+        _tileGrid = TileGrid.FindTileGrid();
 
         _maxHealth = Health;
     }
@@ -158,7 +158,7 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
                 return;
         }
 
-        Vector3 direction = Vector2D((ParentCell.transform.position - new Vector3(0, _tilemap.CellSize.x / 2, 0)) - transform.position).normalized;
+        Vector3 direction = Vector2D((ParentCell.transform.position - new Vector3(0, _tileGrid.CellSize.x / 2, 0)) - transform.position).normalized;
 
         // Distance to parent cell ignoring y axis
         float distance = Vector3.Distance(Vector2D(transform.position), Vector2D(ParentCell.transform.position));

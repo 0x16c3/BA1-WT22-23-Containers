@@ -25,7 +25,7 @@ public class AIWander : MonoBehaviour
     public float MaxAccelerationForce = 150f;
 
     Rigidbody _rb;
-    TileGrid _tilemap;
+    TileGrid _tileGrid;
     TileGeneric _tile;
     ContainerGeneric _container;
 
@@ -53,12 +53,12 @@ public class AIWander : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
 
-        _tilemap = TileGrid.FindTilemap();
-        _tile = _tilemap.GetTile(transform.position);
+        _tileGrid = TileGrid.FindTileGrid();
+        _tile = _tileGrid.GetTile(transform.position);
 
         _container = GetComponent<ContainerGeneric>();
 
-        _pathFinder = new PathFinder(_tilemap, this.gameObject);
+        _pathFinder = new PathFinder(_tileGrid, this.gameObject);
         _pathFinder.OnPathReset += ResetPathData;
     }
 
@@ -76,11 +76,11 @@ public class AIWander : MonoBehaviour
 
     void Wander()
     {
-        TileGeneric randomTile = _tilemap.RandomTile();
+        TileGeneric randomTile = _tileGrid.RandomTile();
 
         // If not walkable, find a new one
         while (!randomTile.Walkable)
-            randomTile = _tilemap.RandomTile();
+            randomTile = _tileGrid.RandomTile();
 
         _lastRandPoint = randomTile.WorldCenter;
 
@@ -102,7 +102,7 @@ public class AIWander : MonoBehaviour
 
     void Update()
     {
-        if (!_tilemap || _tile == null)
+        if (!_tileGrid || _tile == null)
             return;
 
         UpdateContainerStates();
@@ -112,7 +112,7 @@ public class AIWander : MonoBehaviour
 
         _pathFinder.FindPath();
         _paths = _pathFinder.Path;
-        _tile = _tilemap.GetTile(transform.position);
+        _tile = _tileGrid.GetTile(transform.position);
     }
 
     void FixedUpdate()
@@ -293,7 +293,7 @@ public class AIWander : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (_tilemap == null)
+        if (_tileGrid == null)
             return;
 
         if (_pathFinder != null)

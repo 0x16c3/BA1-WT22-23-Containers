@@ -11,12 +11,12 @@ public class AIStruggle : MonoBehaviour
     public float Frequency = 0.5f;
 
     Rigidbody _rb;
-    TileGrid _tilemap;
+    TileGrid _tileGrid;
 
     void OnEnable()
     {
         _rb = GetComponent<Rigidbody>();
-        _tilemap = TileGrid.FindTilemap();
+        _tileGrid = TileGrid.FindTileGrid();
     }
 
     public void StruggleTowards(TileGeneric tile)

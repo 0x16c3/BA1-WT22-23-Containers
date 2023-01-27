@@ -28,7 +28,7 @@ public class TileGeneric
                 if (objects[i].layer == 3)
                     continue;
 
-                var gridCell = objects[i].GetComponent<ContainerGridCell>();
+                var gridCell = objects[i].GetComponent<TileGridCell>();
                 if (gridCell != null && gridCell.Broken)
                     return false;
 

@@ -26,8 +26,20 @@ public class PlayerGrab : MonoBehaviour
     PlayerLocomotion _locomotion;
     ContainerGeneric _grabbedContainer;
 
+    // For Animation
+    Transform _playerModel;
+    Animator _playerAnimator;
+
     void Start()
     {
+        _playerModel = transform.Find("Jeffrey");
+        _playerAnimator = _playerModel.GetComponent<Animator>();
+
+        if (_playerModel == null || _playerAnimator == null)
+        {
+            Debug.LogError("No player model found or player animator");
+        }
+
         _locomotion = GetComponent<PlayerLocomotion>();
         if (_locomotion == null)
             Debug.LogError("PlayerLocomotion script not found on player");
@@ -72,6 +84,8 @@ public class PlayerGrab : MonoBehaviour
         {
             if (closestObject != null && GrabbedObject == null)
             {
+                _playerAnimator.SetBool("IsGrabbing", true);
+
                 GrabbedObject = closestObject;
                 GrabbedObject.transform.SetParent(transform);
 

@@ -6,18 +6,20 @@ public class PlayerMachete : MonoBehaviour
 {
     //public int chopsPerGrass = 2;
 
-    GameObject _machete;
+    Transform _playerModel;
     GrassBehaviour _grassBehaviour;
-    Animator _animator;
+    Animator _playerAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
-        _machete = GameObject.Find("Machete");
-        if (_machete == null)
-            Debug.LogWarning("No MACHETE object attached");
+        _playerModel = transform.Find("Jeffrey");
+        _playerAnimator = _playerModel.GetComponent<Animator>();
 
-        _animator = _machete.GetComponent<Animator>();
+        if (_playerModel == null || _playerAnimator == null)
+        {
+            Debug.LogError("No player model found or player animator");
+        }
     }
 
     // Update is called once per frame
@@ -25,13 +27,11 @@ public class PlayerMachete : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            _animator.SetBool("Cutting", true);
+            _playerAnimator.SetBool("IsAttacking", true);
 
             if (_grassBehaviour != null)
                 _grassBehaviour.OnCut();
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
-            _animator.SetBool("Cutting", false);
     }
 
     private void OnTriggerEnter(Collider other)

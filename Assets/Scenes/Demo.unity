@@ -5509,6 +5509,7 @@ GameObject:
   - component: {fileID: 343240920}
   - component: {fileID: 343240919}
   - component: {fileID: 343240918}
+  - component: {fileID: 343240924}
   - component: {fileID: 343240917}
   m_Layer: 0
   m_Name: MovingContainer
@@ -5578,7 +5579,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343240916}
-  m_Material: {fileID: 13400000, guid: 0f2587681d5f00a49a1c7bf1446c7c2e, type: 2}
+  m_Material: {fileID: 13400000, guid: 0e4ad39cc3f3ebc4a9c9b3e401fa8cd0, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -5610,6 +5611,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &343240924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343240916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 013134ac0628c1d4884a92059bcb8c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 6
+  IdleToWander: {x: 1, y: 3}
+  WanderToIdle: {x: 5.24, y: 11.471463}
+  KnockOutTime: 15
 --- !u!1001 &347386416
 PrefabInstance:
   m_ObjectHideFlags: 0

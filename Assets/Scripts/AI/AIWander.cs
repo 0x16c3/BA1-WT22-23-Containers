@@ -69,8 +69,11 @@ public class AIWander : MonoBehaviour
         // Reset path data
         ResetPathData();
         _lastRandPoint = Vector3.zero;
+        _paths = new List<PathTile>();
+        _currentTarget = null;
 
         // Unsubscribe from events
+        _pathFinder.ResetAllData();
         _pathFinder.OnPathReset -= ResetPathData;
     }
 

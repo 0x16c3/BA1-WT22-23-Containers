@@ -47,6 +47,14 @@ public class PathFinder
         EndTile = PathTile.FromTile(Tilemap.GetTile(end), GameObject);
     }
 
+    public void ResetAllData()
+    {
+        ToSearch = new List<PathTile>();
+        Searched = new List<PathTile>();
+        PathProgress = null;
+        Path = null;
+    }
+
     public void OnDrawGizmos()
     {
         if (ToSearch != null)

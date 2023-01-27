@@ -62,7 +62,7 @@ public class TileGeneric
     public List<GameObject> GetObjects()
     {
         // Get gameObject at position using spherecast
-        Collider[] colliders = Physics.OverlapCapsule(WorldCenter, WorldCenter + new Vector3(0, 1, 0), TileGrid.cellSize.x / 4);
+        Collider[] colliders = Physics.OverlapCapsule(WorldCenter, WorldCenter + new Vector3(0, 4, 0), TileGrid.cellSize.x / 4);
 
         var objects = new List<GameObject>();
         for (int i = 0; i < colliders.Length; i++)
@@ -75,6 +75,40 @@ public class TileGeneric
         }
 
         return objects;
+    }
+
+    public GameObject HighestObject
+    {
+        get
+        {
+            List<GameObject> objects = GetObjects();
+
+            if (objects.Count == 0) return null;
+
+            // Get highest object
+            GameObject highestObject = null;
+            float highestY = -Mathf.Infinity;
+
+            for (int i = 1; i < objects.Count; i++)
+            {
+                // Get object collider
+                var collider = objects[i].GetComponent<Collider>();
+                if (collider == null)
+                    continue;
+
+                // Get object bottom
+                var bottom = collider.bounds.min.y;
+
+                // Check if object is higher than current highest
+                if (bottom > highestY)
+                {
+                    highestY = bottom;
+                    highestObject = objects[i];
+                }
+            }
+
+            return highestObject;
+        }
     }
 
     public T GetInstantiatedObject<T>(Vector2Int gridPosition) where T : Component

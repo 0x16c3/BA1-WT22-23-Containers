@@ -5,14 +5,14 @@ using System.Collections.Generic;
 public class TileGeneric
 {
     public Tile Tile;
-    public TileGrid Tilemap;
+    public TileGrid TileGrid;
 
     public Vector2Int GridPosition;
 
     public TileGeneric(Tile tile, Tilemap tilemap, Vector2Int gridPosition)
     {
         Tile = tile;
-        Tilemap = (TileGrid)tilemap;
+        TileGrid = (TileGrid)tilemap;
         GridPosition = gridPosition;
     }
 
@@ -53,8 +53,8 @@ public class TileGeneric
     {
         get
         {
-            var worldPos = Tilemap.CellToWorld(new Vector3Int(GridPosition.x, GridPosition.y, 0));
-            var pos = new Vector3(worldPos.x + Tilemap.cellSize.x / 2, 0, worldPos.z + Tilemap.cellSize.y / 2);
+            var worldPos = TileGrid.CellToWorld(new Vector3Int(GridPosition.x, GridPosition.y, 0));
+            var pos = new Vector3(worldPos.x + TileGrid.cellSize.x / 2, 0, worldPos.z + TileGrid.cellSize.y / 2);
             return pos;
         }
     }
@@ -62,7 +62,7 @@ public class TileGeneric
     public List<GameObject> GetObjects()
     {
         // Get gameObject at position using spherecast
-        Collider[] colliders = Physics.OverlapCapsule(WorldCenter, WorldCenter + new Vector3(0, 1, 0), Tilemap.cellSize.x / 4);
+        Collider[] colliders = Physics.OverlapCapsule(WorldCenter, WorldCenter + new Vector3(0, 1, 0), TileGrid.cellSize.x / 4);
 
         var objects = new List<GameObject>();
         for (int i = 0; i < colliders.Length; i++)
@@ -79,9 +79,7 @@ public class TileGeneric
 
     public T GetInstantiatedObject<T>(Vector2Int gridPosition) where T : Component
     {
-        // todo: make this a static method
-
-        TileGeneric tile = Tilemap.GetTile(gridPosition);
+        TileGeneric tile = TileGrid.GetTile(gridPosition);
         List<GameObject> objects = GetObjects();
 
         if (objects.Count == 0) return null;
@@ -132,7 +130,21 @@ public class TileGeneric
                     continue;
 
                 var neighborPos = new Vector2Int(GridPosition.x + x, GridPosition.y + y);
-                var neighbor = Tilemap.GetTile(neighborPos);
+
+                // Check if neighbor pos is out of bounds
+                if (TileGrid.cellBounds.Contains(new Vector3Int(neighborPos.x, neighborPos.y, 0)) == false)
+                    continue;
+
+                TileGeneric neighbor = null;
+
+                try
+                {
+                    neighbor = TileGrid.GetTile(neighborPos);
+                }
+                catch (System.Exception)
+                {
+                    continue;
+                }
 
                 if (neighbor == null)
                     continue;
@@ -147,7 +159,7 @@ public class TileGeneric
     public GameObject GetNext(Vector2Int position, Vector3Int direction)
     {
         var nextPos = position + new Vector2Int(direction.x, direction.y);
-        TileGeneric tile = Tilemap.GetTile(nextPos);
+        TileGeneric tile = TileGrid.GetTile(nextPos);
 
         if (tile == null)
             return null;
@@ -169,7 +181,7 @@ public class TileGeneric
     public T GetNext<T>(Vector2Int position, Vector3Int direction) where T : Component
     {
         var nextPos = position + new Vector2Int(direction.x, direction.z);
-        TileGeneric tile = Tilemap.GetTile(nextPos);
+        TileGeneric tile = TileGrid.GetTile(nextPos);
 
         if (tile == null)
             return null;
@@ -186,6 +198,6 @@ public class TileGeneric
     public Vector3 GetWorldPosition()
     {
         var cellPos = new Vector3Int(GridPosition.x, GridPosition.y, 0);
-        return Tilemap.CellToWorld(cellPos) + Vector3.right * Tilemap.cellSize.x / 2 + Vector3.forward * Tilemap.cellSize.y / 2;
+        return TileGrid.CellToWorld(cellPos) + Vector3.right * TileGrid.cellSize.x / 2 + Vector3.forward * TileGrid.cellSize.y / 2;
     }
 }

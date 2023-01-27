@@ -76,7 +76,6 @@ public class TileGrid : MonoBehaviour
         worldPosition.y = 0;
 
         var cellPos = Tilemap.WorldToCell(worldPosition);
-
         if (checkBounds && !cellBounds.Contains(cellPos))
             return null;
 
@@ -88,7 +87,7 @@ public class TileGrid : MonoBehaviour
         // Throw exception if gridPosition is out of bounds (check manually)
         if (checkBounds && (gridPosition.x < cellBounds.xMin || gridPosition.x > cellBounds.xMax ||
             gridPosition.y < cellBounds.yMin || gridPosition.y > cellBounds.yMax))
-            throw new System.Exception("TilemapGeneric: GetTile: gridPosition is out of bounds");
+            throw new System.ArgumentOutOfRangeException("TilemapGeneric: GetTile: gridPosition is out of bounds");
 
         var cellPos = new Vector3Int(gridPosition.x, gridPosition.y, 0);
         var tile = Tilemap.GetTile<Tile>(cellPos);

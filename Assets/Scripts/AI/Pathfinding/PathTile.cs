@@ -8,7 +8,7 @@ using UnityEditor;
 
 public class PathTile : TileGeneric
 {
-    Tile _tile;
+    TileGeneric _tile;
     TileGrid _tilemap;
 
     public PathTile Connection; // Previous tile in path
@@ -16,9 +16,11 @@ public class PathTile : TileGeneric
     public float H; // Estimated cost from current tile to end
     public float F => G + H; // Total cost
 
+    public bool Walked = false;
+
     GameObject _gameObject;
 
-    public PathTile(Tile tile, TileGrid tilemap, Vector2Int pos, GameObject ignore = null) : base(tile, tilemap.Tilemap, pos)
+    public PathTile(TileGeneric tile, TileGrid tilemap, Vector2Int pos, GameObject ignore = null) : base(tile.Tile, tilemap.Tilemap, pos)
     {
         _tile = tile;
         _tilemap = tilemap;
@@ -28,7 +30,7 @@ public class PathTile : TileGeneric
 
     public static PathTile FromTile(TileGeneric tile, GameObject ignore = null)
     {
-        return new PathTile(tile.Tile, tile.Tilemap, tile.GridPosition, ignore);
+        return new PathTile(tile, tile.TileGrid, tile.GridPosition, ignore);
     }
 
     public static bool operator ==(PathTile a, PathTile b)
@@ -68,36 +70,19 @@ public class PathTile : TileGeneric
     {
         get
         {
-            var neighbors = new List<PathTile>();
-            var TileGrid = (TileGrid)_tilemap;
+            var neighbors = _tile.GetNeighbors();
+            var tiles = new List<PathTile>();
 
-            for (int x = -1; x <= 1; x++)
+            for (int i = 0; i < neighbors.Count; i++)
             {
-                for (int y = -1; y <= 1; y++)
-                {
-                    if (x == 0 && y == 0)
-                        continue;
+                var pathTile = new PathTile(neighbors[i], _tilemap, neighbors[i].GridPosition, _gameObject);
+                if (!pathTile.Walkable)
+                    continue;
 
-                    // Skip diagonals
-                    if (x != 0 && y != 0)
-                        continue;
-
-                    var neighborPos = new Vector2Int(GridPosition.x + x, GridPosition.y + y);
-                    var neighborObj = TileGrid.GetTile(neighborPos);
-
-                    if (neighborObj == null)
-                        continue;
-
-                    var neighbor = PathTile.FromTile(TileGrid.GetTile(neighborPos), _gameObject);
-
-                    if (neighbor == null)
-                        continue;
-
-                    neighbors.Add(neighbor);
-                }
+                tiles.Add(pathTile);
             }
 
-            return neighbors;
+            return tiles;
         }
     }
 
@@ -155,7 +140,7 @@ public class PathTile : TileGeneric
     {
 
         var pos = WorldCenter;
-        var size = new Vector3(Tilemap.cellSize.x, 0.1f, Tilemap.cellSize.y);
+        var size = new Vector3(TileGrid.cellSize.x, 0.1f, TileGrid.cellSize.y);
 
         if (searched)
             Gizmos.color = Color.red;
@@ -169,7 +154,7 @@ public class PathTile : TileGeneric
         if (!Walkable)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(WorldCenter, Tilemap.cellSize.x / 4);
+            Gizmos.DrawWireSphere(WorldCenter, TileGrid.cellSize.x / 4);
         }
 
         if (Connection != null && selected)

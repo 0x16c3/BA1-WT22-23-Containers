@@ -5529,11 +5529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66cfb113a10dc84e873a11bb29f7a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntervalMin: 1
-  IntervalMax: 3
-  MovementRadius: 6
-  MinMovementRadius: 3
-  Suicidal: 0
+  ShakeTime: 3
+  InactiveTime: 10
   MovementSpeed: 4
   RotationSpeed: 1
   RotationDecelerationMultiplier: 10
@@ -8613,14 +8610,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642632859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 792044e597d90f34ba17a82e2b04ef5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MaxEvents: 3
   GracePeriod: 0
-  EventDuration: {x: 30, y: 120}
+  EventDuration: {x: 9, y: 90}
   TimeBetweenEvents: {x: 0, y: 1}
   EventPrefabs:
   - {fileID: 1083230702021558301, guid: fe0328f4b4bceb048aa3adcf50862f1d, type: 3}

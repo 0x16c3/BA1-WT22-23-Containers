@@ -10,8 +10,8 @@ public class PathFinder
     public PathTile EndTile { get; private set; }
     public GameObject GameObject;
 
-    List<PathTile> ToSearch;
-    List<PathTile> Searched;
+    List<PathTile> ToSearch = new List<PathTile>();
+    List<PathTile> Searched = new List<PathTile>();
 
     public List<PathTile> PathProgress { get; private set; }
     public List<PathTile> Path { get; private set; }
@@ -107,7 +107,7 @@ public class PathFinder
         PathTile lastObstructedTile = null;
         for (int i = 0; i < PathProgress.Count; i++)
         {
-            if (!PathProgress[i].Walkable)
+            if (!PathProgress[i].Walkable && !PathProgress[i].Walked)
             {
                 lastObstructedTile = PathProgress[i];
                 break;

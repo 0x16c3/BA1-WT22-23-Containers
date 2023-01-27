@@ -9,12 +9,8 @@ using UnityEditor;
 public class AIWander : MonoBehaviour
 {
     [Header("Wander Settings")]
-    public float IntervalMin = 1.0f;
-    public float IntervalMax = 3.0f;
-    public float MovementRadius = 6.0f;
-    public float MinMovementRadius = 3.0f;
-
-    public bool Suicidal = true;
+    public float ShakeTime = 3f;
+    public float InactiveTime = 10.0f;
 
     [Header("Movement Settings")]
     [Range(0f, 25f)]
@@ -36,7 +32,7 @@ public class AIWander : MonoBehaviour
     PathFinder _pathFinder;
     List<PathTile> _paths = new List<PathTile>();
 
-    Vector3 _lastRandPoint;
+    Vector3 _lastRandPoint = Vector3.zero;
     PathTile _currentTarget;
 
     bool _firstUpdate = false;
@@ -48,6 +44,10 @@ public class AIWander : MonoBehaviour
     bool _containerWasGrabbed = false;
     bool _containerDropped = true;
     bool _grounded => !_containerGrabbed && Mathf.Abs(_rb.velocity.y) < 0.1f;
+
+    float _inactiveTimer = 0f;
+    bool _shake = false;
+    bool _inactive = false;
 
     void OnEnable()
     {
@@ -64,6 +64,13 @@ public class AIWander : MonoBehaviour
 
     void OnDisable()
     {
+        Halt();
+
+        // Reset path data
+        ResetPathData();
+        _lastRandPoint = Vector3.zero;
+
+        // Unsubscribe from events
         _pathFinder.OnPathReset -= ResetPathData;
     }
 
@@ -83,11 +90,11 @@ public class AIWander : MonoBehaviour
 
         _reachedTarget = false;
         _firstUpdate = true;
+        _inactive = false;
     }
 
     void ResetPathData()
     {
-        _lastRandPoint = Vector3.zero;
         _paths = new List<PathTile>();
         _currentTarget = null;
         _correctedRotation = false;
@@ -100,7 +107,7 @@ public class AIWander : MonoBehaviour
 
         UpdateContainerStates();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (_reachedTarget || _lastRandPoint == Vector3.zero || _inactive)
             Wander();
 
         _pathFinder.FindPath();
@@ -110,6 +117,10 @@ public class AIWander : MonoBehaviour
 
     void FixedUpdate()
     {
+        InactiveTimer();
+        if (_inactiveTimer > ShakeTime)
+            Shake();
+
         if (_paths == null || _paths.Count == 0)
             return;
 
@@ -179,6 +190,10 @@ public class AIWander : MonoBehaviour
         //If the rotation was corrected, set the current target to the next tile and set the correct rotation to false.
         if (_correctedRotation)
         {
+            // Mark the current target as reached
+            if (_currentTarget != null)
+                _currentTarget.Walked = true;
+
             _currentTarget = nextTile;
             _correctedRotation = false;
 
@@ -244,6 +259,36 @@ public class AIWander : MonoBehaviour
             _pathFinder.SetStart(_tile.GridPosition);
             _pathFinder.InitPath();
         }
+    }
+
+    void InactiveTimer()
+    {
+        // If velocity is low enough, start timer
+        if (_rb.velocity.magnitude < 0.5f && _rb.angularVelocity.magnitude < 0.5f)
+        {
+            _inactiveTimer += Time.deltaTime;
+
+            // If timer is high enough, set inactive
+            if (_inactiveTimer > InactiveTime)
+                _inactive = true;
+        }
+        else
+        {
+            _inactiveTimer = 0;
+            _inactive = false;
+            _shake = false;
+        }
+    }
+
+    void Shake()
+    {
+        if (_shake)
+            return;
+
+        // Do some random shaking when inactive for a while to get the AI moving again 
+        _rb.AddForce(new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * 1f, ForceMode.Impulse);
+        _rb.AddTorque(new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * 1f, ForceMode.Impulse);
+        _shake = true;
     }
 
     void OnDrawGizmos()

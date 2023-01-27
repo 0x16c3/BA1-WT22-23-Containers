@@ -130,7 +130,7 @@ public class PathFinder
 
     public void FindPath()
     {
-        if (!ToSearch.Any())
+        if (!ToSearch.Any() || EndTile == null)
             return;
 
         var current = ToSearch[0];

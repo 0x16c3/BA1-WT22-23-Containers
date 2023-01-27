@@ -5,17 +5,19 @@ public class AIVolcanoCatProjectile : MonoBehaviour
     Rigidbody _rigidbody;
     Vector3 _target;
 
+    AIVolcanoCat _volcanoCat;
+
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
         var parent = transform.parent;
 
-        var VolcanoCat = parent.GetComponent<AIVolcanoCat>();
-        if (VolcanoCat == null)
+        _volcanoCat = parent.GetComponent<AIVolcanoCat>();
+        if (_volcanoCat == null)
             Debug.LogError("No AIVolcanoCat component found on parent");
 
-        var radius = VolcanoCat.ProjectileRadius;
-        var angle = VolcanoCat.ProjectileAngle;
+        var radius = _volcanoCat.ProjectileRadius;
+        var angle = _volcanoCat.ProjectileAngle;
         JumpTowards(GetRandomPoint(radius), angle);
     }
 
@@ -58,5 +60,18 @@ public class AIVolcanoCatProjectile : MonoBehaviour
         Vector3 finalVelocity = Quaternion.AngleAxis(angleBetweenObjects, Vector3.up) * velocity;
 
         _rigidbody.AddForce(finalVelocity * _rigidbody.mass, ForceMode.Impulse);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        var damageable = collision.gameObject.GetComponent<IDamageable>();
+        if (damageable != null)
+            damageable.Damage(1);
+
+        var tile = collision.gameObject.GetComponent<TileDamageable>();
+        if (tile != null && !tile.OnFire && Random.value < _volcanoCat.FireChance)
+            tile.SetFire(true);
+
+        Destroy(gameObject);
     }
 }

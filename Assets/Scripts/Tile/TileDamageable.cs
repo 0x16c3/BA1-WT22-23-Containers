@@ -20,12 +20,23 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
     public GameObject FirePrefab;
 
+    [HideInInspector]
+    public bool OnFire
+    {
+        get => _onFire;
+        private set => _onFire = value;
+    }
+
     TileGrid _grid;
     TileGeneric _tile;
     GameObject _localFire;
 
+    ContainerGridCell _gridCell;
+
     bool _onFire = false;
     int _maxHealth = -1;
+
+    bool _wasDead = false;
 
     float _lastFireTick = -1f;
 
@@ -36,6 +47,13 @@ public class TileDamageable : MonoBehaviour, IDamageable
         if (_tile == null)
         {
             Debug.LogError("TileDamageable: No tile found at position " + transform.position);
+            return;
+        }
+
+        _gridCell = GetComponent<ContainerGridCell>();
+        if (_gridCell == null)
+        {
+            Debug.LogError("TileDamageable: No ContainerGridCell found at position " + transform.position);
             return;
         }
 
@@ -58,6 +76,12 @@ public class TileDamageable : MonoBehaviour, IDamageable
         if (Health == 0)
         {
             Kill();
+            return;
+        }
+
+        if (_wasDead && Health == _maxHealth)
+        {
+            Respawn();
             return;
         }
 
@@ -86,7 +110,17 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
     void Kill()
     {
-        // todo: fade out and enable collider
-        Destroy(gameObject);
+        _gridCell.Break();
+        _wasDead = true;
+
+        SetFire(false);
+    }
+
+    void Respawn()
+    {
+        _gridCell.Repair();
+        _wasDead = false;
+
+        SetFire(false);
     }
 }

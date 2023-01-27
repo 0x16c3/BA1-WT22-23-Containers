@@ -8,6 +8,8 @@ public class AIVolcanoCat : MonoBehaviour
     public float ProjectileRadius = 10f;
     [Range(1f, 90f)]
     public float ProjectileAngle = 45f;
+    [Range(0f, 1f)]
+    public float FireChance = 0.1f;
 
     public GameObject ProjectilePrefab;
 

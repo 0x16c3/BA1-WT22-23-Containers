@@ -64,7 +64,7 @@ public class PathTile : TileGeneric
         return GridPosition.GetHashCode();
     }
 
-    public new List<PathTile> Neighbors
+    public List<PathTile> Neighbors
     {
         get
         {
@@ -83,6 +83,11 @@ public class PathTile : TileGeneric
                         continue;
 
                     var neighborPos = new Vector2Int(GridPosition.x + x, GridPosition.y + y);
+                    var neighborObj = TileGrid.GetTile(neighborPos);
+
+                    if (neighborObj == null)
+                        continue;
+
                     var neighbor = PathTile.FromTile(TileGrid.GetTile(neighborPos), _gameObject);
 
                     if (neighbor == null)
@@ -108,7 +113,12 @@ public class PathTile : TileGeneric
                 if (objects[i].layer == 3)
                     continue;
 
-                if (objects[i].GetComponent<ContainerGridCell>() != null)
+                var gridCell = objects[i].GetComponent<ContainerGridCell>();
+                if (gridCell != null && gridCell.Broken)
+                    return false;
+
+                var damageable = objects[i].GetComponent<TileDamageable>();
+                if (damageable != null && (damageable.OnFire || damageable.Health <= 0))
                     continue;
 
                 // Ignore if current tile is the object
@@ -119,7 +129,8 @@ public class PathTile : TileGeneric
                 if (objects[i].transform.position == WorldCenter)
                     continue;
 
-                if (objects[i].GetComponent<Collider>() != null)
+                var collider = objects[i].GetComponent<Collider>();
+                if (collider != null && !collider.isTrigger)
                     return false;
             }
 

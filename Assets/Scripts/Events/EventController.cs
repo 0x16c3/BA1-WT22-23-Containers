@@ -37,7 +37,7 @@ public class EventController : MonoBehaviour
 
     void OnEnable()
     {
-        _enabledAt = Time.time;
+        _enabledAt = Time.time + 0.1f; // Add a small delay to make sure everything is initialized
         _eventCount = Random.Range(1, MaxEvents > 0 ? MaxEvents : 1);
 
         for (int i = 0; i < _eventCount; i++)

@@ -53,18 +53,10 @@ public class LightningController : MonoBehaviour, IEvent
         {
             if (strikeTime + _data.StartsAt <= Time.time)
             {
-                // todo: fix this
-
-                // Choose random tile
-                var gridBounds = _tileGrid.Tilemap.cellBounds;
-
-                var x = Random.Range(gridBounds.xMin + 2, gridBounds.xMax - 1);
-                var y = Random.Range(gridBounds.yMin + 1, gridBounds.yMax - 1);
-
-                var worldPos = _tileGrid.GetTile(new Vector2Int(x, y)).WorldCenter;
+                var tile = RandomTile();
 
                 // Spawn lightning as child
-                var lightning = Instantiate(LightningPrefab, worldPos, Quaternion.identity, transform);
+                var lightning = Instantiate(LightningPrefab, tile.WorldCenter, Quaternion.identity, transform);
 
                 // Remove strike time
                 _strikeTimes.Remove(strikeTime);
@@ -75,5 +67,36 @@ public class LightningController : MonoBehaviour, IEvent
 
         if (_strikeTimes.Count == 0)
             Destroy(gameObject);
+    }
+
+    TileGeneric RandomTile()
+    {
+        var gridBounds = _tileGrid.cellBounds;
+
+        var x = Random.Range(gridBounds.xMin + 2, gridBounds.xMax - 1);
+        var y = Random.Range(gridBounds.yMin + 1, gridBounds.yMax - 1);
+
+        // If tile is not walkable, try again
+        var tile = _tileGrid.GetTile(new Vector2Int(x, y));
+
+        if (tile == null || !tile.Walkable)
+            return RandomTile();
+
+        // Find damageable object
+        var objects = tile.GetObjects();
+        TileDamageable damageable = null;
+
+        foreach (var obj in objects)
+        {
+            damageable = obj.GetComponent<TileDamageable>();
+            if (damageable != null)
+                break;
+        }
+
+        // If no damageable object, try again
+        if (damageable == null || damageable.OnFire)
+            return RandomTile();
+
+        return tile;
     }
 }

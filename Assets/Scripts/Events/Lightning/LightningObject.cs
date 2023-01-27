@@ -3,6 +3,122 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+public class LightningStrike
+{
+    public Vector2Int GridPos;
+    TileGrid _tileGrid;
+
+    int _damage;
+    float _timeBetweenWarningAndLightning;
+
+    GameObject _lightningVFX;
+    GameObject _lightningWarningVFX;
+
+    Transform _transform;
+
+    public float StrikeTime;
+    public bool PlayedWarning = false;
+    public bool Struck = false;
+    public bool PlayedLightning = false;
+
+    public LightningStrike(TileGrid tileGrid, Vector2Int gridPos, Transform transform, GameObject lightningVFX, GameObject lightningWarningVFX, int strikeDamage = 1, float timeBetweenWarningAndLightning = 1f)
+    {
+        _tileGrid = tileGrid;
+        _transform = transform;
+        _lightningVFX = lightningVFX;
+        _lightningWarningVFX = lightningWarningVFX;
+        _damage = strikeDamage;
+        _timeBetweenWarningAndLightning = timeBetweenWarningAndLightning;
+
+        StrikeTime = Time.time + Random.Range(0.1f, 0.5f);
+        GridPos = gridPos;
+    }
+
+    public void OnUpdate()
+    {
+        if (Struck && StrikeTime + _timeBetweenWarningAndLightning + 5f < Time.time)
+            PlayedLightning = true;
+
+        if (Struck)
+            return;
+
+        if (Time.time >= StrikeTime && !PlayedWarning)
+        {
+            var tile = _tileGrid.GetTile(GridPos);
+            if (tile == null)
+            {
+                Debug.LogError("LightningStrike: No tile found at position " + GridPos);
+                return;
+            }
+
+            // Instantiate lightning warning
+            var warning = GameObject.Instantiate(_lightningWarningVFX, tile.WorldCenter, Quaternion.identity, _transform);
+            PlayedWarning = true;
+        }
+        else if (Time.time >= StrikeTime + _timeBetweenWarningAndLightning)
+            StrikeTile();
+    }
+
+    void StrikeTile()
+    {
+        var tile = _tileGrid.GetTile(GridPos);
+        if (tile == null)
+            return;
+
+        // Get all objects on tile
+        var objects = tile.GetObjects();
+
+        // Set tile on fire and damage the top object
+        TileDamageable damageableTile = null;
+        GameObject highestObject = null;
+        float highestObjectY = float.MinValue;
+
+        foreach (var obj in objects)
+        {
+            // Skip if a clip brush
+            if (obj.layer == LayerMask.NameToLayer("Clip Brush"))
+                continue;
+
+            var _damagableTile = obj.GetComponent<TileDamageable>();
+            if (damageableTile == null && _damagableTile != null)
+            {
+                damageableTile = _damagableTile;
+                continue;
+            }
+
+            if (damageableTile != null)
+            {
+                // If object is a child in the tile, skip it
+                if (obj.transform.IsChildOf(damageableTile.transform))
+                    continue;
+            }
+
+            if (obj.transform.position.y > highestObjectY)
+            {
+                highestObjectY = obj.transform.position.y;
+                highestObject = obj;
+            }
+        }
+
+        if (damageableTile != null && highestObject == null)
+            damageableTile.SetFire(true);
+        else if (highestObject != null)
+        {
+            var damageable = highestObject.GetComponent<IDamageable>();
+            if (damageable != null)
+                damageable.Damage(_damage);
+            else
+                Debug.LogWarning("No damageable component found on object " + highestObject.name);
+        }
+        else if (!damageableTile && highestObject == null)
+            Debug.LogWarning("No damageable component found on tile " + tile.GridPosition);
+
+        // Instantiate lightning
+        GameObject.Instantiate(_lightningVFX, tile.WorldCenter, Quaternion.identity, _transform);
+        Struck = true;
+    }
+}
+
 public class LightningObject : MonoBehaviour
 {
     public int StrikeDamage = 1;
@@ -26,14 +142,12 @@ public class LightningObject : MonoBehaviour
     float _strikeTime = -1f;
     bool _struck = false;
 
+    List<LightningStrike> _strikes = new List<LightningStrike>();
+
     void OnEnable()
     {
         _tileGrid = TileGrid.FindTilemap();
         _centerTile = _tileGrid.GetTile(transform.position);
-
-        // Instantiate lightning warning
-        var warning = Instantiate(LightningWarningVFX, _centerTile.WorldCenter, Quaternion.identity, transform);
-
         _strikeTime = Time.time;
     }
 
@@ -54,26 +168,46 @@ public class LightningObject : MonoBehaviour
             _struck = true;
         }
 
-        if (_strikeTime + TimeBetweenWarningAndLightning + 1f <= Time.time && _struck)
+        // Process each strike
+        foreach (var strike in _strikes)
         {
-            Destroy(gameObject);
+            strike.OnUpdate();
         }
+
+        // Remove strikes that have finished
+        _strikes.RemoveAll(s => s.PlayedLightning);
+
+        if (_struck && _strikes.Count == 0)
+            Destroy(gameObject);
+    }
+
+    void AddStrike(Vector2Int gridPos)
+    {
+        var strike = new LightningStrike(_tileGrid, gridPos, transform, LightningVFX, LightningWarningVFX, StrikeDamage, TimeBetweenWarningAndLightning);
+        _strikes.Add(strike);
     }
 
     void SmallLightning()
     {
-        StrikeTile(_centerTile.GridPosition);
+        AddStrike(_centerTile.GridPosition);
     }
 
     void MediumLightning()
     {
-        StrikeTile(_centerTile.GridPosition);
+        AddStrike(_centerTile.GridPosition);
 
         var neighbors = _centerTile.GetNeighbors(false);
         neighbors = SanitizeNeighbors(neighbors);
 
-        var randomNeighbor = neighbors[Random.Range(0, neighbors.Count)];
-        StrikeTile(randomNeighbor.GridPosition);
+        // If no neighbors, strike center tile
+        if (neighbors.Count == 0)
+        {
+            AddStrike(_centerTile.GridPosition);
+            return;
+        }
+
+        var randomNeighbor = neighbors[Random.Range(0, neighbors.Count - 1)];
+        AddStrike(randomNeighbor.GridPosition);
     }
 
     void BigLightning()
@@ -82,11 +216,21 @@ public class LightningObject : MonoBehaviour
         var neighbors = _centerTile.GetNeighbors(false);
         neighbors = SanitizeNeighbors(neighbors);
 
+        // If no neighbors, strike center tile
+        if (neighbors.Count <= 0)
+        {
+            AddStrike(_centerTile.GridPosition);
+            return;
+        }
+
         // Strike 4 random neighbors
         for (int i = 0; i < 4; i++)
         {
-            var randomNeighbor = neighbors[Random.Range(0, neighbors.Count)];
-            StrikeTile(randomNeighbor.GridPosition);
+            if (neighbors.Count == 0)
+                break;
+
+            var randomNeighbor = neighbors[Random.Range(0, neighbors.Count - 1)];
+            AddStrike(randomNeighbor.GridPosition);
 
             neighbors.Remove(randomNeighbor);
         }
@@ -101,47 +245,23 @@ public class LightningObject : MonoBehaviour
         {
             if (neighbor.GridPosition.x <= bounds.xMin + 2 || neighbor.GridPosition.x >= bounds.xMax - 1)
                 neighbors.Remove(neighbor);
+
+            // Find damageable object
+            var objects = neighbor.GetObjects();
+            TileDamageable damageable = null;
+
+            foreach (var obj in objects)
+            {
+                damageable = obj.GetComponent<TileDamageable>();
+                if (damageable != null)
+                    break;
+            }
+
+            // If no damageable object, try again
+            if (damageable == null || damageable.OnFire)
+                neighbors.Remove(neighbor);
         }
 
         return neighbors;
-    }
-
-    void StrikeTile(Vector2Int gridPos)
-    {
-        var tile = _tileGrid.GetTile(gridPos);
-        if (tile == null)
-            return;
-
-        // Get all objects on tile
-        var objects = tile.GetObjects();
-
-        // Set tile on fire and damage the top object
-        GameObject highestObject = null;
-        float highestObjectY = float.MinValue;
-
-        foreach (var obj in objects)
-        {
-            var tileDamageable = obj.GetComponent<TileDamageable>();
-            if (tileDamageable != null)
-                tileDamageable.SetFire(true);
-
-            if (obj.transform.position.y > highestObjectY)
-            {
-                highestObjectY = obj.transform.position.y;
-                highestObject = obj;
-            }
-        }
-
-        if (highestObject != null)
-        {
-            var damageable = highestObject.GetComponent<IDamageable>();
-            if (damageable != null)
-                damageable.Damage(StrikeDamage);
-            else
-                Debug.LogWarning("No damageable component found on object " + highestObject.name);
-        }
-
-        // Play lightning VFX
-        var lightning = Instantiate(LightningVFX, tile.WorldCenter, Quaternion.identity, transform);
     }
 }

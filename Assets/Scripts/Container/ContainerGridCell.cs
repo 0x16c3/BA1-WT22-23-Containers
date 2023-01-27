@@ -14,7 +14,11 @@ public class ContainerGridCell : MonoBehaviour
     public TileGrid Tilemap;
     public TileGeneric Tile;
 
-    void OnEnable()
+    bool _initialized = false;
+
+    MeshRenderer _groundPlane;
+
+    void Initialize()
     {
         _collider = GetComponent<Collider>();
 
@@ -32,7 +36,22 @@ public class ContainerGridCell : MonoBehaviour
             _collider.transform.localScale = new Vector3(Tilemap.cellSize.x / 2, CellHeightMax, Tilemap.cellSize.y / 2);
         }
 
+        _groundPlane = GetComponentInChildren<MeshRenderer>();
+
         _collider.isTrigger = true;
+        _initialized = true;
+    }
+
+    void OnDisable()
+    {
+        if (_groundPlane != null)
+            _groundPlane.enabled = true;
+    }
+
+    void Update()
+    {
+        if (!_initialized)
+            Initialize();
     }
 
     void OnDrawGizmos()
@@ -110,7 +129,7 @@ public class ContainerGridCell : MonoBehaviour
         Broken = true;
         _collider.isTrigger = false;
 
-        // todo: play break animation
+        _groundPlane.enabled = false;
 
         // Remove all grabbables
         for (int i = 0; i < Grabbables.Count; i++)
@@ -125,6 +144,6 @@ public class ContainerGridCell : MonoBehaviour
         Broken = false;
         _collider.isTrigger = true;
 
-        // todo: play repair animation
+        _groundPlane.enabled = true;
     }
 }

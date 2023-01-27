@@ -60,8 +60,6 @@ public class AIWander : MonoBehaviour
 
         _pathFinder = new PathFinder(_tilemap, this.gameObject);
         _pathFinder.OnPathReset += ResetPathData;
-
-        Wander();
     }
 
     void OnDisable()
@@ -71,15 +69,13 @@ public class AIWander : MonoBehaviour
 
     void Wander()
     {
-        Vector3 randomPoint = GetRandomPoint();
-        while (Vector3.Distance(randomPoint, _lastRandPoint) < MinMovementRadius || Vector3.Distance(randomPoint, transform.position) < MinMovementRadius)
-        {
-            randomPoint = GetRandomPoint();
-        }
+        TileGeneric randomTile = _tilemap.RandomTile();
 
-        _lastRandPoint = randomPoint;
+        // If not walkable, find a new one
+        while (!randomTile.Walkable)
+            randomTile = _tilemap.RandomTile();
 
-        TileGeneric randomTile = _tilemap.GetTile(randomPoint);
+        _lastRandPoint = randomTile.WorldCenter;
 
         _pathFinder.SetStart(_tile.GridPosition);
         _pathFinder.SetTarget(randomTile.GridPosition);
@@ -99,7 +95,7 @@ public class AIWander : MonoBehaviour
 
     void Update()
     {
-        if (!_tilemap)
+        if (!_tilemap || _tile == null)
             return;
 
         UpdateContainerStates();
@@ -128,24 +124,6 @@ public class AIWander : MonoBehaviour
         SwitchTarget();
         FaceDirection(nextTile);
         MoveTowards(_currentTarget);
-    }
-
-    Vector3 GetRandomPoint()
-    {
-        Vector3 randomPoint = Random.insideUnitSphere * MovementRadius;
-        randomPoint += transform.position;
-        randomPoint.y = 0;
-
-        if (Suicidal)
-            return randomPoint;
-
-        var tile = _tilemap.GetTile(randomPoint);
-
-        // Check if there is a ContainerGridCell at that point
-        if (!tile.GetInstantiatedObject<ContainerGridCell>())
-            return GetRandomPoint();
-
-        return randomPoint;
     }
 
     void FaceDirection(PathTile target)

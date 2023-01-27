@@ -28,19 +28,26 @@ public class TileGeneric
                 if (objects[i].layer == 3)
                     continue;
 
+                var gridCell = objects[i].GetComponent<ContainerGridCell>();
+                if (gridCell != null && gridCell.Broken)
+                    return false;
+
+                var damageable = objects[i].GetComponent<TileDamageable>();
+                if (damageable != null && (damageable.OnFire || damageable.Health <= 0))
+                    continue;
+
                 // Ignore if current tile is the object
                 if (objects[i].transform.position == WorldCenter)
                     continue;
 
-                if (objects[i].GetComponent<Collider>() != null)
+                var collider = objects[i].GetComponent<Collider>();
+                if (collider != null && !collider.isTrigger)
                     return false;
             }
 
             return true;
         }
     }
-
-    public List<TileGeneric> Neighbors => GetNeighbors();
 
     public Vector3 WorldCenter
     {

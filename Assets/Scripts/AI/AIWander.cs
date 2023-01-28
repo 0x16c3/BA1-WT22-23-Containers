@@ -124,7 +124,9 @@ public class AIWander : MonoBehaviour
         if (_inactiveTimer > ShakeTime)
             Shake();
 
-        if (_paths == null || _paths.Count == 0)
+        CorrectRotation();
+
+        if (_paths == null || _paths.Count == 0 || _tile == null)
             return;
 
         if (_reachedTarget)
@@ -292,6 +294,11 @@ public class AIWander : MonoBehaviour
         _rb.AddForce(new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * 1f, ForceMode.Impulse);
         _rb.AddTorque(new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * 1f, ForceMode.Impulse);
         _shake = true;
+    }
+
+    void CorrectRotation()
+    {
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
     }
 
     void OnDrawGizmos()

@@ -69,14 +69,10 @@ public class PathFinder
 
         // Render start and end tiles
         if (StartTile != null)
-        {
             StartTile.OnDrawGizmosAnchor(true);
-        }
 
         if (EndTile != null)
-        {
             EndTile.OnDrawGizmosAnchor(false);
-        }
     }
 
     public void InitPath()

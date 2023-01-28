@@ -9,6 +9,7 @@ TagManager:
   - Chest
   - Grass
   - Bucket
+  - Clip Brush
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Clip Brush
+  - 
   - 
   - 
   - 

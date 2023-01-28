@@ -68,7 +68,7 @@ public class TileGeneric
         for (int i = 0; i < colliders.Length; i++)
         {
             // Ignore clip brushes
-            if (colliders[i].gameObject.layer == 6)
+            if (colliders[i].gameObject.tag == "Clip Brush")
                 continue;
 
             objects.Add(colliders[i].gameObject);
@@ -108,6 +108,31 @@ public class TileGeneric
             }
 
             return highestObject;
+        }
+    }
+
+    public TileDamageable Damageable
+    {
+        // get TileGridCell object's damagable
+        get
+        {
+            List<GameObject> objects = GetObjects();
+
+            if (objects.Count == 0) return null;
+
+            // Iterate through objects and return first object that matches type
+            foreach (var objectInstance in objects)
+            {
+                var gridCell = objectInstance.GetComponent<TileGridCell>();
+                if (gridCell == null)
+                    continue;
+
+                var damageable = gridCell.GetComponent<TileDamageable>();
+                if (damageable != null)
+                    return damageable;
+            }
+
+            return null;
         }
     }
 

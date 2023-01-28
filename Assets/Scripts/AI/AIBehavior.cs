@@ -35,8 +35,6 @@ public class AIBehavior : MonoBehaviour, IDamageable
 
     public ICustomBehavior CustomBehavior = null;
 
-    public bool CanUseAbility = true;
-
     AIBehaviorState _state = AIBehaviorState.Idle;
     AIBehaviorState _prevState = AIBehaviorState.Wander;
     AIBehaviorState _nextState = AIBehaviorState.Wander;
@@ -101,6 +99,11 @@ public class AIBehavior : MonoBehaviour, IDamageable
         }
     }
 
+    public void ResetTimers(bool addRandomDelay = true)
+    {
+        _nextActionTime = Time.time + (addRandomDelay ? Random.Range(IdleDuration.x, IdleDuration.y) : 0f);
+    }
+
     void SwitchState()
     {
         if (Time.time < _nextActionTime)
@@ -111,10 +114,15 @@ public class AIBehavior : MonoBehaviour, IDamageable
         // Add all states except the current one
         for (int i = 0; i < (int)AIBehaviorState.STATE_MAX; i++)
         {
-            if (!CanUseAbility && (AIBehaviorState)i == AIBehaviorState.Ability)
+            if ((CustomBehavior == null || !CustomBehavior.Enabled) && (AIBehaviorState)i == AIBehaviorState.Ability)
                 continue;
 
-            if ((AIBehaviorState)i != _state)
+            if ((AIBehaviorState)i == _state)
+                continue;
+
+            if ((AIBehaviorState)i == AIBehaviorState.Wander && CustomBehavior != null && CustomBehavior.Enabled)
+                otherStates.Add(AIBehaviorState.Ability);
+            else
                 otherStates.Add((AIBehaviorState)i);
         }
 
@@ -143,7 +151,7 @@ public class AIBehavior : MonoBehaviour, IDamageable
     void ProcessRules()
     {
         // If health is 0 and we're wandering, switch to Idle
-        if (Health == 0 && _state == AIBehaviorState.Wander)
+        if (Health == 0 && _state == AIBehaviorState.Wander) // aka Knocked out
         {
             _prevState = _state;
             _state = AIBehaviorState.Idle;

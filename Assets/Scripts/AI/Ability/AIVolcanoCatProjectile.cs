@@ -134,11 +134,8 @@ public class AIVolcanoCatProjectile : MonoBehaviour
             // Get tile at position
             var tile = _tileGrid.GetTile(transform.position);
 
-            if (tile.GridPosition == _tile.GridPosition)
-                return;
-
             // If tile is not null, set on fire
-            if (tile != null && tile.Damageable != null && Random.Range(0f, 1f) < VolcanoCat.FireChance)
+            if (tile != null && tile.GridPosition == _tile.GridPosition && tile.Damageable != null && Random.Range(0f, 1f) > VolcanoCat.FireChance)
             {
                 tile.Damageable.SetFire(true);
                 Destroy(gameObject);
@@ -168,7 +165,6 @@ public class AIVolcanoCatProjectile : MonoBehaviour
 
         // Draw on top of everything
         Handles.zTest = UnityEngine.Rendering.CompareFunction.Always;
-
 
         foreach (var collision in _collisions)
         {

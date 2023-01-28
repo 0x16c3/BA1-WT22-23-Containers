@@ -104,7 +104,7 @@ public class PathTile : TileGeneric
 
                 var damageable = objects[i].GetComponent<TileDamageable>();
                 if (damageable != null && (damageable.OnFire || damageable.Health <= 0))
-                    continue;
+                    return false;
 
                 // Ignore if current tile is the object
                 if (objects[i] == _gameObject)

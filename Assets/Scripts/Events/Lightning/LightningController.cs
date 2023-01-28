@@ -5,6 +5,14 @@ using GD.MinMaxSlider;
 
 public class LightningController : MonoBehaviour, IEvent
 {
+    [MinMaxSlider(0, 180)]
+    public Vector2Int _duration = new Vector2Int(45, 90);
+    public Vector2Int Duration
+    {
+        get => _duration;
+        set => _duration = value;
+    }
+
     [MinMaxSlider(0, 25)]
     public Vector2Int MaxStrikes = new Vector2Int(10, 15);
     public GameObject LightningPrefab;
@@ -12,6 +20,8 @@ public class LightningController : MonoBehaviour, IEvent
     [Header("Event Info")]
     [ReadOnly]
     public int RemainingStrikes = 0;
+    [ReadOnly]
+    public float RemainingTime = 0f;
 
     [HideInInspector]
     EventData _data;
@@ -64,6 +74,7 @@ public class LightningController : MonoBehaviour, IEvent
         }
 
         RemainingStrikes = _strikeTimes.Count;
+        RemainingTime = _data.EndsAt - Time.time;
 
         if (_strikeTimes.Count == 0)
             Destroy(gameObject);

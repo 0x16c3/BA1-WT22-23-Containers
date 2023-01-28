@@ -11,6 +11,7 @@ public class TileGridCell : MonoBehaviour
     public List<ContainerGeneric> Grabbables = new List<ContainerGeneric>();
 
     Collider _collider = null;
+    Collider _breakCollider = null;
     public TileGrid Tilemap;
     public TileGeneric Tile;
 
@@ -34,6 +35,14 @@ public class TileGridCell : MonoBehaviour
             _collider = gameObject.AddComponent<BoxCollider>();
             _collider.transform.position = transform.position + Vector3.up * CellHeightMax / 2;
             _collider.transform.localScale = new Vector3(Tilemap.cellSize.x / 2, CellHeightMax, Tilemap.cellSize.y / 2);
+        }
+
+        // Get collider from the child "BreakCollider"
+        _breakCollider = transform.Find("BreakCollider").GetComponent<Collider>();
+        if (_breakCollider == null)
+        {
+            Debug.LogError("TileGridCell: Initialize: BreakCollider not found");
+            return;
         }
 
         _groundPlane = GetComponentInChildren<MeshRenderer>();
@@ -127,7 +136,7 @@ public class TileGridCell : MonoBehaviour
     public void Break()
     {
         Broken = true;
-        _collider.isTrigger = false;
+        _breakCollider.enabled = true;
 
         _groundPlane.enabled = false;
 
@@ -142,7 +151,7 @@ public class TileGridCell : MonoBehaviour
     public void Repair()
     {
         Broken = false;
-        _collider.isTrigger = true;
+        _breakCollider.enabled = false;
 
         _groundPlane.enabled = true;
     }

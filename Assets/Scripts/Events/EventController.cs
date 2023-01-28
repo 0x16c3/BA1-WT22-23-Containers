@@ -20,8 +20,6 @@ public class EventController : MonoBehaviour
     public int GracePeriod = 30;
 
     [MinMaxSlider(0f, 120f)]
-    public Vector2 EventDuration = new Vector2(30f, 120f);
-    [MinMaxSlider(0f, 120f)]
     public Vector2 TimeBetweenEvents = new Vector2(30f, 60f);
 
     public List<GameObject> EventPrefabs = new List<GameObject>();
@@ -52,7 +50,15 @@ public class EventController : MonoBehaviour
             else
                 eventData.StartsAt = _enabledAt + GracePeriod + Random.Range(TimeBetweenEvents.x, TimeBetweenEvents.y);
 
-            eventData.EndsAt = eventData.StartsAt + Random.Range(EventDuration.x, EventDuration.y);
+            // Get IEvent interface
+            var iEvent = eventData.Prefab.GetComponent<IEvent>();
+            if (iEvent == null)
+            {
+                Debug.LogError($"Event prefab {eventData.Prefab.name} does not implement IEvent interface!");
+                return;
+            }
+
+            eventData.EndsAt = eventData.StartsAt + Random.Range(iEvent.Duration.x, iEvent.Duration.y);
 
             _eventList.Add(eventData);
         }

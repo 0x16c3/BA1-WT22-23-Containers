@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 23f5ca308b72f46a8bf9578ec5811f08, type: 2}
+  - {fileID: 2100000, guid: 729e88ca00e6b45a18622bacadf7289e, type: 2}
   - {fileID: 2100000, guid: 1dcbe2d5d48fd449c8732027395aa8ae, type: 2}
   - {fileID: 2100000, guid: bce6e489073b14b779041814ca78c1bd, type: 2}
   m_StaticBatchInfo:
@@ -410,7 +410,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7163534985098807952}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1

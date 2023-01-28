@@ -17,28 +17,30 @@ public class AIVolcanoCat : MonoBehaviour, ICustomBehavior
     [Range(1f, 90f)]
     public float ProjectileSpeed = 45f;
     [Range(0f, 1f)]
-    public float FireChance = 0.1f;
+    public float FireChance = 0.5f;
 
     public GameObject ProjectilePrefab;
 
     Collider _collider;
-    LineRenderer _lineRenderer;
 
     float _nextFire = -1f;
 
-    void OnEnable()
+    public bool Enabled
     {
-        _collider = GetComponent<Collider>();
-        _nextFire = Time.time + Random.Range(0f, 1f);
+        get => enabled;
+        set => enabled = value;
     }
 
-    void OnDisable()
+    void OnEnable()
     {
-        _collider = null;
+        _nextFire = Time.time + Random.Range(0f, 1f);
     }
 
     public void Ability()
     {
+        if (_collider == null)
+            _collider = GetComponent<Collider>();
+
         // Calculate range FireRate is objects per second
         var rate = 1f / FireRate;
 

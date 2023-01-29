@@ -13,6 +13,9 @@ public class PlayerLocomotion : MonoBehaviour
     public float MovementSpeed = 9f;
 
     [Range(0f, 25f)]
+    public float SlowSpeed = 9f;
+
+    [Range(0f, 25f)]
     public float AirStrafeSpeed = 3f;
 
     [Range(0f, 1000f)]
@@ -29,12 +32,14 @@ public class PlayerLocomotion : MonoBehaviour
     [HideInInspector]
     public bool IsInAir = false;
     [HideInInspector]
-    public bool IsRunning = false;
+    public bool HasSlowEffect = false;
+
 
     Rigidbody _rb;
     Vector3 _direction = Vector3.zero;
     Vector3 _inputVector = Vector3.zero;
     Vector3 _mouseVector = Vector3.zero;
+    Vector3 _mousePos = Vector3.zero;
     GameObject _mouseHover;
     PlayerGrab _grab;
 
@@ -61,6 +66,7 @@ public class PlayerLocomotion : MonoBehaviour
 
     public Vector3 InputVector => _inputVector;
     public Vector3 MouseVector => _mouseVector;
+    public Vector3 MousePos => _mousePos;
     public GameObject MouseHover => _mouseHover;
 
     void Start()
@@ -81,7 +87,6 @@ public class PlayerLocomotion : MonoBehaviour
     {
         _inputVector = InputToVector();
         _mouseVector = MousePosToVector();
-        IsRunning = Input.GetKey(KeyCode.LeftShift);
 
         SaveDirection();
     }
@@ -89,7 +94,7 @@ public class PlayerLocomotion : MonoBehaviour
     void FixedUpdate()
     {
         // Calculate goal velocity
-        Vector3 goalVelocity = _inputVector * (IsInAir ? AirStrafeSpeed : MovementSpeed);
+        Vector3 goalVelocity = _inputVector * (IsInAir ? AirStrafeSpeed : HasSlowEffect ? SlowSpeed : MovementSpeed);
 
         // Calculate acceleration
         Vector3 acceleration = goalVelocity - _rb.velocity;
@@ -167,6 +172,8 @@ public class PlayerLocomotion : MonoBehaviour
             Vector3 direction = hit.point - transform.position;
             direction.y = 0;
 
+            _mousePos = hit.point;
+
             if (hit.collider && hit.collider.gameObject.tag == "Grabbable")
                 _mouseHover = hit.collider.gameObject;
             else
@@ -174,6 +181,9 @@ public class PlayerLocomotion : MonoBehaviour
 
             return direction.normalized;
         }
+
+        _mouseHover = null;
+        _mousePos = Vector3.zero;
 
         return Vector3.zero;
     }

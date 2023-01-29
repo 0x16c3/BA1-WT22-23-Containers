@@ -35,6 +35,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
     bool _onFire = false;
     int _maxHealth = -1;
+    public int MaxHealth => _maxHealth;
 
     bool _wasDead = false;
 
@@ -81,7 +82,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
         if (_wasDead && Health == _maxHealth)
         {
-            Respawn();
+            Repair();
             return;
         }
 
@@ -116,7 +117,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
         SetFire(false);
     }
 
-    void Respawn()
+    void Repair()
     {
         _gridCell.Repair();
         _wasDead = false;

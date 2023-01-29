@@ -24,6 +24,9 @@ public class AIWander : MonoBehaviour
     [Range(0f, 1000f)]
     public float MaxAccelerationForce = 150f;
 
+    [HideInInspector]
+    public bool RandomWander = true;
+
     Rigidbody _rb;
     TileGrid _tileGrid;
     TileGeneric _tile;
@@ -89,6 +92,37 @@ public class AIWander : MonoBehaviour
 
         _pathFinder.SetStart(_tile.GridPosition);
         _pathFinder.SetTarget(randomTile.GridPosition);
+        _pathFinder.InitPath();
+
+        _reachedTarget = false;
+        _firstUpdate = true;
+        _inactive = false;
+    }
+
+    public void SetTarget(Vector3 target)
+    {
+        _lastRandPoint = target;
+
+        var tile = _tileGrid.GetTile(target);
+        if (!tile.Walkable)
+        {
+            // If not, find a new one
+            var tiles = tile.GetNeighbors();
+            foreach (var t in tiles)
+            {
+                if (t.Walkable)
+                {
+                    tile = t;
+                    break;
+                }
+            }
+        }
+
+        if (!tile.Walkable)
+            return;
+
+        _pathFinder.SetStart(_tile.GridPosition);
+        _pathFinder.SetTarget(tile.GridPosition);
         _pathFinder.InitPath();
 
         _reachedTarget = false;

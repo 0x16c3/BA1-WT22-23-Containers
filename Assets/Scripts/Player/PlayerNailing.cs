@@ -1,108 +1,163 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerNailing : MonoBehaviour
 {
-    [Tooltip("UI for displaying the amount of nails")]
-    public GameObject MaterialsUI;
-    [Tooltip("Amount of nails grabbed by one press")]
-    public int NailsPerOnce;
-    [Tooltip("Prefab to spawn after dropping nails box")]
-    public GameObject _nailsBoxPrefab;
+
+    public float RepairRadius = 1f;
+    public float RepairTime = 2f;
+    public GameObject RepairUI;
+
+    [HideInInspector]
+    public bool HasMaterials = false;
+
     [HideInInspector]
     public int AmountRepaired = 0;
 
-    GameObject _nailsBox;
     PlayerLocomotion _playerLocomotion;
-    int _nailsAmount = 0;
-    bool _nearBarrel = false, _repairing = false;
-    float _timePassed = 0, _repairTime = 2f;
+    TileGrid _tileGrid;
+
+    bool _nearChest = false;
+    bool _repairing = false;
+    float _timePassed = 0;
+
+    GameObject _progressBar;
+    GameObject _selectedObject;
+    TileGeneric _selectedTile;
 
     private void Start()
     {
         _playerLocomotion = gameObject.GetComponent<PlayerLocomotion>();
-
         if (_playerLocomotion == null)
             Debug.LogWarning("No PlayerLocomotion component attached");
 
-        _nailsBox = transform.Find("NailsBox").gameObject;
-        if (_nailsBox == null)
-            Debug.LogWarning("No NAILS BOX object attached");
+        _tileGrid = TileGrid.FindTileGrid();
+        if (_tileGrid == null)
+            Debug.LogError("No TileGrid component attached");
 
-        if (NailsPerOnce == 0)
-            NailsPerOnce = 10;
-
-        _nailsBox.SetActive(false);
+        if (RepairUI != null)
+        {
+            RepairUI.SetActive(false);
+            _progressBar = RepairUI.transform.Find("Progress").gameObject;
+        }
     }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && _nearBarrel)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && _nearChest)
         {
-            _nailsAmount += NailsPerOnce;
-            _nailsBox.SetActive(true);
+            HasMaterials = true;
+            Debug.Log("HasMaterials: " + HasMaterials);
         }
 
-        if (_nailsAmount != 0)
-        {
-            _playerLocomotion.MovementSpeed = 6f;
+        _playerLocomotion.HasSlowEffect = HasMaterials;
+        _selectedTile = SelectTile();
 
-            if (_nailsAmount >= NailsPerOnce)
-                _nailsAmount = NailsPerOnce;
-
-        }
-        else if (_nailsAmount <= 0)
+        // Set UI position above selected tile
+        if (_selectedObject != null)
         {
-            _nailsBox.SetActive(false);
-            _playerLocomotion.MovementSpeed = _playerLocomotion.InitialSpeed;
-        }
-        else if (_nailsAmount < 0)
-            _nailsAmount = 0;
-
-        if(Input.GetKeyDown(KeyCode.X) && _nailsAmount > 0)
-        {
-            _nailsBox.SetActive(false);
-            _nailsAmount = 0;
-            GameObject _instantiatedObj = Instantiate(_nailsBoxPrefab);
-            _instantiatedObj.transform.localPosition = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+            RepairUI.transform.position = _selectedObject.transform.position + new Vector3(0, -0.5f, 0);
         }
 
-        if (Input.GetKey(KeyCode.Mouse1) && _nailsAmount > 0)
+        if (Input.GetKey(KeyCode.Mouse1) && HasMaterials)
         {
             _timePassed += Time.deltaTime;
             _repairing = true;
 
-            if (_timePassed >= _repairTime)
+            if (_timePassed > RepairTime)
             {
-                _repairTime++;
-                AmountRepaired++;
-                _nailsAmount--;
                 _timePassed = 0f;
+                AmountRepaired++;
+                HasMaterials = false;
+
+                _selectedTile.Damageable.Heal(99);
             }
-            //TileRepaired(AmountRepaired);
         }
         else
         {
-            _repairTime = 2f;
-            AmountRepaired = 0;
+            _timePassed = 0f;
             _repairing = false;
+            AmountRepaired = 0;
         }
+
+        if (RepairUI != null)
+        {
+            RepairUI.SetActive(_repairing);
+
+            if (_progressBar)
+            {
+                var progress = Mathf.Clamp(_timePassed / RepairTime, 0, 1);
+                _progressBar.transform.localScale = new Vector3(progress, 1, 1);
+            }
+        }
+    }
+
+    TileGeneric SelectTile()
+    {
+        // Get tile at mouse position
+        var tile = _tileGrid.GetTile(_playerLocomotion.MousePos);
+
+        if (tile != null)
+        {
+            // Check distance
+            var distance = Vector3.Distance(_playerLocomotion.transform.position, tile.WorldCenter);
+            if (distance > RepairRadius)
+                tile = null;
+            else if (tile != null)
+                _selectedObject = tile.GetObjects().Where(x => x.CompareTag("Grid Cell")).FirstOrDefault();
+        }
+
+        if (tile == null)
+        {
+            // Get closest broken tile from player
+            var playerPos = _playerLocomotion.transform.position;
+
+            // Overlap sphere
+            var colliders = Physics.OverlapSphere(playerPos, RepairRadius);
+            float minDistance = float.MaxValue;
+            foreach (var collider in colliders)
+            {
+                // Get tile
+                var damageable = collider.GetComponent<TileDamageable>();
+                if (damageable != null && damageable.Health < damageable.MaxHealth)
+                {
+                    // Get distance
+                    var distance = Vector3.Distance(playerPos, collider.transform.position);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        tile = _tileGrid.GetTile(collider.transform.position);
+                        _selectedObject = collider.gameObject;
+                    }
+                }
+            }
+        }
+
+        return tile;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Chest"))
+        if (other.CompareTag("Nail Chest"))
         {
             //display hint "Press X to pick up"
-            _nearBarrel = true;
+            _nearChest = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Chest"))
-            _nearBarrel = false;
+        if (other.CompareTag("Nail Chest"))
+            _nearChest = false;
+    }
+
+    void OnDrawGizmos()
+    {
+        if (_selectedTile != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireCube(_selectedObject.transform.position, _selectedObject.transform.localScale);
+        }
     }
 
     private void OnGUI()

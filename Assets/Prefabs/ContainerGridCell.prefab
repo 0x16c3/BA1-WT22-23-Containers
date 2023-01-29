@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2876398434156936562}
   m_Layer: 2
   m_Name: ContainerGridCell
-  m_TagString: Untagged
+  m_TagString: Grid Cell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

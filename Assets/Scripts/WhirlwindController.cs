@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using GD.MinMaxSlider;
 
 public class WhirlwindController : MonoBehaviour, IEvent
 {
@@ -27,6 +28,15 @@ public class WhirlwindController : MonoBehaviour, IEvent
         get => _data;
         set => _data = value;
     }
+
+    [MinMaxSlider(0, 180)]
+    public Vector2Int _duration = new Vector2Int(45, 90);
+    public Vector2Int Duration
+    {
+        get => _duration;
+        set => _duration = value;
+    }
+
 
     // Start is called before the first frame update
     [System.Obsolete]

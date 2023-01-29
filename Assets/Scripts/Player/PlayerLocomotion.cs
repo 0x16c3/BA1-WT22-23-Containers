@@ -122,7 +122,7 @@ public class PlayerLocomotion : MonoBehaviour
         if (_inputVector != Vector3.zero)
         {
             _playerModel.rotation = Quaternion.RotateTowards(
-                _playerModel.rotation, Quaternion.LookRotation(_inputVector), 300 * Time.fixedDeltaTime);
+                _playerModel.rotation, Quaternion.LookRotation(_inputVector), 500 * Time.fixedDeltaTime);
         }
         
     }

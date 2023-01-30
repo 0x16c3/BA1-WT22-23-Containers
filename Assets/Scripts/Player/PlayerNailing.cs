@@ -7,6 +7,7 @@ public class PlayerNailing : MonoBehaviour
     public float RepairRadius = 1f;
     public float RepairTime = 2f;
     public GameObject RepairUI;
+    public GameObject NailsBox;
 
     [HideInInspector]
     public bool HasMaterials = false;
@@ -25,8 +26,16 @@ public class PlayerNailing : MonoBehaviour
     GameObject _selectedObject;
     TileGeneric _selectedTile;
 
+    Animator _boxAnimator;
+    Animator _playerAnimator;
+    Transform _playerModel;
+
     private void Start()
     {
+        _playerModel = transform.Find("Jeffrey");
+        _playerAnimator = _playerModel.GetComponent<Animator>();
+        _boxAnimator = NailsBox.GetComponent<Animator>();
+
         _playerLocomotion = gameObject.GetComponent<PlayerLocomotion>();
         if (_playerLocomotion == null)
             Debug.LogWarning("No PlayerLocomotion component attached");
@@ -44,8 +53,10 @@ public class PlayerNailing : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && NearChest)
+        if (Input.GetKeyDown(KeyCode.E) && NearChest)
         {
+            _playerAnimator.SetBool("IsGrabbing", true);
+            _boxAnimator.SetBool("BoxOpening", true);
             HasMaterials = true;
             Debug.Log("HasMaterials: " + HasMaterials);
         }
@@ -59,7 +70,7 @@ public class PlayerNailing : MonoBehaviour
             RepairUI.transform.position = _selectedObject.transform.position + new Vector3(0, -0.5f, 0);
         }
 
-        if (Input.GetKey(KeyCode.Mouse1) && HasMaterials)
+        if (Input.GetKey(KeyCode.Mouse1) && HasMaterials && _selectedTile != null)
         {
             _timePassed += Time.deltaTime;
             _repairing = true;

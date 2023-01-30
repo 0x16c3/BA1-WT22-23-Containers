@@ -5,11 +5,11 @@ using GD.MinMaxSlider;
 
 public class TileDamageable : MonoBehaviour, IDamageable
 {
-    int _health = 12;
+    public int SetHealth = 12;
     public int Health
     {
-        get => _health;
-        private set => _health = value;
+        get => SetHealth;
+        private set => SetHealth = value;
     }
 
     [Header("Fire Settings")]

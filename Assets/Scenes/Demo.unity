@@ -16390,8 +16390,9 @@ MonoBehaviour:
   RepairTime: 2
   RepairUI: {fileID: 1356661903}
   NailsBox: {fileID: 988692535}
+  Hammer: {fileID: 2076957629}
+  Planks: {fileID: 1603621924}
   MaterialAmount: 3
-  HasMaterials: 0
   AmountRepaired: 0
 --- !u!114 &346753765
 MonoBehaviour:
@@ -50244,6 +50245,11 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 0
+--- !u!1 &1603621924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5501597978405192348, guid: a2d47e8941921ba4fa9257488b850be7, type: 3}
+  m_PrefabInstance: {fileID: 2136784240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1603743083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7955880056685975294, guid: 8186f8c5405f30b40906ffdf5e6d43d4, type: 3}
@@ -59837,6 +59843,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df987800076294db8943b7504e52e6ab, type: 3}
+--- !u!1 &2076957629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2293363788426612146, guid: a2d47e8941921ba4fa9257488b850be7, type: 3}
+  m_PrefabInstance: {fileID: 2136784240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2078922603 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2678523051848288514, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}

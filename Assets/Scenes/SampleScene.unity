@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -270,16 +272,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66cfb113a10dc84e873a11bb29f7a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IntervalMin: 1
-  IntervalMax: 3
-  MovementRadius: 6
-  MinMovementRadius: 3
-  Suicidal: 1
+  ShakeTime: 3
+  InactiveTime: 10
   MovementSpeed: 9
   RotationSpeed: 1
   RotationDecelerationMultiplier: 10
   Acceleration: 200
   MaxAccelerationForce: 150
+  RandomWander: 1
 --- !u!1001 &27405274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,6 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -1509,6 +1511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -2231,6 +2235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -2465,6 +2471,7 @@ MonoBehaviour:
   - {fileID: 6865937120862537175}
   - {fileID: 3703427965745992898}
   - {fileID: 7514065488167962869}
+  Reach: 1
 --- !u!114 &656142723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2489,9 +2496,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0603e5b21f81dcb41930dba066cce47d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialsUI: {fileID: 0}
-  NailsPerOnce: 0
-  _nailsBoxPrefab: {fileID: 4600379531986952503, guid: f8e29d741bd324542800ee8de2912780, type: 3}
+  RepairRadius: 1
+  RepairTime: 2
+  RepairUI: {fileID: 0}
+  NailsBox: {fileID: 0}
+  MaterialAmount: 0
+  HasMaterials: 0
   AmountRepaired: 0
 --- !u!114 &656142725
 MonoBehaviour:
@@ -2524,14 +2534,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d051820d82e7c464fb9043c92ec32b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TpLen: 0.1
   MovementSpeed: 9
+  SlowSpeed: 9
   AirStrafeSpeed: 3
   Acceleration: 200
   MaxAccelerationForce: 150
   InitialSpeed: 0
   LockCursor: 1
   IsInAir: 0
-  IsRunning: 0
+  OnRamp: 0
+  HasSlowEffect: 0
 --- !u!54 &656142727
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2697,14 +2710,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d051820d82e7c464fb9043c92ec32b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TpLen: 0.1
   MovementSpeed: 9
+  SlowSpeed: 9
   AirStrafeSpeed: 3
   Acceleration: 200
   MaxAccelerationForce: 150
   InitialSpeed: 0
   LockCursor: 1
   IsInAir: 0
-  IsRunning: 0
+  OnRamp: 0
+  HasSlowEffect: 0
 --- !u!114 &694396273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2736,9 +2752,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0603e5b21f81dcb41930dba066cce47d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialsUI: {fileID: 0}
-  NailsPerOnce: 0
-  _nailsBoxPrefab: {fileID: 4600379531986952503, guid: f8e29d741bd324542800ee8de2912780, type: 3}
+  RepairRadius: 1
+  RepairTime: 2
+  RepairUI: {fileID: 0}
+  NailsBox: {fileID: 0}
+  MaterialAmount: 0
+  HasMaterials: 0
   AmountRepaired: 0
 --- !u!114 &694396275
 MonoBehaviour:
@@ -2767,6 +2786,7 @@ MonoBehaviour:
   BucketTapBucket: {fileID: 0}
   BucketInPlayer: {fileID: 0}
   AnimationObjects: []
+  Reach: 1
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3007,6 +3027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -3458,6 +3480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -3718,6 +3742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -4504,6 +4530,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -5351,6 +5379,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -5974,6 +6004,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -6142,6 +6174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5

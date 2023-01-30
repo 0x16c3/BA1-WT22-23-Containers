@@ -21,16 +21,30 @@ public class LightningStrike
     public bool Struck = false;
     public bool PlayedLightning = false;
 
-    public LightningStrike(TileGrid tileGrid, Vector2Int gridPos, Transform transform, GameObject lightningVFX, GameObject lightningWarningVFX, int strikeDamage = 1, float timeBetweenWarningAndLightning = 1f)
+    AudioSource _audioSource;
+    bool _isSecondary = false;
+
+    public LightningStrike(
+        TileGrid tileGrid,
+        Vector2Int gridPos,
+        Transform transform,
+        GameObject lightningVFX,
+        GameObject lightningWarningVFX,
+        AudioSource audioSource,
+        int strikeDamage = 1,
+        float timeBetweenWarningAndLightning = 1f,
+        bool isSecondary = false)
     {
         _tileGrid = tileGrid;
         _transform = transform;
         _lightningVFX = lightningVFX;
         _lightningWarningVFX = lightningWarningVFX;
+        _audioSource = audioSource;
         _damage = strikeDamage;
         _timeBetweenWarningAndLightning = timeBetweenWarningAndLightning;
+        _isSecondary = isSecondary;
 
-        StrikeTime = Time.time + Random.Range(0.1f, 0.5f);
+        StrikeTime = Time.time + (isSecondary ? Random.Range(0f, 0.5f) : 0f);
         GridPos = gridPos;
     }
 
@@ -54,6 +68,10 @@ public class LightningStrike
             // Instantiate lightning warning
             var warning = GameObject.Instantiate(_lightningWarningVFX, tile.WorldCenter, Quaternion.identity, _transform);
             PlayedWarning = true;
+
+            // Play lightning sound after _timeBetweenWarningAndLightning - buildup so it plays at the same time as the lightning
+            if (!_isSecondary)
+                _audioSource.PlayDelayed(_timeBetweenWarningAndLightning - 0.54f);
         }
         else if (Time.time >= StrikeTime + _timeBetweenWarningAndLightning)
             StrikeTile();
@@ -139,6 +157,10 @@ public class LightningObject : MonoBehaviour
     TileGrid _tileGrid;
     TileGeneric _centerTile;
 
+    bool _playedSFX = false;
+
+    AudioSource _audioSource;
+
     float _strikeTime = -1f;
     bool _struck = false;
 
@@ -149,6 +171,10 @@ public class LightningObject : MonoBehaviour
         _tileGrid = TileGrid.FindTileGrid();
         _centerTile = _tileGrid.GetTile(transform.position);
         _strikeTime = Time.time;
+
+        // Select random audio source
+        _audioSource = GetComponentsInChildren<AudioSource>().OrderBy(a => Random.value).First();
+        _audioSource.enabled = true;
     }
 
     void Update()
@@ -181,9 +207,10 @@ public class LightningObject : MonoBehaviour
             Destroy(gameObject);
     }
 
-    void AddStrike(Vector2Int gridPos)
+    void AddStrike(Vector2Int gridPos, bool isSecondary = false)
     {
-        var strike = new LightningStrike(_tileGrid, gridPos, transform, LightningVFX, LightningWarningVFX, StrikeDamage, TimeBetweenWarningAndLightning);
+        // i do not even care anymore
+        var strike = new LightningStrike(_tileGrid, gridPos, transform, LightningVFX, LightningWarningVFX, _audioSource, StrikeDamage, TimeBetweenWarningAndLightning, isSecondary);
         _strikes.Add(strike);
     }
 
@@ -201,27 +228,23 @@ public class LightningObject : MonoBehaviour
 
         // If no neighbors, strike center tile
         if (neighbors.Count == 0)
-        {
-            AddStrike(_centerTile.GridPosition);
             return;
-        }
 
         var randomNeighbor = neighbors[Random.Range(0, neighbors.Count - 1)];
-        AddStrike(randomNeighbor.GridPosition);
+        AddStrike(randomNeighbor.GridPosition, true);
     }
 
     void BigLightning()
     {
+        AddStrike(_centerTile.GridPosition);
+
         // Get all neighbors
         var neighbors = _centerTile.GetNeighbors(false);
         neighbors = SanitizeNeighbors(neighbors);
 
         // If no neighbors, strike center tile
         if (neighbors.Count <= 0)
-        {
-            AddStrike(_centerTile.GridPosition);
             return;
-        }
 
         // Strike 4 random neighbors
         for (int i = 0; i < 4; i++)
@@ -230,7 +253,7 @@ public class LightningObject : MonoBehaviour
                 break;
 
             var randomNeighbor = neighbors[Random.Range(0, neighbors.Count - 1)];
-            AddStrike(randomNeighbor.GridPosition);
+            AddStrike(randomNeighbor.GridPosition, true);
 
             neighbors.Remove(randomNeighbor);
         }

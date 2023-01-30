@@ -88,7 +88,7 @@ public class PlayerBucket : MonoBehaviour
             _animationHappening = false;
         }
 
-        if (HoldingBucket && WithinBucket && Input.GetKeyDown(KeyCode.Mouse0)) // drop bucket when in range of tap
+        if (!Filled && HoldingBucket && Input.GetKeyDown(KeyCode.Mouse0)) // drop bucket when in range of tap
         {
             _playerAnimator.SetBool("IsGrabbing", true);
             HoldingBucket = false;

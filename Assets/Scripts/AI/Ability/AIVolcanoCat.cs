@@ -6,8 +6,8 @@ using UnityEditor;
 
 public class AIVolcanoCat : MonoBehaviour, ICustomBehavior
 {
-    [Range(0f, 15f)]
-    public float FireRate = 3f;
+    
+    [Tooltip ("Lava per minute")]public float FireRate = 3f;
     public int Damage = 1;
 
     public bool WanderWhileUsingAbility => true;
@@ -41,8 +41,8 @@ public class AIVolcanoCat : MonoBehaviour, ICustomBehavior
         if (_collider == null)
             _collider = GetComponent<Collider>();
 
-        // Calculate range FireRate is objects per second
-        var rate = 1f / FireRate;
+        // Calculate range FireRate is objects per MINUTE
+        var rate = (1f / FireRate) * 60f;
 
         if (Time.time > _nextFire)
         {

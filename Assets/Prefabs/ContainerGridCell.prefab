@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SetHealth: 12
-  FireDuration: {x: 5, y: 10}
+  FireDuration: {x: 1, y: 10}
   FireTickInterval: 1
   FireDamagePerTick: 1
   FirePrefab: {fileID: 3130457752228665842, guid: 3c58ef4543d124473b71d4692c6bbc47, type: 3}

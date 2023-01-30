@@ -16,10 +16,13 @@ public class EventData
 public class EventController : MonoBehaviour
 {
     [Header("General Settings")]
+    public float RoundTime = 420;
+    public static float RoundTimeStatic = 300;
+    public static float EventTimeStatic;
     public int MaxEvents = 3;
     public int GracePeriod = 30;
 
-    [MinMaxSlider(0f, 120f)]
+    [MinMaxSlider(0f, 420f)]
     public Vector2 TimeBetweenEvents = new Vector2(30f, 60f);
 
     public List<GameObject> EventPrefabs = new List<GameObject>();
@@ -33,6 +36,11 @@ public class EventController : MonoBehaviour
     List<EventData> _eventList = new List<EventData>();
     List<float> _eventTimes = new List<float>();
 
+    private void Start()
+    {
+        RoundTimeStatic = RoundTime;
+        Debug.Log("event times are" + _eventTimes[0]);
+    }
     void OnEnable()
     {
         _enabledAt = Time.time + 0.1f; // Add a small delay to make sure everything is initialized
@@ -76,6 +84,11 @@ public class EventController : MonoBehaviour
 
     void Update()
     {
+        if (_eventTimes.Count > 0)
+        {
+            EventTimeStatic = _eventTimes[_eventTimes.Count - 1];
+        }
+
         if (_eventTimes.Count > 0 && Time.time >= _eventTimes[0])
         {
             // Find event that starts at this time

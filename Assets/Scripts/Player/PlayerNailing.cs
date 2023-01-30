@@ -65,7 +65,7 @@ public class PlayerNailing : MonoBehaviour
             HasMaterials = MaterialAmount;
             Debug.Log("HasMaterials: " + HasMaterials);
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && NearChest && HasMaterials > 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && HasMaterials > 0)
         {
             _playerAnimator.SetBool("IsGrabbing", true);
             _boxAnimator.SetBool("BoxOpening", true);

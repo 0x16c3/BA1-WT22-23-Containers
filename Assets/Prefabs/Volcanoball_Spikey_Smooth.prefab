@@ -380,7 +380,7 @@ GameObject:
   - component: {fileID: 8512021725763948170}
   m_Layer: 0
   m_Name: Volcanoball_Spikey_Smooth
-  m_TagString: Untagged
+  m_TagString: VolcanoBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

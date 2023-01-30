@@ -17,7 +17,7 @@ public class PlayerNailing : MonoBehaviour
     PlayerLocomotion _playerLocomotion;
     TileGrid _tileGrid;
 
-    bool _nearChest = false;
+    public static bool NearChest = false;
     bool _repairing = false;
     float _timePassed = 0;
 
@@ -44,7 +44,7 @@ public class PlayerNailing : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && _nearChest)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && NearChest)
         {
             HasMaterials = true;
             Debug.Log("HasMaterials: " + HasMaterials);
@@ -141,14 +141,14 @@ public class PlayerNailing : MonoBehaviour
         if (other.CompareTag("Nail Chest"))
         {
             //display hint "Press X to pick up"
-            _nearChest = true;
+            NearChest = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Nail Chest"))
-            _nearChest = false;
+            NearChest = false;
     }
 
     void OnDrawGizmos()

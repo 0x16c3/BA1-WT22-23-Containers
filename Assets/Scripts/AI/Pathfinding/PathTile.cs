@@ -94,6 +94,12 @@ public class PathTile : TileGeneric
 
             for (int i = 0; i < objects.Count; i++)
             {
+                if (objects[i] == _gameObject)
+                    continue;
+
+                if (objects[i].CompareTag("VolcanoBall"))
+                    continue;
+
                 // Ignore if ground layer
                 if (objects[i].layer == 3)
                     continue;
@@ -105,10 +111,6 @@ public class PathTile : TileGeneric
                 var damageable = objects[i].GetComponent<TileDamageable>();
                 if (damageable != null && (damageable.OnFire || damageable.Health <= 0))
                     return false;
-
-                // Ignore if current tile is the object
-                if (objects[i] == _gameObject)
-                    continue;
 
                 // Ignore if current tile is the object
                 if (objects[i].transform.position == WorldCenter)

@@ -12,6 +12,10 @@ TagManager:
   - Ground Plane
   - Grid Cell
   - Chest
+  - Clip Brush
+  - AudioAmbiance
+  - AudioMusic
+  - VolcanoBall
   layers:
   - Default
   - TransparentFX

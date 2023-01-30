@@ -15088,7 +15088,7 @@ MonoBehaviour:
   WanderDuration: {x: 30, y: 90}
   AbilityDuration: {x: 10, y: 20}
   KnockOutTime: 15
-  ForceState: 3
+  ForceState: 2
 --- !u!114 &343240926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18195,7 +18195,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642632859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 792044e597d90f34ba17a82e2b04ef5e, type: 3}
   m_Name: 
@@ -18691,6 +18691,7 @@ GameObject:
   - component: {fileID: 721133642}
   - component: {fileID: 721133641}
   - component: {fileID: 721133640}
+  - component: {fileID: 721133643}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -18799,6 +18800,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &721133643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721133638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b462518885b3442ab0868fb80fc8a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShakeMagnitude: 3
+  SailingFrequency: 4
 --- !u!1001 &723856810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26221,6 +26236,10 @@ PrefabInstance:
     - target: {fileID: 4600379531986952503, guid: f8e29d741bd324542800ee8de2912780, type: 3}
       propertyPath: m_Name
       value: NailsBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 4600379531986952503, guid: f8e29d741bd324542800ee8de2912780, type: 3}
+      propertyPath: m_TagString
+      value: Nail Chest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8e29d741bd324542800ee8de2912780, type: 3}

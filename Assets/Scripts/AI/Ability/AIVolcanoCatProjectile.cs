@@ -135,7 +135,7 @@ public class AIVolcanoCatProjectile : MonoBehaviour
             var tile = _tileGrid.GetTile(transform.position);
 
             // If tile is not null, set on fire
-            if (tile != null && tile.GridPosition == _tile.GridPosition && tile.Damageable != null && Random.Range(0f, 1f) > VolcanoCat.FireChance)
+            if (tile != null && tile.GridPosition == _tile.GridPosition && tile.Damageable != null && Random.Range(0f, 1f) <= VolcanoCat.FireChance)
             {
                 tile.Damageable.SetFire(true);
                 Destroy(gameObject);

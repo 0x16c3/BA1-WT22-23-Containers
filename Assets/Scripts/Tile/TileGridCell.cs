@@ -25,6 +25,9 @@ public class TileGridCell : MonoBehaviour
         _collider = GetComponent<Collider>();
 
         Tilemap = TileGrid.FindTileGrid();
+        if (!Tilemap.Initialized)
+            return;
+
         Tile = Tilemap.GetTile(transform.position);
 
         // Set current size

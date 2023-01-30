@@ -13,10 +13,17 @@ public class TileGrid : MonoBehaviour
     public Vector3 CellToWorld(Vector2Int gridPosition) => CellToWorld(new Vector3Int(gridPosition.x, gridPosition.y, 0));
     public Vector3 CellToWorld(Vector3Int gridPosition) => Tilemap.CellToWorld(gridPosition);
 
+    public bool Initialized => _isInitialized;
+
+    bool _isInitialized = false;
+
     public BoundsInt cellBounds
     {
         get
         {
+            if (!_isInitialized)
+                throw new System.Exception("TilemapGeneric: cellBounds: TilemapGeneric is not initialized");
+
             if (Tilemap == null)
                 throw new System.Exception("TilemapGeneric: cellBounds: Tilemap is null");
 
@@ -42,6 +49,8 @@ public class TileGrid : MonoBehaviour
         {
             var tile = GetTile(containerGridCell.transform.position, false);
         }
+
+        _isInitialized = true;
     }
 
     public static explicit operator TileGrid(Tilemap v)
@@ -131,7 +140,7 @@ public class TileGrid : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        if (Tilemap == null || !Tilemap.gameObject.activeInHierarchy)
+        if (Tilemap == null || !Initialized || !Tilemap.gameObject.activeInHierarchy)
             return;
 
         Gizmos.color = Color.red;

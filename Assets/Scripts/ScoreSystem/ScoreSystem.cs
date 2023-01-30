@@ -5,20 +5,56 @@ public class ScoreSystem : MonoBehaviour
 {
     public TextAsset jsonDatabase;
 
+    public int TileBreakPoints = 2;
+    public int TileRepairPoints = 1;
+
     ScoreTable _scoreTable;
     int _totalScore = 0;
 
-    void Start()
+    [HideInInspector]
+    public int ShipCondition => _shipCondition;
+    public int MaxShipCondition => _maxShipCondition;
+
+    int _shipCondition = -1;
+    int _maxShipCondition = -1;
+
+    bool _initialized = false;
+
+    public void OnTileBreak() => _shipCondition = Mathf.Clamp(ShipCondition - TileBreakPoints, 0, MaxShipCondition);
+    public void OnTileRepair() => _shipCondition = Mathf.Clamp(ShipCondition + TileRepairPoints, 0, MaxShipCondition);
+
+    void Initialize()
     {
+        // Get all the tiles
+        var grid = TileGrid.FindTileGrid();
+        if (!grid.Initialized)
+            return;
+
+        _shipCondition = grid.cellBounds.size.x * grid.cellBounds.size.y;
+        _maxShipCondition = ShipCondition;
+
         // Load the JSON file
         _scoreTable = JsonUtility.FromJson<ScoreTable>(jsonDatabase.text);
+        _initialized = true;
     }
 
     void Update()
     {
+        if (!_initialized)
+        {
+            Initialize();
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CalculateScore();
+            Debug.Log($"Ship Condition: {ShipCondition} / {MaxShipCondition}");
+        }
+
+        if (ShipCondition <= 0)
+        {
+            Debug.Log("Game Over");
         }
     }
 

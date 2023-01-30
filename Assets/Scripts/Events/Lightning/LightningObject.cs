@@ -157,8 +157,6 @@ public class LightningObject : MonoBehaviour
     TileGrid _tileGrid;
     TileGeneric _centerTile;
 
-    bool _playedSFX = false;
-
     AudioSource _audioSource;
 
     float _strikeTime = -1f;

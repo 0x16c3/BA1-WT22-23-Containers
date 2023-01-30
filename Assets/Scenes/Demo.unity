@@ -16407,6 +16407,7 @@ GameObject:
   - component: {fileID: 346753767}
   - component: {fileID: 346753766}
   - component: {fileID: 346753765}
+  - component: {fileID: 346753770}
   - component: {fileID: 346753764}
   - component: {fileID: 346753763}
   - component: {fileID: 346753762}
@@ -16557,6 +16558,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &346753770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346753761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05550534b15ae8947a0e18421d1fe47a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &347386416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33323,6 +33336,53 @@ MonoBehaviour:
     - {x: 0.7268032, y: -0.68604356, z: -0.03318648}
     - {x: 0.9945296, y: -0.099044085, z: -0.03318417}
     - {x: 0.8225821, y: -0.020620605, z: 0.56827235}
+--- !u!1 &1099246754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1099246756}
+  - component: {fileID: 1099246755}
+  m_Layer: 0
+  m_Name: ScoreSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1099246755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099246754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57366683e45a2354e8ed335c85e194d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonDatabase: {fileID: 4900000, guid: 2930495126b7bdc49b35e3f28201c7cb, type: 3}
+  TileBreakPoints: 2
+  TileRepairPoints: 1
+--- !u!4 &1099246756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099246754}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 42.146385, y: -40.282364, z: 82.538086}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1099283403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2678523051848288514, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}

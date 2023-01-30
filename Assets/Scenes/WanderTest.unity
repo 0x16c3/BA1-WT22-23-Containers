@@ -1075,6 +1075,51 @@ MonoBehaviour:
   m_InstancedGameObject: {fileID: 0}
   m_Flags: 1
   m_ColliderType: 0
+--- !u!1 &87157186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87157188}
+  - component: {fileID: 87157187}
+  m_Layer: 0
+  m_Name: ScoreSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &87157187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87157186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57366683e45a2354e8ed335c85e194d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jsonDatabase: {fileID: 4900000, guid: 2930495126b7bdc49b35e3f28201c7cb, type: 3}
+--- !u!4 &87157188
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87157186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.596434, y: -18.942709, z: 97.952286}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &92623513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2678523051848288514, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
@@ -5069,6 +5114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -5610,6 +5657,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -11739,6 +11788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -12288,6 +12339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -12863,6 +12916,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -13134,6 +13189,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -14167,6 +14224,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -14927,6 +14986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -15749,6 +15810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -21955,6 +22018,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -22171,6 +22236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5

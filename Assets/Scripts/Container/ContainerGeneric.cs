@@ -7,12 +7,15 @@ using UnityEditor;
 
 public class ContainerGeneric : MonoBehaviour, IDamageable
 {
-    int _health = 6;
+    int _health = 12;
     public int Health
     {
         get => _health;
         private set => _health = value;
     }
+
+    public ContainerType Type = ContainerType.Material;
+    public ContainerRarity Rarity = ContainerRarity.Common;
 
     [Header("Grid Snap - Air Movement Settings")]
 
@@ -52,6 +55,7 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
     float _lastRenderedDecal = 0f;
 
     int _maxHealth = -1;
+    public int MaxHealth => _maxHealth;
 
     public bool IsGrabbed
     {

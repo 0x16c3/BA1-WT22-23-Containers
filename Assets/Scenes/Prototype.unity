@@ -5205,6 +5205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -5820,6 +5822,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 1000
   DecelerationMultiplier: 1.5
   MaxPlayerVelocity: 5
@@ -11876,6 +11880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -12425,6 +12431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -13000,6 +13008,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -13271,6 +13281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -13626,7 +13638,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143315628}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -14433,6 +14445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -15193,6 +15207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -15283,7 +15299,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283549903}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -16112,6 +16128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -22393,6 +22411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -22609,6 +22629,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d4331cace990345afbe6c0bc4b98e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
+  Rarity: 0
   Acceleration: 150
   DecelerationMultiplier: 3.5
   MaxPlayerVelocity: 5
@@ -23591,7 +23613,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9158743094703255929}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -24769,7 +24791,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329111103956029403}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

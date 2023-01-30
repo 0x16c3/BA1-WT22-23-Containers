@@ -6,7 +6,7 @@ using GD.MinMaxSlider;
 
 public class WhirlwindController : MonoBehaviour, IEvent
 {
-    
+
     [Range(0, 120)]
     public float EventDuration = 45;
     public int EventEffectDuration = 20;

@@ -13,7 +13,9 @@ public class PlayerRamp : MonoBehaviour
 
     float Padding = 0.1f;
 
-    Vector3 _origin, _destination, _offset, _delta, _target, _bottom, _top;
+    Vector3 _origin, _destination, _offset, _delta, _target, _bottom, _top, _position;
+
+    bool _isOnSecondFloor = false;
 
     void Awake()
     {
@@ -36,36 +38,56 @@ public class PlayerRamp : MonoBehaviour
 
     void FixedUpdate()
     {
+        _position = _playerCollider.ClosestPoint(_playerRb.position + Vector3.down * _playerCollider.bounds.extents.y);
+        _isOnSecondFloor = _position.y >= _top.y - Padding && !_locomotion.OnRamp;
+
+        // If on the second floor and close to the top edge line, immediately stick to the ramp
+        if (_isOnSecondFloor && _position.x >= _top.x)
+        {
+            _locomotion.OnRamp = true;
+
+            _destination = _collider.ClosestPoint(_position);
+            _origin = _playerCollider.ClosestPoint(_destination);
+
+            _delta = _destination - _origin;
+            _offset = _origin - _playerRb.position;
+
+            if (_destination.x <= _top.x && _locomotion.InputVector.x < 0)
+            {
+                _offset += Vector3.right * 0.1f;
+            }
+
+            if (_origin.x > _bottom.x - Padding && _origin.y <= _bottom.y + Padding)
+            {
+                _playerRb.MovePosition(_playerRb.position + _delta);
+            }
+            return;
+        }
+
         if (!_locomotion.OnRamp)
             return;
 
-        Vector3 position = _playerRb.position;
-
-        // If on the bottom and the input vector is going right, return
-        //if (position.y <= _bottom.y && _locomotion.InputVector.x > 0)
-        //    return;
-
         // If player position is left of the ramp top, return
-        if (position.x < _top.x)
+        if (_position.x < _top.x)
             return;
 
         // Add upwards destination if the player is trying to move left
         // And check the player position so it doesnt keep bobbing if standing
         if (_locomotion.InputVector.x == 0 && _origin != Vector3.zero)
         {
-            position = _origin;
+            _position = _origin;
         }
         else if (_locomotion.InputVector.x < 0)
         {
-            position.y += 0.5f;
-            position.x -= Padding;
+            _position.y += 0.5f;
+            _position.x -= Padding;
         }
-        else if (_locomotion.InputVector.x > 0 && position.y < _top.y)
+        else if (_locomotion.InputVector.x > 0 && _position.y < _top.y)
         {
-            position.y += 0.4f;
+            _position.y += 0.2f;
         }
 
-        _destination = _collider.ClosestPoint(position);
+        _destination = _collider.ClosestPoint(_position);
         _origin = _playerCollider.ClosestPoint(_destination);
 
         _delta = _destination - _origin;

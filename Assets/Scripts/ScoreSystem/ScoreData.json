@@ -1,0 +1,39 @@
+{
+    "scoreValues": {
+        "Beasts": {
+            "VolcanoCat": 20000,
+            "GardeningGoat": 15000,
+            "ScorpionShredder": 17500
+        },
+        "Containers": [
+            {
+                "type": "Material",
+                "Common": 100,
+                "Rare": 500,
+                "Epic": 1500,
+                "Legendary": 9000
+            },
+            {
+                "type": "Food",
+                "Common": 150,
+                "Rare": 600,
+                "Epic": 1750,
+                "Legendary": 10000
+            },
+            {
+                "type": "Treasure",
+                "Common": 200,
+                "Rare": 700,
+                "Epic": 2000,
+                "Legendary": 11000
+            },
+            {
+                "type": "Clothing",
+                "Common": 250,
+                "Rare": 800,
+                "Epic": 2250,
+                "Legendary": 12000
+            }
+        ]
+    }
+}

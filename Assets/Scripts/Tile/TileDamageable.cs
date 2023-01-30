@@ -5,12 +5,11 @@ using GD.MinMaxSlider;
 
 public class TileDamageable : MonoBehaviour, IDamageable
 {
-    [SerializeField]
-    int _health = 12;
+    public int SetHealth = 12;
     public int Health
     {
-        get => _health;
-        private set => _health = value;
+        get => SetHealth;
+        private set => SetHealth = value;
     }
 
     [Header("Fire Settings")]
@@ -181,12 +180,23 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
     public void SetFire(bool onFire)
     {
+        // If on the left 2 rows, return
+        if (_tile.GridPosition.x < _tile.TileGrid.cellBounds.xMin + 2)
+            return;
+
         _onFire = onFire;
         _localFire.SetActive(_onFire);
         _lastFireTick = Time.time;
     }
 
-    public void Damage(int damage) => Health = Mathf.Clamp(Health - damage, 0, _maxHealth);
+    public void Damage(int damage)
+    {
+        // If on the left 2 rows, return
+        if (_tile.GridPosition.x < _tile.TileGrid.cellBounds.xMin + 2)
+            return;
+
+        Health = Mathf.Clamp(Health - damage, 0, _maxHealth);
+    }
     public void Heal(int heal) => Health = Mathf.Clamp(Health + heal, 0, _maxHealth);
 
     void Kill()

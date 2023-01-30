@@ -26,18 +26,22 @@ public class PlayerRamp : MonoBehaviour
         _playerRb = _locomotion.GetComponent<Rigidbody>();
         _playerCollider = _locomotion.GetComponent<Collider>();
 
-        // Get the highest point of the ramp
-        _top = _collider.ClosestPoint(transform.position + Vector3.up * 1000f);
+        // Get the highest-right point of the ramp
+        _top = _collider.ClosestPoint(_collider.bounds.min + Vector3.forward * _collider.bounds.size.z + Vector3.up * 1000f);
         _top.y -= 0.05f;
 
         // Get the lowest point of the ramp that touches the ground plane
         var groundCollider = GameObject.FindGameObjectWithTag("Ground Plane").GetComponent<Collider>();
-        _bottom = groundCollider.ClosestPoint(_collider.bounds.max + Vector3.up * 1000f);
+        _bottom = groundCollider.ClosestPoint(_collider.bounds.max - Vector3.forward * _collider.bounds.size.z + Vector3.up * 1000f);
         _bottom.y += 0.05f;
     }
 
     void FixedUpdate()
     {
+        // If player z position is not between _bottom and _top, return
+        if (_playerRb.position.z < _bottom.z || _playerRb.position.z > _top.z)
+            return;
+
         _position = _playerCollider.ClosestPoint(_playerRb.position + Vector3.down * _playerCollider.bounds.extents.y);
         _isOnSecondFloor = _position.y >= _top.y - Padding && !_locomotion.OnRamp;
 

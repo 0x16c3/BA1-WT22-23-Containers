@@ -7,9 +7,12 @@ public class PlayerNailing : MonoBehaviour
     public float RepairRadius = 1f;
     public float RepairTime = 2f;
     public GameObject RepairUI;
-
+    public GameObject NailsBox;
+    public GameObject Hammer;
+    public GameObject Planks;
+    public int MaterialAmount;
     [HideInInspector]
-    public bool HasMaterials = false;
+    public static int HasMaterials;
 
     [HideInInspector]
     public int AmountRepaired = 0;
@@ -25,8 +28,19 @@ public class PlayerNailing : MonoBehaviour
     GameObject _selectedObject;
     TileGeneric _selectedTile;
 
+    Animator _boxAnimator;
+    Animator _playerAnimator;
+    Transform _playerModel;
+
     private void Start()
     {
+        Hammer.SetActive(false);
+        Planks.SetActive(false);
+
+        _playerModel = transform.Find("Jeffrey");
+        _playerAnimator = _playerModel.GetComponent<Animator>();
+        _boxAnimator = NailsBox.GetComponent<Animator>();
+
         _playerLocomotion = gameObject.GetComponent<PlayerLocomotion>();
         if (_playerLocomotion == null)
             Debug.LogWarning("No PlayerLocomotion component attached");
@@ -44,13 +58,34 @@ public class PlayerNailing : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && NearChest)
+        if (Input.GetKeyDown(KeyCode.E) && NearChest)
         {
-            HasMaterials = true;
+            _playerAnimator.SetBool("IsGrabbing", true);
+            _boxAnimator.SetBool("BoxOpening", true);
+            HasMaterials = MaterialAmount;
+            Debug.Log("HasMaterials: " + HasMaterials);
+        }
+        if (Input.GetKeyDown(KeyCode.Mouse0) && HasMaterials > 0)
+        {
+            _playerAnimator.SetBool("IsGrabbing", true);
+            _boxAnimator.SetBool("BoxOpening", true);
+            HasMaterials = 0;
             Debug.Log("HasMaterials: " + HasMaterials);
         }
 
-        _playerLocomotion.HasSlowEffect = HasMaterials;
+        if (HasMaterials > 0)
+        {
+            Planks.SetActive(true);
+            Hammer.SetActive(true);
+            _playerLocomotion.HasSlowEffect = true;
+        }
+        else
+        {
+            Planks.SetActive(false);
+            Hammer.SetActive(false);
+            _playerLocomotion.HasSlowEffect = false; 
+        }
+
         _selectedTile = SelectTile();
 
         // Set UI position above selected tile
@@ -59,7 +94,7 @@ public class PlayerNailing : MonoBehaviour
             RepairUI.transform.position = _selectedObject.transform.position + new Vector3(0, -0.5f, 0);
         }
 
-        if (Input.GetKey(KeyCode.Mouse1) && HasMaterials)
+        if (Input.GetKey(KeyCode.Mouse1) && HasMaterials > 0 && _selectedTile != null)
         {
             _timePassed += Time.deltaTime;
             _repairing = true;
@@ -68,7 +103,7 @@ public class PlayerNailing : MonoBehaviour
             {
                 _timePassed = 0f;
                 AmountRepaired++;
-                HasMaterials = false;
+                HasMaterials--;
 
                 _selectedTile.Damageable.Heal(99);
             }

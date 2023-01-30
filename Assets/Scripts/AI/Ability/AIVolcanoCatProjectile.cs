@@ -125,9 +125,12 @@ public class AIVolcanoCatProjectile : MonoBehaviour
         _collisions.AddRange(collision.contacts);
 
         // Return if collided with trigger
-        if (collision.collider.isTrigger || collision.gameObject == VolcanoCat.gameObject)
+        if (collision.collider.isTrigger)
             return;
-
+        if (collision.gameObject == VolcanoCat.gameObject || VolcanoCat == null || VolcanoCat.gameObject == null)
+        {
+            Destroy(gameObject);
+        }
         // Check if hit a clip brush
         if (collision.gameObject.layer == LayerMask.NameToLayer("ClipBrush"))
         {

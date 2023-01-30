@@ -7,20 +7,28 @@ public class MainMenuController : MonoBehaviour
 {
     // The name of the scene that we want to switch to
     public string GameScene;
-    public GameObject optionsMenu;
-    public GameObject mainMenu;
+    public GameObject OptionsMenu;
+    public GameObject MainMenu;
+    public GameObject Opener;
 
     private void Start()
     {
-        optionsMenu.SetActive(false);
-        mainMenu.SetActive(true);
+        OptionsMenu.SetActive(false);
+        MainMenu.SetActive(false);
+        Opener.SetActive(true);
     }
-
+    
+    public void StartOnClick()
+    {
+        Opener.SetActive(false);
+        MainMenu.SetActive(true);
+    }
     public void BackOnClick()
     {
         // Red Button that pushes the tab back to the previous one (from options to Main as its the only extra tab currently)
-        optionsMenu.SetActive(false);
-        mainMenu.SetActive(true);
+        OptionsMenu.SetActive(false);
+        MainMenu.SetActive(true);
+
     }
 
     public void ExitOnClick()
@@ -33,8 +41,8 @@ public class MainMenuController : MonoBehaviour
     {
         // Hides the main menu screen and Unhides the options screen
 
-        optionsMenu.SetActive(true);
-        mainMenu.SetActive(false);
+        OptionsMenu.SetActive(true);
+        MainMenu.SetActive(false);
     }
 
     public void PlayOnClick(){

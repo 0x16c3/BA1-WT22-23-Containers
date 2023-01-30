@@ -25,7 +25,7 @@ public class PlayerMachete : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !PlayerBucket.HoldingBucket && !PlayerBucket.WithinBucket && !PlayerNailing.NearChest)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !PlayerBucket.HoldingBucket && !PlayerBucket.WithinBucket && !PlayerNailing.NearChest && PlayerNailing.HasMaterials <= 0)
         {
             _playerAnimator.SetBool("IsAttacking", true);
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerBucket : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerBucket : MonoBehaviour
     public GameObject BucketInPlayer;
     public List<GameObject> AnimationObjects = new List<GameObject>();
 
+    public float Reach = 1f;
+
     bool _animationHappening;
 
     Animator _playerAnimator;
@@ -19,6 +22,11 @@ public class PlayerBucket : MonoBehaviour
     GameObject _tapBucketFilled;
     GameObject _handBucketFilled;
 
+    PlayerLocomotion _playerLocomotion;
+    TileGrid _tileGrid;
+
+    GameObject _selectedObject;
+    TileGeneric _selectedTile;
 
     void Start()
     {
@@ -37,6 +45,14 @@ public class PlayerBucket : MonoBehaviour
         Debug.Log(BucketInPlayer.activeSelf);
         if (BucketInPlayer == null)
             Debug.LogWarning("No BUCKET object attached");
+
+        _playerLocomotion = gameObject.GetComponent<PlayerLocomotion>();
+        if (_playerLocomotion == null)
+            Debug.LogWarning("No PlayerLocomotion component attached");
+
+        _tileGrid = TileGrid.FindTileGrid();
+        if (_tileGrid == null)
+            Debug.LogError("No TileGrid component attached");
     }
 
     void Update()
@@ -44,9 +60,11 @@ public class PlayerBucket : MonoBehaviour
         _tapBucketFilled.SetActive(Filled); // Update Buckets to filled or not
         _handBucketFilled.SetActive(Filled);
 
+        _selectedTile = SelectTile();
+
         // don't read this, it works this is for grabbing and animations
         #region Grabbing Bucket
-        if ( WithinBucket && Filled && Input.GetKeyDown(KeyCode.E)) // Grab bucket if bucket full
+        if (WithinBucket && Filled && Input.GetKeyDown(KeyCode.E)) // Grab bucket if bucket full
         {
             HoldingBucket = true;
             _playerAnimator.SetBool("IsGrabbing", true);
@@ -70,12 +88,12 @@ public class PlayerBucket : MonoBehaviour
             _animationHappening = false;
         }
 
-        if (HoldingBucket && WithinBucket && Input.GetKeyDown(KeyCode.Mouse0)) // drop bucket when in range of tap
+        if (!Filled && HoldingBucket && Input.GetKeyDown(KeyCode.Mouse0)) // drop bucket when in range of tap
         {
             _playerAnimator.SetBool("IsGrabbing", true);
             HoldingBucket = false;
         }
-            
+
         if (HoldingBucket) // hide bucket in tap and show bucket in hands
         {
             BucketTapBucket.SetActive(false);
@@ -93,9 +111,11 @@ public class PlayerBucket : MonoBehaviour
         #endregion 
 
         #region Extinguish Fire
-        if (Filled && HoldingBucket && !WithinBucket && Input.GetKeyDown(KeyCode.Mouse0))  // empty bucket in hand and extinguish fire (emir you do this one)
+        if (Filled && HoldingBucket && !WithinBucket && Input.GetKeyDown(KeyCode.Mouse0) && _selectedTile != null)  // empty bucket in hand and extinguish fire (emir you do this one)
         {
             Filled = false;
+
+            _selectedTile.Damageable.SetFire(false);
         }
         #endregion
 
@@ -118,6 +138,50 @@ public class PlayerBucket : MonoBehaviour
     {
         if (other.CompareTag("Bucket"))
             WithinBucket = false;
+    }
+
+    TileGeneric SelectTile()
+    {
+        // Get tile at mouse position
+        var tile = _tileGrid.GetTile(_playerLocomotion.MousePos);
+
+        if (tile != null)
+        {
+            // Check distance
+            var distance = Vector3.Distance(_playerLocomotion.transform.position, tile.WorldCenter);
+            if (distance > Reach || !tile.Damageable.OnFire)
+                tile = null;
+            else if (tile != null)
+                _selectedObject = tile.GetObjects().Where(x => x.CompareTag("Grid Cell")).FirstOrDefault();
+        }
+
+        if (tile == null)
+        {
+            // Get closest broken tile from player
+            var playerPos = _playerLocomotion.transform.position;
+
+            // Overlap sphere
+            var colliders = Physics.OverlapSphere(playerPos, Reach);
+            float minDistance = float.MaxValue;
+            foreach (var collider in colliders)
+            {
+                // Get tile
+                var damageable = collider.GetComponent<TileDamageable>();
+                if (damageable != null && damageable.OnFire)
+                {
+                    // Get distance
+                    var distance = Vector3.Distance(playerPos, collider.transform.position);
+                    if (distance < minDistance)
+                    {
+                        minDistance = distance;
+                        tile = _tileGrid.GetTile(collider.transform.position);
+                        _selectedObject = collider.gameObject;
+                    }
+                }
+            }
+        }
+
+        return tile;
     }
 
     private void OnGUI()

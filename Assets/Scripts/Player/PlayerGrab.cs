@@ -19,9 +19,6 @@ public class PlayerGrab : MonoBehaviour
     [Range(0f, 10f)]
     public float DecelerationMultiplier = 3.5f;
 
-    [Header("Visualization Settings")]
-    public Material OutlineMaterial;
-
     [HideInInspector]
     public GameObject GrabbedObject;
 
@@ -29,8 +26,20 @@ public class PlayerGrab : MonoBehaviour
     PlayerLocomotion _locomotion;
     ContainerGeneric _grabbedContainer;
 
+    // For Animation
+    Transform _playerModel;
+    Animator _playerAnimator;
+
     void Start()
     {
+        _playerModel = transform.Find("Jeffrey");
+        _playerAnimator = _playerModel.GetComponent<Animator>();
+
+        if (_playerModel == null || _playerAnimator == null)
+        {
+            Debug.LogError("No player model found or player animator");
+        }
+
         _locomotion = GetComponent<PlayerLocomotion>();
         if (_locomotion == null)
             Debug.LogError("PlayerLocomotion script not found on player");
@@ -50,22 +59,33 @@ public class PlayerGrab : MonoBehaviour
         // Remove outline from the previous closest object
         if (closestObject != null && closestObject != _lastClosestObject)
         {
-            MatSystem.AddMaterial(closestObject, OutlineMaterial);
+            Outline outline = closestObject.GetComponent<Outline>();
+            if (outline != null) outline.enabled = true;
             if (_lastClosestObject != null)
-                MatSystem.RemoveMaterial(_lastClosestObject, OutlineMaterial);
+            {
+                Outline lastOutline = _lastClosestObject.GetComponent<Outline>();
+                if (lastOutline != null) lastOutline.enabled = false;
+            }
 
             _lastClosestObject = closestObject;
         }
+        else if (closestObject != null && _lastClosestObject == closestObject)
+        {
+            Outline outline = closestObject.GetComponent<Outline>();
+            if (outline != null) outline.enabled = true;
+        }
         else if (closestObject == null && _lastClosestObject != null)
         {
-            MatSystem.RemoveMaterial(_lastClosestObject, OutlineMaterial);
-            _lastClosestObject = null;
+            Outline lastOutline = _lastClosestObject.GetComponent<Outline>();
+            if (lastOutline != null) lastOutline.enabled = false;
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (closestObject != null && GrabbedObject == null)
             {
+                _playerAnimator.SetBool("IsGrabbing", true);
+
                 GrabbedObject = closestObject;
                 GrabbedObject.transform.SetParent(transform);
 

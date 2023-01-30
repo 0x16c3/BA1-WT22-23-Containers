@@ -46,6 +46,10 @@ public class PlayerLocomotion : MonoBehaviour
     GameObject _mouseHover;
     PlayerGrab _grab;
 
+    // For Animation
+    Transform _playerModel;
+    Animator _playerAnimator;
+
     bool _switchedCells = false;
 
     public Vector3 Direction
@@ -76,6 +80,14 @@ public class PlayerLocomotion : MonoBehaviour
     {
         InitialSpeed = MovementSpeed;
 
+        _playerModel = transform.Find("Jeffrey");
+        _playerAnimator = _playerModel.GetComponent<Animator>();
+        _playerAnimator.SetFloat("Speed", InitialSpeed);
+
+        if (_playerModel == null || _playerAnimator == null)
+        {
+            Debug.LogError("No player model found or player animator");
+        }
         _rb = GetComponent<Rigidbody>();
         _grab = GetComponent<PlayerGrab>();
 
@@ -92,6 +104,16 @@ public class PlayerLocomotion : MonoBehaviour
         _mouseVector = MousePosToVector();
 
         SaveDirection();
+
+        if (_inputVector != Vector3.zero)
+        {
+            _playerAnimator.SetInteger("AnimationTypes", 1);
+        }
+        else
+        {
+            _playerAnimator.SetInteger("AnimationTypes", 0);
+        }
+
     }
 
     void FixedUpdate()
@@ -112,6 +134,13 @@ public class PlayerLocomotion : MonoBehaviour
 
         // Apply acceleration
         _rb.AddForce(acceleration * Time.fixedDeltaTime, ForceMode.Acceleration);
+
+        if (_inputVector != Vector3.zero)
+        {
+            _playerModel.rotation = Quaternion.RotateTowards(
+                _playerModel.rotation, Quaternion.LookRotation(_inputVector), 500 * Time.fixedDeltaTime);
+        }
+
     }
 
     void OnDrawGizmos()

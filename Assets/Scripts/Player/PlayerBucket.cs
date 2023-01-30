@@ -4,56 +4,120 @@ using UnityEngine;
 
 public class PlayerBucket : MonoBehaviour
 {
+    public static bool HoldingBucket = false;
+    public static bool WithinBucket = false;
+    public static bool Filled = false;
     [Tooltip("The object in the scene where bucket is respawning")]
-    public GameObject BucketObject;
+    public GameObject BucketTapBucket;
+    public GameObject BucketInPlayer;
+    public List<GameObject> AnimationObjects = new List<GameObject>();
 
-    GameObject _bucket;
-    bool _inBucketCollider = false, _bucketGrabbed = false, _filled = false;
+    bool _animationHappening;
+
+    Animator _playerAnimator;
+    Transform _playerModel;
+    GameObject _tapBucketFilled;
+    GameObject _handBucketFilled;
 
 
     void Start()
     {
-        _bucket = transform.Find("Bucket").gameObject;
-        _bucket.SetActive(false);
-        Debug.Log(_bucket.activeSelf);
-        if (_bucket == null)
+        //BucketInPlayer = transform.Find("Bucket").gameObject;
+        Transform filledTapBucket = BucketTapBucket.transform.Find("Water_Bucket");
+        _tapBucketFilled = filledTapBucket.gameObject;
+        _tapBucketFilled.SetActive(false);
+
+        Transform filledHandBucket = BucketInPlayer.transform.Find("Water_Bucket");
+        _handBucketFilled = filledHandBucket.gameObject;
+        _handBucketFilled.SetActive(false);
+
+        _playerModel = transform.Find("Jeffrey");
+        _playerAnimator = _playerModel.GetComponent<Animator>();
+        BucketInPlayer.SetActive(false);
+        Debug.Log(BucketInPlayer.activeSelf);
+        if (BucketInPlayer == null)
             Debug.LogWarning("No BUCKET object attached");
     }
 
     void Update()
     {
+        _tapBucketFilled.SetActive(Filled); // Update Buckets to filled or not
+        _handBucketFilled.SetActive(Filled);
+
+        // don't read this, it works this is for grabbing and animations
         #region Grabbing Bucket
-        if (_inBucketCollider && Input.GetKeyDown(KeyCode.Mouse0))
-            _bucketGrabbed = true;
-
-        if (_bucketGrabbed && Input.GetKeyDown(KeyCode.X))
-            _bucketGrabbed = false;
-
-        if (_bucketGrabbed)
+        if ( WithinBucket && Filled && Input.GetKeyDown(KeyCode.E)) // Grab bucket if bucket full
         {
-            BucketObject.SetActive(false);
-            _bucket.SetActive(true);
-            if (_inBucketCollider && Input.GetKeyDown(KeyCode.E ))
-                _filled = true;
+            HoldingBucket = true;
+            _playerAnimator.SetBool("IsGrabbing", true);
         }
-        else
+
+
+        if (!HoldingBucket && WithinBucket && !Filled && !_animationHappening && Input.GetKeyDown(KeyCode.E)) // fill bucket if empty
         {
-            BucketObject.SetActive(true);
-            _bucket.SetActive(false);
+            foreach (var obj in AnimationObjects)
+            {
+                Animator animator = obj.GetComponent<Animator>();
+                animator.SetBool("UsingBucket", true);
+            }
+
+            _animationHappening = true;
         }
-        #endregion
+
+        if (IsAnimationHappening() == false && _animationHappening) // signal bucket is full once animation is done
+        {
+            Filled = true;
+            _animationHappening = false;
+        }
+
+        if (HoldingBucket && WithinBucket && Input.GetKeyDown(KeyCode.Mouse0)) // drop bucket when in range of tap
+        {
+            _playerAnimator.SetBool("IsGrabbing", true);
+            HoldingBucket = false;
+        }
+            
+        if (HoldingBucket) // hide bucket in tap and show bucket in hands
+        {
+            BucketTapBucket.SetActive(false);
+            BucketInPlayer.SetActive(true);
+
+        }
+        else // the opposite
+        {
+            BucketTapBucket.SetActive(true);
+            BucketInPlayer.SetActive(false);
+        }
+
+
+
+        #endregion 
 
         #region Extinguish Fire
-        //if near fire && Input.GetKeyDown(KeyCode.Mouse0)
-        //  _filled = false;
+        if (Filled && HoldingBucket && !WithinBucket && Input.GetKeyDown(KeyCode.Mouse0))  // empty bucket in hand and extinguish fire (emir you do this one)
+        {
+            Filled = false;
+        }
         #endregion
 
+    }
+
+    bool IsAnimationHappening()
+    {
+        GameObject animationTransform = AnimationObjects[0];
+        Animator animator = animationTransform.GetComponent<Animator>();
+        bool animationState = animator.GetBool("UsingBucket");
+        return animationState;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bucket"))
-            _inBucketCollider = true;
+            WithinBucket = true;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Bucket"))
+            WithinBucket = false;
     }
 
     private void OnGUI()

@@ -127,7 +127,7 @@ public class AIVolcanoCatProjectile : MonoBehaviour
         // Return if collided with trigger
         if (collision.collider.isTrigger)
             return;
-        if (collision.gameObject == VolcanoCat.gameObject)
+        if (collision.gameObject == VolcanoCat.gameObject || VolcanoCat == null || VolcanoCat.gameObject == null)
         {
             Destroy(gameObject);
         }

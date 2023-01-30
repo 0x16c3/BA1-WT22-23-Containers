@@ -44,7 +44,8 @@ public class PathFinder
 
     public void SetTarget(Vector2Int end)
     {
-        EndTile = PathTile.FromTile(Tilemap.GetTile(end), GameObject);
+        var tile = Tilemap.GetTile(end);
+        EndTile = PathTile.FromTile(tile, GameObject);
     }
 
     public void ResetAllData()

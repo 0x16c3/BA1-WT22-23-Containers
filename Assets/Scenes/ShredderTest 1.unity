@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 26604832}
   - component: {fileID: 26604831}
   - component: {fileID: 26604830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (7)
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 83435568}
   - component: {fileID: 83435567}
   - component: {fileID: 83435566}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (2)
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -1637,7 +1637,7 @@ GameObject:
   m_Component:
   - component: {fileID: 179618369}
   - component: {fileID: 179618370}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Clip Brushes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5423,7 +5423,7 @@ GameObject:
   - component: {fileID: 316103190}
   - component: {fileID: 316103189}
   - component: {fileID: 316103188}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (4)
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -5572,6 +5572,7 @@ GameObject:
   - component: {fileID: 343240918}
   - component: {fileID: 343240917}
   - component: {fileID: 343240924}
+  - component: {fileID: 343240925}
   m_Layer: 0
   m_Name: MovingContainer
   m_TagString: Grabbable
@@ -5663,7 +5664,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 343240916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.0323386, y: 0.50001, z: -0.50001}
+  m_LocalPosition: {x: 3.0322986, y: 0.50001, z: 1.00002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5690,7 +5691,22 @@ MonoBehaviour:
   WanderDuration: {x: 30, y: 90}
   AbilityDuration: {x: 10, y: 20}
   KnockOutTime: 15
-  ForceState: 3
+  ForceState: 2
+--- !u!114 &343240925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 343240916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c276111d33c2b4c9374d7e91a1561b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SearchDelay: {x: 3, y: 5}
+  EatDelay: {x: 3, y: 5}
+  Damage: 4
 --- !u!1001 &347386416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6522,7 +6538,7 @@ GameObject:
   - component: {fileID: 404768376}
   - component: {fileID: 404768375}
   - component: {fileID: 404768374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -7765,7 +7781,7 @@ GameObject:
   - component: {fileID: 530583829}
   - component: {fileID: 530583828}
   - component: {fileID: 530583827}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (8)
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -11802,7 +11818,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918175423}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.9999374, y: -2.5419736, z: 3.809609}
+  m_LocalPosition: {x: 4.9999785, y: -2.5419736, z: -0.6904812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12926,7 +12942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1019140719}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.999806, y: -2.5419736, z: 4.8088455}
+  m_LocalPosition: {x: 0.00039803982, y: -2.5419736, z: -2.1908448}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14166,7 +14182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193725717}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00006258488, y: -2.5419736, z: 3.809609}
+  m_LocalPosition: {x: 3.999959, y: -2.5419736, z: 4.809629}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14234,7 +14250,7 @@ GameObject:
   - component: {fileID: 1194273376}
   - component: {fileID: 1194273375}
   - component: {fileID: 1194273374}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -14926,7 +14942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282347106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.99980605, y: -1.5455043, z: 4.8088455}
+  m_LocalPosition: {x: 7.0002756, y: -2.5472598, z: 1.8085734}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16541,7 +16557,7 @@ GameObject:
   - component: {fileID: 1511403665}
   - component: {fileID: 1511403664}
   - component: {fileID: 1511403663}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (5)
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -18340,7 +18356,7 @@ GameObject:
   - component: {fileID: 1723529101}
   - component: {fileID: 1723529100}
   - component: {fileID: 1723529099}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -18484,6 +18500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d051820d82e7c464fb9043c92ec32b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TpLen: 0.1
   MovementSpeed: 9
   SlowSpeed: 6
   AirStrafeSpeed: 3
@@ -18492,6 +18509,7 @@ MonoBehaviour:
   InitialSpeed: 0
   LockCursor: 1
   IsInAir: 0
+  OnRamp: 0
   HasSlowEffect: 0
 --- !u!54 &1735434413
 Rigidbody:
@@ -18567,6 +18585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RepairRadius: 1
+  RepairTime: 2
   RepairUI: {fileID: 590131933}
   HasMaterials: 0
   AmountRepaired: 0
@@ -20437,7 +20456,7 @@ GameObject:
   - component: {fileID: 1851828589}
   - component: {fileID: 1851828588}
   - component: {fileID: 1851828587}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (6)
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -20607,7 +20626,7 @@ GameObject:
   - component: {fileID: 1870721663}
   - component: {fileID: 1870721662}
   - component: {fileID: 1870721661}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -20769,7 +20788,7 @@ GameObject:
   - component: {fileID: 1874460492}
   - component: {fileID: 1874460491}
   - component: {fileID: 1874460490}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (3)
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}
@@ -21951,7 +21970,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011890905}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00058209896, y: -1.5465028, z: 4.8092756}
+  m_LocalPosition: {x: 3.000458, y: -2.5482583, z: -0.19080472}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22167,7 +22186,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2048943624}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00006258488, y: -2.5419736, z: 4.809609}
+  m_LocalPosition: {x: 7.0000186, y: -2.5419736, z: 4.809629}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22334,7 +22353,7 @@ GameObject:
   - component: {fileID: 2057417039}
   - component: {fileID: 2057417038}
   - component: {fileID: 2057417041}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Clip Brush
   m_Icon: {fileID: 0}

@@ -28,6 +28,10 @@ public class TileGeneric
                 if (objects[i].layer == 3)
                     continue;
 
+                // Ignore if clip brush
+                if (objects[i].layer == 4)
+                    continue;
+
                 var gridCell = objects[i].GetComponent<TileGridCell>();
                 if (gridCell != null && gridCell.Broken)
                     return false;
@@ -68,7 +72,7 @@ public class TileGeneric
         for (int i = 0; i < colliders.Length; i++)
         {
             // Ignore clip brushes
-            if (colliders[i].gameObject.tag == "Clip Brush")
+            if (colliders[i].gameObject.layer == LayerMask.NameToLayer("ClipBrush"))
                 continue;
 
             objects.Add(colliders[i].gameObject);

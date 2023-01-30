@@ -231,6 +231,13 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
         _lastRenderedDecal = Time.time;
     }
 
-    public void Damage(int damage) => Health = Mathf.Clamp(Health - damage, 0, _maxHealth);
+    public void Damage(int damage)
+    {
+        Health = Mathf.Clamp(Health - damage, 0, _maxHealth);
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     public void Heal(int heal) => Health = Mathf.Clamp(Health + heal, 0, _maxHealth);
 }

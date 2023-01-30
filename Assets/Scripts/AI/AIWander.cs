@@ -41,6 +41,7 @@ public class AIWander : MonoBehaviour
     bool _firstUpdate = false;
     bool _reachedTarget = false;
     bool _reachedCurrentTarget => _currentTarget != null && Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), _currentTarget.WorldCenter) < 0.05f;
+    bool _reachedEndTarget => _pathFinder.EndTile != null && Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), _pathFinder.EndTile.WorldCenter) < 0.05f;
 
     bool _correctedRotation = false;
     bool _containerGrabbed => _container != null && _container.IsGrabbed;
@@ -51,6 +52,13 @@ public class AIWander : MonoBehaviour
     float _inactiveTimer = 0f;
     bool _shake = false;
     bool _inactive = false;
+
+    int MAX_ITERATIONS = 1000;
+    int _curIteration = 0;
+
+    public delegate void FunctionTrigger();
+    public event FunctionTrigger OnLastTarget;
+    public event FunctionTrigger OnTargetReached;
 
     void OnEnable()
     {
@@ -85,8 +93,11 @@ public class AIWander : MonoBehaviour
         TileGeneric randomTile = _tileGrid.RandomTile();
 
         // If not walkable, find a new one
-        while (!randomTile.Walkable)
+        while (!randomTile.Walkable && _curIteration < MAX_ITERATIONS)
+        {
             randomTile = _tileGrid.RandomTile();
+            _curIteration++;
+        }
 
         _lastRandPoint = randomTile.WorldCenter;
 
@@ -104,6 +115,8 @@ public class AIWander : MonoBehaviour
         _lastRandPoint = target;
 
         var tile = _tileGrid.GetTile(target);
+
+        /*
         if (!tile.Walkable)
         {
             // If not, find a new one
@@ -116,9 +129,13 @@ public class AIWander : MonoBehaviour
                     break;
                 }
             }
-        }
+        }*/
 
         if (!tile.Walkable)
+            return;
+
+        // If the target is already the current target, don't do anything
+        if (_pathFinder.EndTile != null && _pathFinder.EndTile.GridPosition == tile.GridPosition)
             return;
 
         _pathFinder.SetStart(_tile.GridPosition);
@@ -144,8 +161,12 @@ public class AIWander : MonoBehaviour
 
         UpdateContainerStates();
 
-        if (_reachedTarget || _lastRandPoint == Vector3.zero || _inactive)
+        if ((_reachedTarget || _lastRandPoint == Vector3.zero || _inactive) && RandomWander)
             Wander();
+
+        // If no end tile, return
+        if (_pathFinder.EndTile == null)
+            return;
 
         _pathFinder.FindPath();
         _paths = _pathFinder.Path;
@@ -172,11 +193,19 @@ public class AIWander : MonoBehaviour
         var nextTile = _pathFinder.GetNextInPath(_tile.GridPosition);
 
         SwitchTarget();
-        FaceDirection(nextTile);
+        LookTowards(nextTile);
         MoveTowards(_currentTarget);
+
+        // If reached target precisely, set reached target to true
+        if (_reachedEndTarget)
+        {
+            _reachedTarget = true;
+            Halt();
+            OnTargetReached?.Invoke();
+        }
     }
 
-    void FaceDirection(PathTile target)
+    void LookTowards(TileGeneric target)
     {
         if (target == null)
             return;
@@ -226,8 +255,14 @@ public class AIWander : MonoBehaviour
         //Get the next tile from the path finder.
         var nextTile = _pathFinder.GetNextInPath(_tile.GridPosition);
 
+        //If the next tile is null, halt the game and set the reached target to true.
+        if (nextTile == null)
+        {
+            OnLastTarget?.Invoke();
+        }
+
         //If the rotation was corrected, set the current target to the next tile and set the correct rotation to false.
-        if (_correctedRotation)
+        else if (_correctedRotation)
         {
             // Mark the current target as reached
             if (_currentTarget != null)
@@ -241,15 +276,9 @@ public class AIWander : MonoBehaviour
                 _firstUpdate = false;
         }
 
-        //If the next tile is null, halt the game and set the reached target to true.
-        if (nextTile == null)
-        {
-            Halt();
-            _reachedTarget = true;
-        }
     }
 
-    void ApplyForce(Vector3 dirNormalized, float speed)
+    public void ApplyForce(Vector3 dirNormalized, float speed)
     {
         // Calculate goal velocity
         Vector3 goalVelocity = dirNormalized * speed;
@@ -262,7 +291,7 @@ public class AIWander : MonoBehaviour
         _rb.AddForce(acceleration * Acceleration * Time.fixedDeltaTime, ForceMode.Acceleration);
     }
 
-    void ApplyTorque(Vector3 dirNormalized)
+    public void ApplyTorque(Vector3 dirNormalized)
     {
         // Make object look at direction using torque, forcemode velocitychange to make it instant
         Vector3 torque = Vector3.Cross(transform.forward, dirNormalized);

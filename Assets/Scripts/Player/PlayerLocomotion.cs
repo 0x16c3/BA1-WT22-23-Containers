@@ -9,6 +9,8 @@ public class PlayerLocomotion : MonoBehaviour
 {
     [Header("Movement Settings")]
 
+    public float TpLen = 0.1f;
+
     [Range(0f, 25f)]
     public float MovementSpeed = 9f;
 
@@ -32,8 +34,9 @@ public class PlayerLocomotion : MonoBehaviour
     [HideInInspector]
     public bool IsInAir = false;
     [HideInInspector]
+    public bool OnRamp = false;
+    [HideInInspector]
     public bool HasSlowEffect = false;
-
 
     Rigidbody _rb;
     Vector3 _direction = Vector3.zero;
@@ -99,9 +102,16 @@ public class PlayerLocomotion : MonoBehaviour
         // Calculate acceleration
         Vector3 acceleration = goalVelocity - _rb.velocity;
         acceleration = Vector3.ClampMagnitude(acceleration, MaxAccelerationForce);
+        acceleration = acceleration * Acceleration;
+
+        if (IsInAir)
+        {
+            // Apply extra downwards force if in air
+            acceleration += new Vector3(0, -Acceleration * 10f, 0);
+        }
 
         // Apply acceleration
-        _rb.AddForce(acceleration * Acceleration * Time.fixedDeltaTime, ForceMode.Acceleration);
+        _rb.AddForce(acceleration * Time.fixedDeltaTime, ForceMode.Acceleration);
     }
 
     void OnDrawGizmos()
@@ -132,13 +142,13 @@ public class PlayerLocomotion : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == ("Ground"))
+        if (collision.gameObject.tag == ("Ground Plane"))
             IsInAir = false;
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == ("Ground"))
+        if (collision.gameObject.tag == ("Ground Plane") && !OnRamp)
             IsInAir = true;
     }
 

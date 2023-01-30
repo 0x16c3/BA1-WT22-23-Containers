@@ -76,7 +76,7 @@ public class LightningStrike
         foreach (var obj in objects)
         {
             // Skip if a clip brush
-            if (obj.tag == "Clip Brush")
+            if (obj.layer == LayerMask.NameToLayer("ClipBrush"))
                 continue;
 
             var _damagableTile = obj.GetComponent<TileDamageable>();

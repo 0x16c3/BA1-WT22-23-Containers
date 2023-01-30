@@ -9,8 +9,9 @@ TagManager:
   - Nail Chest
   - Grass
   - Bucket
-  - Clip Brush
+  - Ground Plane
   - Grid Cell
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - ScreenSpace
+  - ClipBrush
   - 
   - 
   - 

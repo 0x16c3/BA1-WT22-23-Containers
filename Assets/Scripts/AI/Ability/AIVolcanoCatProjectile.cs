@@ -20,7 +20,7 @@ public class AIVolcanoCatProjectile : MonoBehaviour
 
     bool _initialized = false;
 
-    void Start()
+    void OnEnable()
     {
         _rigidbody = GetComponentInChildren<Rigidbody>();
         _tileGrid = TileGrid.FindTileGrid();
@@ -129,7 +129,7 @@ public class AIVolcanoCatProjectile : MonoBehaviour
             return;
 
         // Check if hit a clip brush
-        if (collision.gameObject.tag == "Clip Brush")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("ClipBrush"))
         {
             // Get tile at position
             var tile = _tileGrid.GetTile(transform.position);
@@ -140,7 +140,7 @@ public class AIVolcanoCatProjectile : MonoBehaviour
                 tile.Damageable.SetFire(true);
                 Destroy(gameObject);
             }
-            else if (tile.Damageable != null)
+            else if (tile != null && tile.Damageable != null)
             {
                 tile.Damageable.Damage(VolcanoCat.Damage);
                 Destroy(gameObject);

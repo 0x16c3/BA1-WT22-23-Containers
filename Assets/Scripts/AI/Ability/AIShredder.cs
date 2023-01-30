@@ -182,7 +182,7 @@ public class AIShredder : MonoBehaviour, ICustomBehavior
         else if (Time.time > _nextSearch && _targetContainer == null)
         {
             // Target random Grabbable tag that is not this object
-            var targets = GameObject.FindGameObjectsWithTag("Grabbable").Where(x => x != gameObject);
+            var targets = GameObject.FindGameObjectsWithTag("Grabbable").Where(x => x != gameObject && x.GetComponent<AIBehavior>() == null);
             if (targets.Count() > 0)
             {
                 var target = ClosestObject(targets.ToList());

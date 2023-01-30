@@ -5,6 +5,7 @@ using GD.MinMaxSlider;
 
 public class TileDamageable : MonoBehaviour, IDamageable
 {
+    [SerializeField]
     int _health = 12;
     public int Health
     {
@@ -40,6 +41,16 @@ public class TileDamageable : MonoBehaviour, IDamageable
     bool _wasDead = false;
 
     float _lastFireTick = -1f;
+    float _timePassed = 0, _timePassedAfterFire;
+    [SerializeField]
+    float _changingColorTime = 10f;
+
+
+    //public Color MaxlMatColor;
+    //Color _minMatColor, _tempColor,
+    Color _initMatColor;
+
+    public Color _strongDamage, _middleDamage, _lightDamage;
 
     void OnEnable()
     {
@@ -64,6 +75,11 @@ public class TileDamageable : MonoBehaviour, IDamageable
         _localFire.SetActive(false);
 
         _maxHealth = Health;
+
+        //_initMatColor = _tempColor = _minMatColor = transform.Find("Cube").GetComponent<MeshRenderer>().material.color;
+        _initMatColor = transform.Find("Cube").GetComponent<MeshRenderer>().material.color;
+
+
     }
 
     void OnDisable()
@@ -88,6 +104,70 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
         if (_onFire)
             FireDamage();
+
+        #region Damage Indicator 
+        /*
+        if (Health < _maxHealth && !_stopDamageIndication)
+        {
+            _timePassedAfterFire += Time.deltaTime;
+            Debug.Log("Wtf1");
+            if (_timePassedAfterFire > FireTickInterval)
+            {
+                _tempColor.r = Mathf.Lerp(_minMatColor.r, MaxlMatColor.r, _timePassed);
+                _tempColor.g = Mathf.Lerp(_minMatColor.g, MaxlMatColor.g, _timePassed);
+                _tempColor.b = Mathf.Lerp(_minMatColor.b, MaxlMatColor.b, _timePassed);
+                transform.Find("Cube").GetComponent<MeshRenderer>().material.color = _tempColor;
+                Debug.Log("Wtf2");
+                if (_timePassed > _changingColorTime)
+                {
+                    highlightIteration++;
+                    _tempColor = MaxlMatColor;
+                    MaxlMatColor = _minMatColor;
+                    _minMatColor = _tempColor;
+                    _timePassed = 0f;
+
+                    if (highlightIteration > 2)
+                        _stopDamageIndication = true;
+                }
+            }
+        }
+        else if (Health == _maxHealth || _stopDamageIndication)
+        {
+            _timePassed = 0;
+            transform.Find("Cube").GetComponent<MeshRenderer>().material.color = _initMatColor;
+        }
+        */
+        #endregion
+
+        if (Health < _maxHealth && Health >= 8)
+        {
+            _timePassed += Time.deltaTime;
+            if (_timePassed >= _changingColorTime)
+            {
+                transform.Find("Cube").GetComponent<MeshRenderer>().material.color = GetIdicateColor(0);
+                _timePassed = 0;
+            }
+        }
+        else if (Health < 8 && Health >= 4)
+        {
+            _timePassed += Time.deltaTime;
+            if (_timePassed >= _changingColorTime)
+            {
+                transform.Find("Cube").GetComponent<MeshRenderer>().material.color = GetIdicateColor(1);
+                _timePassed = 0;
+            }
+        }
+        else if (Health < 4)
+        {
+            _timePassed += Time.deltaTime;
+            if (_timePassed >= _changingColorTime)
+            {
+                transform.Find("Cube").GetComponent<MeshRenderer>().material.color = GetIdicateColor(2);
+                _timePassed = 0;
+            }
+        }
+        else
+            transform.Find("Cube").GetComponent<MeshRenderer>().material.color = _initMatColor;
     }
 
     void FireDamage()
@@ -123,5 +203,21 @@ public class TileDamageable : MonoBehaviour, IDamageable
         _wasDead = false;
 
         SetFire(false);
+    }
+
+    Color GetIdicateColor(int _damagePower)
+    {
+        switch (_damagePower)
+        {
+            case 0:
+                return _lightDamage;
+            case 1:
+                return _middleDamage;
+            case 2:
+                return _strongDamage;
+
+            default:
+                return _initMatColor;
+        }
     }
 }

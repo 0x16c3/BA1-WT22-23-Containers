@@ -145,6 +145,11 @@ public class PlayerGrab : MonoBehaviour
             if (collider.gameObject.tag != "Grabbable")
                 continue;
 
+            // If has AIBehaviour, check if it's idle
+            AIBehavior aiBehaviour = collider.gameObject.GetComponent<AIBehavior>();
+            if (aiBehaviour != null && aiBehaviour.State != AIBehaviorState.Idle)
+                continue;
+
             GameObject obj = collider.gameObject;
 
             float distance = Vector3.Distance(transform.position, obj.transform.position);

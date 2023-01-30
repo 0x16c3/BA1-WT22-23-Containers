@@ -244,6 +244,9 @@ public class TileGeneric
     public T GetNext<T>(Vector2Int position, Vector3Int direction) where T : Component
     {
         var nextPos = position + new Vector2Int(direction.x, direction.z);
+        if (TileGrid.cellBounds.Contains(new Vector3Int(nextPos.x, nextPos.y, 0)) == false)
+            return null;
+
         TileGeneric tile = TileGrid.GetTile(nextPos);
 
         if (tile == null)

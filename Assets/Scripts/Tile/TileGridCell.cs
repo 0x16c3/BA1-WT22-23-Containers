@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -11,7 +12,7 @@ public class TileGridCell : MonoBehaviour
     public List<ContainerGeneric> Grabbables = new List<ContainerGeneric>();
 
     Collider _collider = null;
-    Collider _breakCollider = null;
+    Collider[] _breakColliders = null;
     public TileGrid Tilemap;
     public TileGeneric Tile;
 
@@ -37,19 +38,18 @@ public class TileGridCell : MonoBehaviour
             _collider.transform.localScale = new Vector3(Tilemap.cellSize.x / 2, CellHeightMax, Tilemap.cellSize.y / 2);
         }
 
-        // Get collider from the child "BreakCollider"
-        _breakCollider = transform.Find("BreakCollider").GetComponent<Collider>();
-        if (_breakCollider == null)
-        {
-            Debug.LogError("TileGridCell: Initialize: BreakCollider not found");
-            return;
-        }
+        // Get all the child objects with layer "BreakCollider"
+        _breakColliders = GetComponentsInChildren<Collider>().Where(c => c.gameObject.name == "BreakCollider").ToArray();
+        if (_breakColliders.Length == 0)
+            Debug.LogError("TileGridCell: No break colliders found on " + name);
 
         _groundPlane = GetComponentInChildren<MeshRenderer>();
 
         _collider.isTrigger = true;
         _initialized = true;
     }
+
+
 
     void OnDisable()
     {
@@ -136,7 +136,9 @@ public class TileGridCell : MonoBehaviour
     public void Break()
     {
         Broken = true;
-        _breakCollider.enabled = true;
+        // Enable break colliders
+        for (int i = 0; i < _breakColliders.Length; i++)
+            _breakColliders[i].enabled = true;
 
         _groundPlane.enabled = false;
 
@@ -151,7 +153,8 @@ public class TileGridCell : MonoBehaviour
     public void Repair()
     {
         Broken = false;
-        _breakCollider.enabled = false;
+        for (int i = 0; i < _breakColliders.Length; i++)
+            _breakColliders[i].enabled = false;
 
         _groundPlane.enabled = true;
     }

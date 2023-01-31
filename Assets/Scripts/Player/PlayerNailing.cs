@@ -58,7 +58,7 @@ public class PlayerNailing : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && NearChest)
+        if (Input.GetKeyDown(KeyCode.E) && NearChest && !PlayerBucket.HoldingBucket)
         {
             _playerAnimator.SetBool("IsGrabbing", true);
             _boxAnimator.SetBool("BoxOpening", true);
@@ -96,7 +96,7 @@ public class PlayerNailing : MonoBehaviour
             RepairUI.transform.position = _selectedObject.transform.position + new Vector3(0, -0.5f, 0);
         }
 
-        if (Input.GetKey(KeyCode.Mouse1) && HasMaterials > 0 && _selectedTile != null)
+        if (Input.GetKey(KeyCode.Mouse0) && HasMaterials > 0 && _selectedTile != null)
         {
             if (AudioController.instance.IsAudioPlaying("Repair") == false)
             {

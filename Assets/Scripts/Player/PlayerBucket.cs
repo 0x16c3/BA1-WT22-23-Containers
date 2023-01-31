@@ -64,7 +64,7 @@ public class PlayerBucket : MonoBehaviour
 
         // don't read this, it works this is for grabbing and animations
         #region Grabbing Bucket
-        if (WithinBucket && Filled && Input.GetKeyDown(KeyCode.E)) // Grab bucket if bucket full
+        if (WithinBucket && Filled && PlayerNailing.HasMaterials <= 0 && Input.GetKeyDown(KeyCode.E)) // Grab bucket if bucket full
         {
             HoldingBucket = true;
             AudioController.instance.PlayAudio("Grab");

@@ -5,33 +5,31 @@ using UnityEngine.Video;
 
 public class OceanBackground : MonoBehaviour
 {
-    /*VideoPlayer _videoPlayer;
-    private float _playbackSpeed;
-    private bool _isPlayingForward = true;
+    VideoPlayer _videoPlayer;
+    public List<VideoClip> _clips = new List<VideoClip>();
+    private float _time;
+    private float _playerSpeed;
+    private int _clipPlaying;
 
     private void Start()
     {
+        _clipPlaying = 0;
         _videoPlayer = GetComponent<VideoPlayer>();
-        _playbackSpeed = _videoPlayer.playbackSpeed;
+        _playerSpeed = _videoPlayer.playbackSpeed;
     }
     void Update()
     {
-        if (_videoPlayer.isPlaying)
+        _time += Time.deltaTime;
+        if (_videoPlayer.length / _playerSpeed <= _time)
         {
-            if (_isPlayingForward && _videoPlayer.time >= _videoPlayer.clip.length)
-            {
-                _videoPlayer.playbackSpeed = -_playbackSpeed;
-                _isPlayingForward = false;
-            }
-            else if (!_isPlayingForward && _videoPlayer.time <= 0)
-            {
-                _videoPlayer.playbackSpeed = _playbackSpeed;
-                _isPlayingForward = true;
-            }
-        }
-        else
-        {
+            _time = 0;
+            _videoPlayer.clip = _clips[_clipPlaying];
+            _clipPlaying++;
             _videoPlayer.Play();
         }
-    }*/
+        if (_clipPlaying >= _clips.Count)
+        {
+            _clipPlaying = 0;
+        }
+    }
 }

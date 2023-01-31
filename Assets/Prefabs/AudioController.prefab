@@ -201,3 +201,9 @@ MonoBehaviour:
     Volume: 1
     Loop: 1
     AudioSource: {fileID: 0}
+  - Name: Music Test
+    AudioType: 0
+    Clip: {fileID: 8300000, guid: ed40a6829ef82c4418bc32ab33b5b621, type: 3}
+    Volume: 1
+    Loop: 0
+    AudioSource: {fileID: 0}

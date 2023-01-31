@@ -33,6 +33,10 @@ public class PlayerDamageable : MonoBehaviour, IDamageable
 
     void OnDeath()
     {
-        Debug.Log("Player died");
+        // Reset all the player's stats
+        Health = _maxHealth;
+
+        // Reset the player's position
+        transform.position = new Vector3(-2f, 0f, 0f);
     }
 }

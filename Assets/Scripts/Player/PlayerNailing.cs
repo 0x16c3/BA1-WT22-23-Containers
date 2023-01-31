@@ -64,6 +64,7 @@ public class PlayerNailing : MonoBehaviour
             _boxAnimator.SetBool("BoxOpening", true);
             HasMaterials = MaterialAmount;
             Debug.Log("HasMaterials: " + HasMaterials);
+            AudioController.instance.PlayAudio("Grab");
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && HasMaterials > 0)
         {
@@ -71,6 +72,7 @@ public class PlayerNailing : MonoBehaviour
             _boxAnimator.SetBool("BoxOpening", true);
             HasMaterials = 0;
             Debug.Log("HasMaterials: " + HasMaterials);
+            AudioController.instance.PlayAudio("Grab");
         }
 
         if (HasMaterials > 0)
@@ -96,6 +98,11 @@ public class PlayerNailing : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse1) && HasMaterials > 0 && _selectedTile != null)
         {
+            if (AudioController.instance.IsAudioPlaying("Repair") == false)
+            {
+                AudioController.instance.PlayAudio("Repair");
+            }
+
             _timePassed += Time.deltaTime;
             _repairing = true;
 

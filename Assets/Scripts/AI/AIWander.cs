@@ -60,7 +60,14 @@ public class AIWander : MonoBehaviour
     public event FunctionTrigger OnLastTarget;
     public event FunctionTrigger OnTargetReached;
 
+    bool _initialized = false;
+
     void OnEnable()
+    {
+        _initialized = false;
+    }
+
+    void Initialize()
     {
         _rb = GetComponent<Rigidbody>();
 
@@ -71,10 +78,15 @@ public class AIWander : MonoBehaviour
 
         _pathFinder = new PathFinder(_tileGrid, this.gameObject);
         _pathFinder.OnPathReset += ResetPathData;
+
+        _initialized = true;
     }
 
     void OnDisable()
     {
+        if (!_initialized)
+            return;
+
         Halt();
 
         // Reset path data
@@ -112,6 +124,15 @@ public class AIWander : MonoBehaviour
 
     public void SetTarget(Vector3 target)
     {
+        int i = 0;
+
+        while (!_initialized && i < 1000)
+        {
+            Initialize();
+            if (_initialized) break;
+            i++;
+        }
+
         _lastRandPoint = target;
 
         var tile = _tileGrid.GetTile(target);
@@ -156,6 +177,12 @@ public class AIWander : MonoBehaviour
 
     void Update()
     {
+        if (!_initialized)
+        {
+            Initialize();
+            return;
+        }
+
         if (!_tileGrid || _tile == null)
             return;
 
@@ -175,6 +202,9 @@ public class AIWander : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!_initialized)
+            return;
+
         InactiveTimer();
         if (_inactiveTimer > ShakeTime)
             Shake();

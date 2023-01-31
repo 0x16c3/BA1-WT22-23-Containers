@@ -33,6 +33,8 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
     TileGridCell _gridCell;
 
+    ScoreSystem _scoreSystem;
+
     bool _onFire = false;
     int _maxHealth = -1;
     public int MaxHealth => _maxHealth;
@@ -51,9 +53,14 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
     public Color _strongDamage, _middleDamage, _lightDamage;
 
-    void OnEnable()
+    bool _initialized = false;
+
+    void Initialize()
     {
         _grid = TileGrid.FindTileGrid();
+        if (!_grid.Initialized)
+            return;
+
         _tile = _grid.GetTile(transform.position);
         if (_tile == null)
         {
@@ -68,6 +75,13 @@ public class TileDamageable : MonoBehaviour, IDamageable
             return;
         }
 
+        _scoreSystem = FindObjectOfType<ScoreSystem>();
+        if (_scoreSystem == null)
+        {
+            Debug.LogError("TileDamageable: No ScoreSystem found in scene");
+            return;
+        }
+
         _localFire = Instantiate(FirePrefab, transform);
         _localFire.transform.position = _tile.WorldCenter;
 
@@ -78,7 +92,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
         //_initMatColor = _tempColor = _minMatColor = transform.Find("Cube").GetComponent<MeshRenderer>().material.color;
         _initMatColor = transform.Find("Cube").GetComponent<MeshRenderer>().material.color;
 
-
+        _initialized = true;
     }
 
     void OnDisable()
@@ -89,9 +103,15 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        if (!_initialized)
+        {
+            Initialize();
+            return;
+        }
+
         if (Health == 0)
         {
-            Kill();
+            Break();
             return;
         }
 
@@ -187,18 +207,30 @@ public class TileDamageable : MonoBehaviour, IDamageable
     }
     public void Heal(int heal) => Health = Mathf.Clamp(Health + heal, 0, _maxHealth);
 
-    void Kill()
+    void Break()
     {
+        // If already broken, return
+        if (_wasDead)
+            return;
+
         _gridCell.Break();
         _wasDead = true;
+
+        _scoreSystem.OnTileBreak();
 
         SetFire(false);
     }
 
     void Repair()
     {
+        // If already repaired, return
+        if (!_wasDead)
+            return;
+
         _gridCell.Repair();
         _wasDead = false;
+
+        _scoreSystem.OnTileRepair();
 
         SetFire(false);
     }

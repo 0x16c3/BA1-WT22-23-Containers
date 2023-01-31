@@ -51,6 +51,7 @@ public class PlayerLocomotion : MonoBehaviour
     Animator _playerAnimator;
 
     bool _switchedCells = false;
+    bool _walking = false;
 
     public Vector3 Direction
     {
@@ -108,9 +109,20 @@ public class PlayerLocomotion : MonoBehaviour
         if (_inputVector != Vector3.zero)
         {
             _playerAnimator.SetInteger("AnimationTypes", 1);
+            if (!_walking)
+            {
+                AudioController.instance.PlayAudio("Walking 2");
+                _walking = true;
+            }
         }
         else
         {
+            if (_walking)
+            {
+                _walking = false;
+                AudioController.instance.StopLoop("Walking 2");
+            }
+
             _playerAnimator.SetInteger("AnimationTypes", 0);
         }
 

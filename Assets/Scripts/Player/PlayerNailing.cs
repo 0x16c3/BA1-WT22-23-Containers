@@ -66,7 +66,7 @@ public class PlayerNailing : MonoBehaviour
             Debug.Log("HasMaterials: " + HasMaterials);
             AudioController.instance.PlayAudio("Grab");
         }
-        if (Input.GetKeyDown(KeyCode.Mouse0) && HasMaterials > 0)
+        if (Input.GetKeyDown(KeyCode.X) && HasMaterials > 0)
         {
             _playerAnimator.SetBool("IsGrabbing", true);
             _boxAnimator.SetBool("BoxOpening", true);

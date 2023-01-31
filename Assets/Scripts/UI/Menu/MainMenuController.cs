@@ -20,6 +20,7 @@ public class MainMenuController : MonoBehaviour
     
     public void StartOnClick()
     {
+        AudioController.instance.PlayAudio("Button Click");
         Opener.SetActive(false);
         MainMenu.SetActive(true);
     }

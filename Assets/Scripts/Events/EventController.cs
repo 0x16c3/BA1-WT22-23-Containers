@@ -19,7 +19,7 @@ public class EventController : MonoBehaviour
     public float RoundTime = 420;
     public static float RoundTimeStatic = 300;
     public static float EventTimeStatic;
-    public int MaxEvents = 3;
+    public int MaxEvents = 8;
     public int GracePeriod = 30;
 
     [MinMaxSlider(0f, 420f)]
@@ -44,7 +44,7 @@ public class EventController : MonoBehaviour
     void OnEnable()
     {
         _enabledAt = Time.time + 0.1f; // Add a small delay to make sure everything is initialized
-        _eventCount = Random.Range(1, MaxEvents > 0 ? MaxEvents : 1);
+        _eventCount = Random.Range(3, MaxEvents > 0 ? MaxEvents : 3);
 
         for (int i = 0; i < _eventCount; i++)
         {

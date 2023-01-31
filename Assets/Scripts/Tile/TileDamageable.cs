@@ -140,33 +140,21 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
         if (Health < _maxHealth && Health >= 8)
         {
-            _timePassed += Time.deltaTime;
-            if (_timePassed >= _changingColorTime)
-            {
-                transform.Find("Cube").GetComponent<MeshRenderer>().material.color = GetIdicateColor(0);
-                _timePassed = 0;
-            }
+                transform.Find("Material").GetComponent<MeshRenderer>().material.color = GetIdicateColor(0);
+                
         }
         else if (Health < 8 && Health >= 4)
         {
-            _timePassed += Time.deltaTime;
-            if (_timePassed >= _changingColorTime)
-            {
-                transform.Find("Cube").GetComponent<MeshRenderer>().material.color = GetIdicateColor(1);
-                _timePassed = 0;
-            }
+                transform.Find("Material").GetComponent<MeshRenderer>().material.color = GetIdicateColor(1);
+                
         }
         else if (Health < 4)
         {
-            _timePassed += Time.deltaTime;
-            if (_timePassed >= _changingColorTime)
-            {
-                transform.Find("Cube").GetComponent<MeshRenderer>().material.color = GetIdicateColor(2);
-                _timePassed = 0;
-            }
+                transform.Find("Material").GetComponent<MeshRenderer>().material.color = GetIdicateColor(2);
+                
         }
         else
-            transform.Find("Cube").GetComponent<MeshRenderer>().material.color = _initMatColor;
+            transform.Find("Material").GetComponent<MeshRenderer>().material.color = _initMatColor;
     }
 
     void FireDamage()

@@ -187,28 +187,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -327,28 +331,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -514,28 +522,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -712,28 +724,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -813,28 +829,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -1306,28 +1326,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -1714,28 +1738,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -1854,28 +1882,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -2033,28 +2065,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -2228,28 +2264,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -2329,28 +2369,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -4918,28 +4962,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -5053,28 +5101,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -5154,28 +5206,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -5255,28 +5311,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -5476,28 +5536,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -5582,28 +5646,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -5688,28 +5756,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -11629,28 +11701,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -11730,28 +11806,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -17341,28 +17421,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -17447,28 +17531,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -17614,28 +17702,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -17793,28 +17885,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -17936,28 +18032,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -18037,28 +18137,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -18269,28 +18373,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -18584,28 +18692,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -18722,28 +18834,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -18857,28 +18973,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -18958,28 +19078,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -19215,28 +19339,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -19350,28 +19478,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -19694,28 +19826,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -20203,28 +20339,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -20354,28 +20494,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -20540,28 +20684,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -20789,28 +20937,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -20924,28 +21076,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -21098,28 +21254,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -21199,28 +21359,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -21523,28 +21687,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -21848,28 +22016,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -22051,28 +22223,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -22287,28 +22463,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -22388,28 +22568,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -22744,28 +22928,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -22879,28 +23067,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -23016,28 +23208,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -23151,28 +23347,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -23474,28 +23674,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -23795,28 +23999,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -24095,28 +24303,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -24264,28 +24476,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -24709,28 +24925,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -24911,28 +25131,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -27431,28 +27655,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -27685,28 +27913,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -27888,28 +28120,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -30444,28 +30680,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -30545,28 +30785,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -30850,28 +31094,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -30951,28 +31199,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -33388,28 +33640,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -36238,28 +36494,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -36446,28 +36706,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -38885,28 +39149,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -39259,28 +39527,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -39360,28 +39632,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -45247,28 +45523,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -45421,28 +45701,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -45624,28 +45908,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -45730,28 +46018,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -46024,28 +46316,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -51845,28 +52141,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -51946,28 +52246,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -52117,28 +52421,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -52352,28 +52660,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -53248,28 +53560,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -53349,28 +53665,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -53577,28 +53897,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -53722,28 +54046,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -53862,28 +54190,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -53963,28 +54295,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -54318,28 +54654,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -54804,28 +55144,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -54905,28 +55249,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -55006,28 +55354,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -55209,28 +55561,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -55503,28 +55859,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -55638,28 +55998,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -55739,28 +56103,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -55993,28 +56361,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -56094,28 +56466,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -56799,28 +57175,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -57012,28 +57392,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -57113,28 +57497,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -57214,28 +57602,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -57349,28 +57741,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -57858,28 +58254,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -58124,28 +58524,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -58805,28 +59209,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -61618,28 +62026,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b
@@ -63882,28 +64294,32 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 202384662}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
+      propertyPath: MatDamaged
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d673b8f6a7cacd47820748ff303bf17, type: 2}
+    - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.b
-      value: 0.04601282
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.g
-      value: 0.3672105
+      value: 0.38317758
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _lightDamage.r
-      value: 0.8867924
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.b
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.g
-      value: 0.09972411
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _middleDamage.r
-      value: 0.7830189
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2876398434156936562, guid: 0f93fbc58966d2141a6abf0e5cf407e7, type: 3}
       propertyPath: _strongDamage.b

@@ -84,6 +84,10 @@ MonoBehaviour:
   FireTickInterval: 1
   FireDamagePerTick: 1
   FirePrefab: {fileID: 3130457752228665842, guid: 3c58ef4543d124473b71d4692c6bbc47, type: 3}
+  _changingColorTime: 10
+  _strongDamage: {r: 0, g: 0, b: 0, a: 0}
+  _middleDamage: {r: 1, g: 0, b: 0, a: 0}
+  _lightDamage: {r: 1, g: 0.5122582, b: 0, a: 0}
 --- !u!1 &5362127219962534912
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +191,7 @@ GameObject:
   - component: {fileID: 5263099499700224006}
   - component: {fileID: 5941899248072657445}
   m_Layer: 3
-  m_Name: Cube
+  m_Name: Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

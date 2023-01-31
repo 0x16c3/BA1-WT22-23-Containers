@@ -89,7 +89,7 @@ public class PlayerBucket : MonoBehaviour
             _animationHappening = false;
         }
 
-        if ((!Filled || WithinBucket ) && HoldingBucket && Input.GetKeyDown(KeyCode.Mouse0)) // drop bucket when in range of tap
+        if (HoldingBucket && Input.GetKeyDown(KeyCode.X)) // drop bucket when in range of tap
         {
             AudioController.instance.PlayAudio("Grab");
             _playerAnimator.SetBool("IsGrabbing", true);

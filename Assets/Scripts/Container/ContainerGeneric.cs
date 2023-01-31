@@ -93,6 +93,15 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
         ProcessCoyoteTime();
         CorrectRotation();
         UpdateDecal();
+        KillIfOutOfBounds();
+    }
+
+    void KillIfOutOfBounds()
+    {
+        if (transform.position.y <= -50)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void ProcessCoyoteTime()

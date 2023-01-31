@@ -20,6 +20,7 @@ public class MainMenuController : MonoBehaviour
     
     public void StartOnClick()
     {
+        AudioController.instance.PlayAudio("Button Click");
         Opener.SetActive(false);
         MainMenu.SetActive(true);
     }
@@ -34,19 +35,21 @@ public class MainMenuController : MonoBehaviour
     public void ExitOnClick()
     {
         // Exits Application    
+        AudioController.instance.PlayAudio("Button Click");
         Application.Quit();
     }
 
     public void OptionsOnClick()
     {
         // Hides the main menu screen and Unhides the options screen
-
+        AudioController.instance.PlayAudio("Button Click");
         OptionsMenu.SetActive(true);
         MainMenu.SetActive(false);
     }
 
     public void PlayOnClick(){
         // Load the scene with the given name
+        AudioController.instance.PlayAudio("Button Click");
         SceneManager.LoadScene(GameScene);
     }
 }

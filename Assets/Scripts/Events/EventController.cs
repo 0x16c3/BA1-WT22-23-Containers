@@ -17,9 +17,9 @@ public class EventController : MonoBehaviour
 {
     [Header("General Settings")]
     public float RoundTime = 420;
-    public static float RoundTimeStatic = 300;
-    public static float EventTimeStatic;
-    public int MaxEvents = 3;
+    public static float RoundTimeStatic = 420;
+    public static List<float> EventTimeStatic;
+    public int MaxEvents = 8;
     public int GracePeriod = 30;
 
     [MinMaxSlider(0f, 420f)]
@@ -36,15 +36,14 @@ public class EventController : MonoBehaviour
     List<EventData> _eventList = new List<EventData>();
     List<float> _eventTimes = new List<float>();
 
-    private void Start()
+    private void Awake()
     {
         RoundTimeStatic = RoundTime;
-        Debug.Log("event times are" + _eventTimes[0]);
     }
     void OnEnable()
     {
         _enabledAt = Time.time + 0.1f; // Add a small delay to make sure everything is initialized
-        _eventCount = Random.Range(1, MaxEvents > 0 ? MaxEvents : 1);
+        _eventCount = Random.Range(3, MaxEvents > 0 ? MaxEvents : 3);
 
         for (int i = 0; i < _eventCount; i++)
         {
@@ -54,7 +53,7 @@ public class EventController : MonoBehaviour
             eventData.Prefab = EventPrefabs[Random.Range(0, EventPrefabs.Count)];
 
             if (prevEvent != null)
-                eventData.StartsAt = prevEvent.EndsAt + Random.Range(TimeBetweenEvents.x, TimeBetweenEvents.y);
+                eventData.StartsAt = prevEvent.StartsAt /* used to be prevEvent.EndsAt */ + Random.Range(TimeBetweenEvents.x, TimeBetweenEvents.y);
             else
                 eventData.StartsAt = _enabledAt + GracePeriod + Random.Range(TimeBetweenEvents.x, TimeBetweenEvents.y);
 
@@ -72,6 +71,7 @@ public class EventController : MonoBehaviour
         }
 
         _eventTimes = _eventList.Select(e => e.StartsAt).ToList();
+        EventTimeStatic = _eventTimes;
     }
 
     public EventData GetEventAt(float time = -1f)
@@ -84,10 +84,6 @@ public class EventController : MonoBehaviour
 
     void Update()
     {
-        if (_eventTimes.Count > 0)
-        {
-            EventTimeStatic = _eventTimes[_eventTimes.Count - 1];
-        }
 
         if (_eventTimes.Count > 0 && Time.time >= _eventTimes[0])
         {

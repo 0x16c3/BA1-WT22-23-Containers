@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UIEventPins : MonoBehaviour
 {
-    public GameObject EventControllerScript;
+    public GameObject EventSymbol;
+    public GameObject Canvas;
     float _progress;
     Vector2 _startPosition;
     Vector2 _endPosition;
@@ -12,11 +13,22 @@ public class UIEventPins : MonoBehaviour
     void Start()
     {
         _startPosition = ((RectTransform)transform).anchoredPosition;
-        _endPosition = new Vector2(_startPosition.x + 450, transform.position.y);
     }
-    void Update()
+
+    private void OnEnable()
     {
-        _progress = EventController.EventTimeStatic / EventController.RoundTimeStatic;
-        ((RectTransform)transform).anchoredPosition = Vector2.Lerp(_startPosition, _endPosition, _progress);
+        foreach (float time in EventController.EventTimeStatic)
+        {
+            float position = time / EventController.RoundTimeStatic;
+            Debug.Log("time is " + time);
+            if (position >= 1)
+            {
+                return;
+            }
+            GameObject newSymbol = Instantiate(EventSymbol, Canvas.transform);
+            RectTransform symbolPos = newSymbol.GetComponent<RectTransform>();
+            float assignedPosition = Mathf.Lerp(_startPosition.x, _startPosition.x + 450, position);
+            symbolPos.localPosition = new Vector2(assignedPosition ,0);
+        }
     }
 }

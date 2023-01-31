@@ -65,6 +65,17 @@ public class AudioController : MonoBehaviour
         StartCoroutine(PlayAudioToEnd(audio.AudioSource));
     }
 
+    public void VolumeController(string type, float volume)
+    {
+        foreach (Sounds sound in Sounds)
+        {
+            if (sound.AudioType.ToString() == type)
+            {
+                sound.AudioSource.volume = sound.Volume * volume / 100;
+            }
+        }
+    }
+
     public bool IsAudioPlaying(string name)
     {
         Sounds audio = Array.Find(Sounds, Sounds => Sounds.Name == name);

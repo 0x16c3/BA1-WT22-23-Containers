@@ -8,8 +8,8 @@ public class AudioVolumeController : MonoBehaviour
 {
     Slider volumeSlider;
     TextMeshProUGUI volumeValue;
-    public static float MusicVolume = 100f;
-    public static float AmbianceVolume = 100f;
+    public float MusicVolume = 100f;
+    public float AmbianceVolume = 100f;
 
     void Start()
     {
@@ -22,12 +22,14 @@ public class AudioVolumeController : MonoBehaviour
     public void UpdateAmbianceVolume(float value)
     {
         AmbianceVolume = value;
+        AudioController.instance.VolumeController("Ambiance", AmbianceVolume);
         volumeValue.text = AmbianceVolume.ToString();
     }
 
     public void UpdateMusicVolume(float value)
     {
         MusicVolume = value;
+        AudioController.instance.VolumeController("Music", MusicVolume);
         volumeValue.text = MusicVolume.ToString();
     }
 }

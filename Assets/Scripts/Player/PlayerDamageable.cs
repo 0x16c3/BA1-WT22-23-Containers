@@ -21,6 +21,7 @@ public class PlayerDamageable : MonoBehaviour, IDamageable
 
     public void Damage(int damage)
     {
+        AudioController.instance.PlayAudio("Player Damage");
         Health = Mathf.Clamp(Health - damage, 0, _maxHealth);
         if (Health <= 0)
         {

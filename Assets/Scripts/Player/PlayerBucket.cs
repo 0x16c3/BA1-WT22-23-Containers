@@ -67,6 +67,7 @@ public class PlayerBucket : MonoBehaviour
         if (WithinBucket && Filled && Input.GetKeyDown(KeyCode.E)) // Grab bucket if bucket full
         {
             HoldingBucket = true;
+            AudioController.instance.PlayAudio("Grab");
             _playerAnimator.SetBool("IsGrabbing", true);
         }
 
@@ -78,8 +79,8 @@ public class PlayerBucket : MonoBehaviour
                 Animator animator = obj.GetComponent<Animator>();
                 animator.SetBool("UsingBucket", true);
             }
-
             _animationHappening = true;
+            AudioController.instance.PlayAudio("Water");
         }
 
         if (IsAnimationHappening() == false && _animationHappening) // signal bucket is full once animation is done
@@ -88,8 +89,9 @@ public class PlayerBucket : MonoBehaviour
             _animationHappening = false;
         }
 
-        if (!Filled && HoldingBucket && Input.GetKeyDown(KeyCode.Mouse0)) // drop bucket when in range of tap
+        if ((!Filled || WithinBucket ) && HoldingBucket && Input.GetKeyDown(KeyCode.Mouse0)) // drop bucket when in range of tap
         {
+            AudioController.instance.PlayAudio("Grab");
             _playerAnimator.SetBool("IsGrabbing", true);
             HoldingBucket = false;
         }
@@ -114,7 +116,7 @@ public class PlayerBucket : MonoBehaviour
         if (Filled && HoldingBucket && !WithinBucket && Input.GetKeyDown(KeyCode.Mouse0) && _selectedTile != null)  // empty bucket in hand and extinguish fire (emir you do this one)
         {
             Filled = false;
-
+            AudioController.instance.PlayAudio("Fire Extinguish");
             _selectedTile.Damageable.SetFire(false);
         }
         #endregion

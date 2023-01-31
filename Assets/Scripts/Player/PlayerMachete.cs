@@ -10,6 +10,7 @@ public class PlayerMachete : MonoBehaviour
     GrassBehaviour _grassBehaviour;
     Animator _playerAnimator;
 
+    bool _audioPLaying;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +29,10 @@ public class PlayerMachete : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0) && !PlayerBucket.HoldingBucket && !PlayerBucket.WithinBucket && !PlayerNailing.NearChest && PlayerNailing.HasMaterials <= 0)
         {
             _playerAnimator.SetBool("IsAttacking", true);
-
+            if (AudioController.instance.IsAudioPlaying("Strike") == false)
+            {
+                AudioController.instance.PlayAudio("Strike");
+            }
             if (_grassBehaviour != null)
                 _grassBehaviour.OnCut();
         }

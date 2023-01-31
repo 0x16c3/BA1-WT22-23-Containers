@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7355393745511474259, guid: b2954b777851f45a4b24123f0428c14a, type: 3}
       propertyPath: m_Name
-      value: Fire_Darker
+      value: Fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2954b777851f45a4b24123f0428c14a, type: 3}

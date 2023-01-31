@@ -81,13 +81,13 @@ MonoBehaviour:
     Volume: 1
     Loop: 0
     AudioSource: {fileID: 0}
-  - Name: Drop Bucket
+  - Name: Water
     AudioType: 1
     Clip: {fileID: 8300000, guid: 126a9e897f40e4c45a25e427db52a633, type: 3}
     Volume: 1
     Loop: 0
     AudioSource: {fileID: 0}
-  - Name: Hammer Grabbing
+  - Name: Grab
     AudioType: 1
     Clip: {fileID: 8300000, guid: 6f764e746998d55459916f6eb1a1023c, type: 3}
     Volume: 1
@@ -96,13 +96,13 @@ MonoBehaviour:
   - Name: Strike
     AudioType: 1
     Clip: {fileID: 8300000, guid: b45c7c8818bac35428333f04e4974432, type: 3}
-    Volume: 1
+    Volume: 0.5
     Loop: 0
     AudioSource: {fileID: 0}
   - Name: Repair
     AudioType: 1
     Clip: {fileID: 8300000, guid: 9dea90a4355079a44901270838edfe29, type: 3}
-    Volume: 1
+    Volume: 0.8
     Loop: 0
     AudioSource: {fileID: 0}
   - Name: Button Click
@@ -186,7 +186,7 @@ MonoBehaviour:
   - Name: Walking 2
     AudioType: 1
     Clip: {fileID: 8300000, guid: aa0acfa98e2145348aa873918cb8317b, type: 3}
-    Volume: 1
+    Volume: 0.5
     Loop: 1
     AudioSource: {fileID: 0}
   - Name: Walking 3

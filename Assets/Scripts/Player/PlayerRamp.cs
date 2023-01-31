@@ -11,7 +11,7 @@ public class PlayerRamp : MonoBehaviour
     Rigidbody _playerRb;
     Collider _playerCollider;
 
-    float Padding = 0.1f;
+    float Padding = 0f;
 
     Vector3 _origin, _destination, _offset, _delta, _target, _bottom, _top, _position;
 
@@ -40,7 +40,10 @@ public class PlayerRamp : MonoBehaviour
     {
         // If player z position is not between _bottom and _top, return
         if (_playerRb.position.z < _bottom.z || _playerRb.position.z > _top.z)
+        {
+            _locomotion.OnRamp = false;
             return;
+        }
 
         _position = _playerCollider.ClosestPoint(_playerRb.position + Vector3.down * _playerCollider.bounds.extents.y);
         _isOnSecondFloor = _position.y >= _top.y - Padding && !_locomotion.OnRamp;

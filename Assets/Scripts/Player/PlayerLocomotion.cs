@@ -38,6 +38,8 @@ public class PlayerLocomotion : MonoBehaviour
     [HideInInspector]
     public bool HasSlowEffect = false;
 
+    float _setInAir = -1f;
+
     Rigidbody _rb;
     Vector3 _direction = Vector3.zero;
     Vector3 _inputVector = Vector3.zero;
@@ -134,14 +136,14 @@ public class PlayerLocomotion : MonoBehaviour
         Vector3 goalVelocity = _inputVector * (IsInAir ? AirStrafeSpeed : HasSlowEffect ? SlowSpeed : MovementSpeed);
 
         // Calculate acceleration
-        Vector3 acceleration = goalVelocity - _rb.velocity;
+        Vector3 acceleration = goalVelocity - new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
         acceleration = Vector3.ClampMagnitude(acceleration, MaxAccelerationForce);
         acceleration = acceleration * Acceleration;
 
         if (IsInAir)
         {
-            // Apply extra downwards force if in air
-            acceleration += new Vector3(0, -Acceleration * 10f, 0);
+            // Add gravity
+            _rb.AddForce(Vector3.up * Physics.gravity.y, ForceMode.Acceleration);
         }
 
         // Apply acceleration

@@ -80,7 +80,6 @@ public class AIBehavior : MonoBehaviour, IDamageable
 
         SwitchState();
         ProcessRules();
-        ProcessHit();
 
         if (ForceState != AIBehaviorState.STATE_MAX)
             _state = ForceState;
@@ -166,25 +165,6 @@ public class AIBehavior : MonoBehaviour, IDamageable
         }
     }
 
-    void ProcessHit()
-    {
-        if (_player != null && _rb != null && _player.MouseHover == gameObject)
-        {
-            // Return if too far away
-            if (Vector3.Distance(transform.position, _player.transform.position) > 2f)
-                return;
-
-            if (Input.GetMouseButtonDown(0))
-            {
-                // Apply damage to the container
-                Damage(1);
-
-                // Make the container jump a bit to show it was hit
-                _rb.AddForce(Vector3.up * 2f, ForceMode.Impulse);
-            }
-        }
-    }
-
     void Idle()
     {
         // Disable AIWander
@@ -196,7 +176,12 @@ public class AIBehavior : MonoBehaviour, IDamageable
     {
         // Enable AIWander
         if (_wander != null && !_wander.enabled)
+        {
             _wander.enabled = true;
+            if (Health < MaxHealth)
+                SetHealth(MaxHealth);
+        }
+
     }
 
     void Ability()
@@ -210,7 +195,17 @@ public class AIBehavior : MonoBehaviour, IDamageable
             Idle();
     }
 
-    public void Damage(int damage) => Health = Mathf.Clamp(Health - damage, 0, MaxHealth);
+    public void Damage(int damage)
+    {
+        Health = Mathf.Clamp(Health - damage, 0, MaxHealth);
+
+        // Get container generic
+        var container = GetComponent<ContainerGeneric>();
+        if (container != null)
+        {
+            container.HitEffect.OnDamage();
+        }
+    }
     public void Heal(int heal) => Health = Mathf.Clamp(Health + heal, 0, MaxHealth);
     public void SetHealth(int health) => Health = Mathf.Clamp(health, 0, MaxHealth);
 }

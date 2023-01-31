@@ -51,6 +51,9 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
     GameObject _decalObject = null;
     DecalProjector _decalProjector = null;
 
+    [HideInInspector]
+    public HitEffect HitEffect = null;
+
     bool _renderDecal = false;
     float _lastRenderedDecal = 0f;
 
@@ -79,6 +82,9 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
         else
             _decalObject = Instantiate(DecalPrefab, transform);
 
+        HitEffect = new HitEffect(gameObject);
+        HitEffect.Initialize();
+
         _decalProjector = _decalObject.GetComponentInChildren<DecalProjector>();
         _tileGrid = TileGrid.FindTileGrid();
 
@@ -94,6 +100,8 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
         CorrectRotation();
         UpdateDecal();
         KillIfOutOfBounds();
+
+        HitEffect.Update();
     }
 
     void KillIfOutOfBounds()
@@ -247,7 +255,10 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
     public void Damage(int damage)
     {
         Health = Mathf.Clamp(Health - damage, 0, _maxHealth);
-        if (Health <= 0)
+        HitEffect.OnDamage();
+
+        // If does not have AI Wander, destroy the object
+        if (gameObject.GetComponent<AIBehavior>() == null && Health <= 0)
         {
             Destroy(gameObject);
         }

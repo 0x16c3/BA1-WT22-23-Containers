@@ -7,8 +7,9 @@ public class PlayerMachete : MonoBehaviour
     //public int chopsPerGrass = 2;
 
     Transform _playerModel;
-    GrassBehaviour _grassBehaviour;
     Animator _playerAnimator;
+    PlayerLocomotion _player;
+
 
     bool _audioPLaying;
     // Start is called before the first frame update
@@ -20,6 +21,12 @@ public class PlayerMachete : MonoBehaviour
         if (_playerModel == null || _playerAnimator == null)
         {
             Debug.LogError("No player model found or player animator");
+        }
+
+        _player = GetComponent<PlayerLocomotion>();
+        if (_player == null)
+        {
+            Debug.LogError("PlayerLocomotion not found on object");
         }
     }
 
@@ -33,14 +40,32 @@ public class PlayerMachete : MonoBehaviour
             {
                 AudioController.instance.PlayAudio("Strike");
             }
-            if (_grassBehaviour != null)
-                _grassBehaviour.OnCut();
-        }
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Grass"))
-            _grassBehaviour = other.GetComponent<GrassBehaviour>();
+            // Get mouse position
+            if (_player != null && _player.MouseHover != null)
+            {
+                // If doesn't have AI wander
+                var aiBehavior = _player.MouseHover.GetComponent<AIBehavior>();
+                if (aiBehavior == null)
+                    return;
+
+                // Return if too far away
+                if (Vector3.Distance(transform.position, _player.transform.position) > 2f)
+                    return;
+
+                // Apply damage to the container
+                aiBehavior.Damage(1);
+
+                var rb = _player.MouseHover.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    // If already moving up or down, don't add force
+                    if (rb.velocity.y > 0.1f || rb.velocity.y < -0.1f)
+                        return;
+
+                    rb.AddForce(transform.up * 2f, ForceMode.Impulse);
+                }
+            }
+        }
     }
 }

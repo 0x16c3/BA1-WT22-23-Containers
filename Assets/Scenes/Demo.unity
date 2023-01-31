@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1719549, g: 0.065367214, b: 0.121233836, a: 1}
+  m_IndirectSpecularColor: {r: 0.1719549, g: 0.065367214, b: 0.12123382, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -24200,7 +24200,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 139.144}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -28.9, y: -2.7}
+  m_AnchoredPosition: {x: -28.899994, y: -2.7000122}
   m_SizeDelta: {x: 31.8415, y: 43.376}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &451871233
@@ -41708,6 +41708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bucket Whole
       objectReference: {fileID: 0}
+    - target: {fileID: 8269083245124205191, guid: 8186f8c5405f30b40906ffdf5e6d43d4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8186f8c5405f30b40906ffdf5e6d43d4, type: 3}
 --- !u!1001 &1115607179
@@ -42246,11 +42250,11 @@ RectTransform:
   m_Father: {fileID: 390515721}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -197.1, y: 65}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -106.84, y: 9}
+  m_SizeDelta: {x: 456, y: 252}
+  m_Pivot: {x: 0, y: 1}
 --- !u!222 &1167903216
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -63377,7 +63381,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -3.899994, y: 38.00004}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1828028807
@@ -68257,11 +68261,11 @@ RectTransform:
   m_Father: {fileID: 390515721}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -80.3, y: 66.6}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 173, y: -98}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &2024567570
 MonoBehaviour:
   m_ObjectHideFlags: 0

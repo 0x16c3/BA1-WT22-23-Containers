@@ -12,6 +12,7 @@ public class AIShredder : MonoBehaviour, ICustomBehavior
     [MinMaxSlider(0f, 10f)]
     public Vector2 EatDelay = new Vector2(3f, 5f);
     public int Damage = 4;
+    public GameObject WoodenParticles;
 
     bool _enableWander = false;
 
@@ -34,8 +35,11 @@ public class AIShredder : MonoBehaviour, ICustomBehavior
     float _nextEat = -1f;
     bool _onLastTarget = false, _reachedTarget = false;
 
+    Animator _animationController;
+
     void Awake()
     {
+        _animationController = transform.GetChild(0).GetComponent<Animator>();
         _grid = FindObjectOfType<TileGrid>();
         _wander = GetComponent<AIWander>();
         if (_wander == null)
@@ -135,6 +139,7 @@ public class AIShredder : MonoBehaviour, ICustomBehavior
 
     void EatContainer()
     {
+        
         if (_nextEat <= 0f)
         {
             _nextEat = Time.time + Random.Range(EatDelay.x, EatDelay.y);
@@ -142,7 +147,14 @@ public class AIShredder : MonoBehaviour, ICustomBehavior
         else if (Time.time > _nextEat)
         {
             if (_targetContainer != null)
+            {
+                _animationController.SetBool("IsEating", true);
+                Vector3 particleDirection = transform.forward;
+                particleDirection = -particleDirection;
+                Instantiate(WoodenParticles, transform.position, Quaternion.LookRotation(particleDirection));
                 _targetContainer.Damage(Damage);
+            }
+                
 
             _nextEat = -1f;
 

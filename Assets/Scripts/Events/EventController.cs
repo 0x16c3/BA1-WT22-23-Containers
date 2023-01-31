@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using GD.MinMaxSlider;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class EventData
@@ -32,12 +34,14 @@ public class EventController : MonoBehaviour
 
     float _enabledAt = -1f;
     int _eventCount = 0;
+    float _time;
 
     List<EventData> _eventList = new List<EventData>();
     List<float> _eventTimes = new List<float>();
 
     private void Awake()
     {
+        AudioController.instance.PlayAudio("Main Theme");
         RoundTimeStatic = RoundTime;
     }
     void OnEnable()
@@ -84,6 +88,11 @@ public class EventController : MonoBehaviour
 
     void Update()
     {
+        _time += Time.deltaTime;
+        if (_time >= RoundTime)
+        {
+            // SceneManager.LoadScene("Score");
+        }
 
         if (_eventTimes.Count > 0 && Time.time >= _eventTimes[0])
         {

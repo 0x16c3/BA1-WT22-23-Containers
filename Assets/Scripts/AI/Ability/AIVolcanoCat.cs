@@ -25,6 +25,8 @@ public class AIVolcanoCat : MonoBehaviour, ICustomBehavior
 
     float _nextFire = -1f;
 
+    Animator _animator;
+
     public bool Enabled
     {
         get => enabled;
@@ -33,6 +35,7 @@ public class AIVolcanoCat : MonoBehaviour, ICustomBehavior
 
     void OnEnable()
     {
+        _animator = transform.GetChild(0).GetComponent<Animator>();
         _nextFire = Time.time + Random.Range(0f, 1f);
     }
 
@@ -46,6 +49,8 @@ public class AIVolcanoCat : MonoBehaviour, ICustomBehavior
 
         if (Time.time > _nextFire)
         {
+            _animator.SetBool("IsEating", true);
+            AudioController.instance.PlayAudio("Cat Bubbles 2");
             var projectile = Instantiate(ProjectilePrefab, transform.position + new Vector3(0, _collider.bounds.size.y, 0), Quaternion.identity);
 
             var script = projectile.GetComponentInChildren<AIVolcanoCatProjectile>();

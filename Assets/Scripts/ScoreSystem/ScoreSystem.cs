@@ -25,6 +25,7 @@ public class ScoreSystem : MonoBehaviour
 
     void Initialize()
     {
+
         // Get all the tiles
         var grid = TileGrid.FindTileGrid();
         if (!grid.Initialized)
@@ -40,6 +41,7 @@ public class ScoreSystem : MonoBehaviour
 
     void Update()
     {
+
         if (!_initialized)
         {
             Initialize();

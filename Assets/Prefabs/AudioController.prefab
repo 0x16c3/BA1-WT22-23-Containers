@@ -207,3 +207,15 @@ MonoBehaviour:
     Volume: 1
     Loop: 0
     AudioSource: {fileID: 0}
+  - Name: Main Theme
+    AudioType: 0
+    Clip: {fileID: 8300000, guid: 8199ca17255479942905893549e9c650, type: 3}
+    Volume: 1
+    Loop: 1
+    AudioSource: {fileID: 0}
+  - Name: Menu Theme
+    AudioType: 0
+    Clip: {fileID: 8300000, guid: b0dc462657f425d468309b9fd160de76, type: 3}
+    Volume: 1
+    Loop: 1
+    AudioSource: {fileID: 0}

@@ -14,6 +14,7 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        AudioController.instance.PlayAudio("Menu Theme");
         OptionsMenu.SetActive(false);
         MainMenu.SetActive(false);
         Opener.SetActive(true);
@@ -65,6 +66,7 @@ public class MainMenuController : MonoBehaviour
 
     public void PlayOnClick(){
         // Load the scene with the given name
+        AudioController.instance.StopAudio("Menu Theme");
         AudioController.instance.PlayAudio("Button Click");
         SceneManager.LoadScene(GameScene);
     }

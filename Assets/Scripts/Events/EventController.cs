@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using GD.MinMaxSlider;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class EventData
@@ -38,6 +40,7 @@ public class EventController : MonoBehaviour
 
     private void Awake()
     {
+        AudioController.instance.PlayAudio("Main Theme");
         RoundTimeStatic = RoundTime;
     }
     void OnEnable()

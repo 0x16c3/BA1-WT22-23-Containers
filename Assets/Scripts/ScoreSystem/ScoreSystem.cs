@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreSystem : MonoBehaviour
 {
@@ -9,14 +10,15 @@ public class ScoreSystem : MonoBehaviour
     public int TileRepairPoints = 1;
 
     ScoreTable _scoreTable;
-    int _totalScore = 0;
-
+    public static int TotalScore = 10;
+    public static bool DidShipDie;
     [HideInInspector]
     public int ShipCondition => _shipCondition;
     public int MaxShipCondition => _maxShipCondition;
 
     int _shipCondition = -1;
     int _maxShipCondition = -1;
+    private float _time;
 
     bool _initialized = false;
 
@@ -25,6 +27,7 @@ public class ScoreSystem : MonoBehaviour
 
     void Initialize()
     {
+
         // Get all the tiles
         var grid = TileGrid.FindTileGrid();
         if (!grid.Initialized)
@@ -40,23 +43,28 @@ public class ScoreSystem : MonoBehaviour
 
     void Update()
     {
+        _time += Time.deltaTime;
+
         if (!_initialized)
         {
             Initialize();
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (EventController.RoundTimeStatic - 2 <= _time)
         {
             CalculateScore();
             Debug.Log($"Ship Condition: {ShipCondition} / {MaxShipCondition}");
+            SceneManager.LoadScene("Score");
         }
 
         if (ShipCondition <= 0)
         {
-            Debug.Log("Game Over");
+            TotalScore = 0;
+            SceneManager.LoadScene("Score");
         }
     }
+    
 
     public void CalculateScore()
     {
@@ -90,7 +98,7 @@ public class ScoreSystem : MonoBehaviour
             totalScore += score;
         }
 
-        _totalScore = totalScore;
+        TotalScore = totalScore;
         Debug.Log($"Total Score: {totalScore}");
     }
 }

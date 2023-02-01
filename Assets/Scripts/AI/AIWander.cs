@@ -61,9 +61,13 @@ public class AIWander : MonoBehaviour
     public event FunctionTrigger OnTargetReached;
 
     bool _initialized = false;
+    Vector3 _previousPosition;
+
+    Animator _animationController;
 
     void OnEnable()
     {
+        _animationController = transform.GetChild(0).GetComponent<Animator>();
         _initialized = false;
     }
 
@@ -187,6 +191,18 @@ public class AIWander : MonoBehaviour
         if (!_initialized)
             return;
 
+        Vector3 currentPosition = transform.position;
+        if (currentPosition != _previousPosition)
+        {
+            if (_animationController != null) { _animationController.SetBool("IsWalking", true); }
+
+            _previousPosition = currentPosition;
+        }
+        else if (_animationController != null)
+        {
+            _animationController.SetBool("IsWalking", false);
+        }
+
         InactiveTimer();
         if (_inactiveTimer > ShakeTime)
             Shake();
@@ -215,6 +231,8 @@ public class AIWander : MonoBehaviour
             Halt();
             OnTargetReached?.Invoke();
         }
+
+
     }
 
     void LookTowards(TileGeneric target)

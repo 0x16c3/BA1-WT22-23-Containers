@@ -36,15 +36,15 @@ public class PlayerRamp : MonoBehaviour
 
     void FixedUpdate()
     {
+        _position = _playerCollider.ClosestPoint(_playerRb.position + Vector3.down * _playerCollider.bounds.extents.y);
+        _locomotion.OnSecondFloor = _position.y >= _top.y - Padding && !_locomotion.OnRamp;
+
         // If player z position is not between _bottom and _top, return
         if (_playerRb.position.z < _bottom.z || _playerRb.position.z > _top.z)
         {
             _locomotion.OnRamp = false;
             return;
         }
-
-        _position = _playerCollider.ClosestPoint(_playerRb.position + Vector3.down * _playerCollider.bounds.extents.y);
-        _locomotion.OnSecondFloor = _position.y >= _top.y - Padding && !_locomotion.OnRamp;
 
         // If on the second floor and close to the top edge line, immediately stick to the ramp
         if (_locomotion.OnSecondFloor && _position.x >= _top.x)

@@ -10,7 +10,7 @@ EditorBuildSettings:
     guid: 974626e53d4940b4983a631d3a97d7f8
   - enabled: 1
     path: Assets/Scenes/Demo.unity
-    guid: c4e8c5ee23b35db478f164e41fd9ed73
+    guid: a55b4b4811ebfdc408c2dc8cb8166930
   - enabled: 1
     path: Assets/Scenes/Score.unity
     guid: 7a5ac1442bb446f49a81608d4bcd2887

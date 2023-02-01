@@ -56,6 +56,9 @@ public class AIShredder : MonoBehaviour, ICustomBehavior
         if (_grid == null)
             return;
 
+        if (_wander.RandomWander)
+            _wander.RandomWander = false;
+
         SearchForTarget();
         SetAIWanderTarget();
 
@@ -68,6 +71,9 @@ public class AIShredder : MonoBehaviour, ICustomBehavior
 
         // If current tile changed
         var currentTile = _grid.GetTile(transform.position);
+        if (currentTile == null)
+            return;
+
         if (currentTile.GridPosition != _targetTile.GridPosition)
             FindNewNeigbor();
 

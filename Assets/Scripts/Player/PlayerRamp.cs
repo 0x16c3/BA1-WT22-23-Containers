@@ -11,11 +11,9 @@ public class PlayerRamp : MonoBehaviour
     Rigidbody _playerRb;
     Collider _playerCollider;
 
-    float Padding = 0f;
+    float Padding = 0.1f;
 
     Vector3 _origin, _destination, _offset, _delta, _target, _bottom, _top, _position;
-
-    bool _isOnSecondFloor = false;
 
     void Awake()
     {
@@ -46,10 +44,10 @@ public class PlayerRamp : MonoBehaviour
         }
 
         _position = _playerCollider.ClosestPoint(_playerRb.position + Vector3.down * _playerCollider.bounds.extents.y);
-        _isOnSecondFloor = _position.y >= _top.y - Padding && !_locomotion.OnRamp;
+        _locomotion.OnSecondFloor = _position.y >= _top.y - Padding && !_locomotion.OnRamp;
 
         // If on the second floor and close to the top edge line, immediately stick to the ramp
-        if (_isOnSecondFloor && _position.x >= _top.x)
+        if (_locomotion.OnSecondFloor && _position.x >= _top.x)
         {
             _locomotion.OnRamp = true;
 

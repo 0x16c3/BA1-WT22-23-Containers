@@ -61,6 +61,13 @@ public class VolcanoController : MonoBehaviour, IEvent
             foreach (var cat in volcanoCats)
             {
                 cat.Enabled = false;
+
+                // Get AIBehavior component
+                var ai = cat.GetComponent<AIBehavior>();
+                if (ai == null)
+                    Debug.LogError("AIShredder does not have AIBehavior component!");
+
+                ai.ResetToDefault();
                 Destroy(gameObject);
             }
         }

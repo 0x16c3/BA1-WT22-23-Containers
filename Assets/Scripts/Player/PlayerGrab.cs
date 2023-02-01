@@ -59,28 +59,33 @@ public class PlayerGrab : MonoBehaviour
         // Remove outline from the previous closest object
         if (closestObject != null && closestObject != _lastClosestObject)
         {
-            Outline outline = closestObject.GetComponent<Outline>();
-            if (outline != null) outline.enabled = true;
+            var outlines = closestObject.GetComponentsInChildren<Outline>();
+            foreach (var outline in outlines)
+                outline.enabled = true;
+
             if (_lastClosestObject != null)
             {
-                Outline lastOutline = _lastClosestObject.GetComponent<Outline>();
-                if (lastOutline != null) lastOutline.enabled = false;
+                var lastOutlines = _lastClosestObject.GetComponentsInChildren<Outline>();
+                foreach (var outline in lastOutlines)
+                    outline.enabled = false;
             }
 
             _lastClosestObject = closestObject;
         }
         else if (closestObject != null && _lastClosestObject == closestObject)
         {
-            Outline outline = closestObject.GetComponent<Outline>();
-            if (outline != null) outline.enabled = true;
+            var outlines = closestObject.GetComponentsInChildren<Outline>();
+            foreach (var outline in outlines)
+                outline.enabled = true;
         }
         else if (closestObject == null && _lastClosestObject != null)
         {
-            Outline lastOutline = _lastClosestObject.GetComponent<Outline>();
-            if (lastOutline != null) lastOutline.enabled = false;
+            var outlines = _lastClosestObject.GetComponentsInChildren<Outline>();
+            foreach (var outline in outlines)
+                outline.enabled = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !_locomotion.OnSecondFloor)
         {
             if (closestObject != null && GrabbedObject == null)
             {

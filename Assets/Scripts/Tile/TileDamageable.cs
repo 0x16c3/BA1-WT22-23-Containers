@@ -113,7 +113,6 @@ public class TileDamageable : MonoBehaviour, IDamageable
 
         _hitEffect.Update();
 
-
         if (Health == 0)
         {
             Break();
@@ -138,7 +137,7 @@ public class TileDamageable : MonoBehaviour, IDamageable
         // If player is on top of the tile, damage him
         // Get player tile
         TileGeneric playerTile = _grid.GetTile(_player.transform.position);
-        if (playerTile.GridPosition == _tile.GridPosition)
+        if (playerTile != null && playerTile.GridPosition == _tile.GridPosition)
             _player.Damage(FireDamagePerTick);
 
         _hitEffect.OnDamage();

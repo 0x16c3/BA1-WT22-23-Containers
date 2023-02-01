@@ -47,6 +47,17 @@ public class LightningController : MonoBehaviour, IEvent
             _strikeTimes.Add(Random.Range(0f, _data.Duration));
         }
 
+        // Get all AI behavior components
+        var aiBehaviors = FindObjectsOfType<AIBehavior>();
+        foreach (var ai in aiBehaviors)
+        {
+            if (ai.CustomBehavior == null)
+                continue;
+
+            ai.CustomBehavior.Enabled = false;
+            ai.ResetToDefault();
+        }
+
         _initialized = true;
     }
 

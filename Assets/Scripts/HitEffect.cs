@@ -14,8 +14,6 @@ public class HitEffect
         this.gameObject = gameObject;
     }
 
-    Dictionary<Renderer, Material[]> _originalMaterials = new Dictionary<Renderer, Material[]>();
-
     public void Initialize()
     {
         // Add a red material with 0 alpha
@@ -36,11 +34,8 @@ public class HitEffect
         _hitMaterial.EnableKeyword("_ALPHABLEND_ON");
         _hitMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
 
-        // Add to the materials list of every single renderer
-        foreach (var renderer in gameObject.GetComponentsInChildren<Renderer>())
-        {
-            _originalMaterials.Add(renderer, renderer.materials);
-        }
+        // Set material name
+        _hitMaterial.name = "HitMaterial";
     }
 
     public void OnDamage()
@@ -50,7 +45,9 @@ public class HitEffect
 
     public void Update()
     {
-        foreach (var renderer in _originalMaterials.Keys)
+        // Update materials
+        var renderers = gameObject.GetComponentsInChildren<Renderer>();
+        foreach (var renderer in renderers)
         {
             UpdateMaterials(renderer);
         }
@@ -63,13 +60,32 @@ public class HitEffect
 
     void UpdateMaterials(Renderer renderer)
     {
-        // Get original materials
-        var materials = _originalMaterials[renderer];
+        // Get current materials
+        var materials = new List<Material>(renderer.sharedMaterials);
 
-        var newMaterials = new List<Material>();
-        newMaterials.AddRange(materials);
-        newMaterials.Add(_hitMaterial);
+        // Get outline component of the object
+        var outline = renderer.gameObject.GetComponent<Outline>();
+        if (outline != null && !outline.enabled)
+        {
+            // Remove outline materials
+            materials.RemoveAll(m => m.name == "OutlineMask (Instance)" || m.name == "OutlineFill (Instance)");
+        }
 
-        renderer.materials = newMaterials.ToArray();
+        var parentOutline = renderer.gameObject.GetComponentInChildren<Outline>();
+        if (parentOutline != null && !parentOutline.enabled)
+        {
+            // Remove outline materials
+            materials.RemoveAll(m => m.name == "OutlineMask (Instance)" || m.name == "OutlineFill (Instance)");
+        }
+
+        // Add hit material if not already added, check name "HitMaterial"
+        var existingMaterial = materials.Find(m => m.name == _hitMaterial.name || m.name == $"{_hitMaterial.name} (Instance)");
+        if (existingMaterial == null)
+            materials.Add(_hitMaterial);
+        else
+            existingMaterial.color = _hitMaterial.color;
+
+        // Apply materials
+        renderer.materials = materials.ToArray();
     }
 }

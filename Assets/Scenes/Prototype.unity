@@ -8927,6 +8927,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792044e597d90f34ba17a82e2b04ef5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoundTime: 420
   MaxEvents: 3
   GracePeriod: 0
   TimeBetweenEvents: {x: 0, y: 1}
@@ -18864,7 +18865,6 @@ MonoBehaviour:
   FloatAmount: 3
   Acceleration: 500
   DecelerationMultiplier: 3.5
-  OutlineMaterial: {fileID: 2100000, guid: 310a5dadcb0aeaa42b8cc005cf97724c, type: 2}
   GrabbedObject: {fileID: 0}
 --- !u!114 &1735434412
 MonoBehaviour:
@@ -18888,6 +18888,7 @@ MonoBehaviour:
   LockCursor: 1
   IsInAir: 0
   OnRamp: 0
+  OnSecondFloor: 0
   HasSlowEffect: 0
 --- !u!54 &1735434413
 Rigidbody:
@@ -18938,7 +18939,10 @@ MonoBehaviour:
   RepairRadius: 2
   RepairTime: 2
   RepairUI: {fileID: 77156226}
-  HasMaterials: 0
+  NailsBox: {fileID: 0}
+  Hammer: {fileID: 0}
+  Planks: {fileID: 0}
+  MaterialAmount: 0
   AmountRepaired: 0
 --- !u!65 &1735434418
 BoxCollider:

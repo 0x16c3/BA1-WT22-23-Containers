@@ -135,6 +135,21 @@ public class TileGrid : MonoBehaviour
         var randomX = Random.Range(cellBounds.xMin, cellBounds.xMax);
         var randomY = Random.Range(cellBounds.yMin, cellBounds.yMax);
 
+        // Get all the tiles that are walkable
+        var walkableTiles = new List<TileGeneric>();
+        for (int x = cellBounds.xMin + 2; x < cellBounds.xMax; x++)
+        {
+            for (int y = 0; y < cellBounds.yMax; y++)
+            {
+                var tile = GetTile(new Vector2Int(x, y));
+                if (tile.Walkable)
+                    walkableTiles.Add(tile);
+            }
+        }
+
+        if (walkableTiles.Count == 0)
+            return null;
+
         return GetTile(new Vector2Int(randomX, randomY));
     }
 

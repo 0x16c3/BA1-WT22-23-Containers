@@ -1,3 +1,5 @@
+using System;
+
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -65,7 +67,9 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
         get => _playerGrab != null && _playerGrab.GrabbedObject == gameObject;
     }
 
-    void OnEnable()
+    bool _initialized = false;
+
+    void Initialize()
     {
         _rb = GetComponent<Rigidbody>();
         if (_rb == null)
@@ -85,14 +89,29 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
         HitEffect = new HitEffect(gameObject);
         HitEffect.Initialize();
 
+        // :3
+        if ((int)Type < 4)
+        {
+            SetType(Type);
+            SetRarity(Rarity);
+        }
+
         _decalProjector = _decalObject.GetComponentInChildren<DecalProjector>();
         _tileGrid = TileGrid.FindTileGrid();
 
         _maxHealth = Health;
+
+        _initialized = true;
     }
 
     void Update()
     {
+        if (!_initialized)
+        {
+            Initialize();
+            return;
+        }
+
         _playerGrab = transform.parent == null ? null : transform.parent.GetComponent<PlayerGrab>();
 
         PushTowardsParentCell();
@@ -264,4 +283,73 @@ public class ContainerGeneric : MonoBehaviour, IDamageable
         }
     }
     public void Heal(int heal) => Health = Mathf.Clamp(Health + heal, 0, _maxHealth);
+
+    public void SetType(ContainerType type)
+    {
+        Type = type;
+
+        // Show the correct rarity in the child named according to the rarities
+        var container = transform.Find(type.ToString());
+        if (container == null)
+        {
+            Debug.LogWarning("Container " + name + " does not have a child named " + type.ToString());
+        }
+        SetRenderers(container.gameObject, true);
+
+        foreach (var t in Enum.GetValues(typeof(ContainerType)))
+        {
+            if ((ContainerType)t != Type)
+            {
+                var child = transform.Find(t.ToString());
+                if (child != null)
+                    SetRenderers(child.gameObject, false);
+            }
+        }
+    }
+
+    public void SetRarity(ContainerRarity rarity)
+    {
+        Rarity = rarity;
+
+        // Set the material to the correct rarity
+        SetRarityMaterial();
+    }
+
+    void SetRarityMaterial()
+    {
+        // Get the material of the child named "MODULATE"
+        var material = transform.Find(Type.ToString()).Find("MODULATE").GetComponent<Renderer>().material;
+
+        // Set the material to the correct rarity
+        switch (Rarity)
+        {
+            case ContainerRarity.Common:
+                material.SetColor("_BaseColor", new Color(38 / 255f, 46 / 255f, 86 / 255f)); // Def
+                break;
+            case ContainerRarity.Rare:
+                material.SetColor("_BaseColor", new Color(157 / 255f, 157 / 255f, 157 / 255f)); // Silver
+                break;
+            case ContainerRarity.Epic:
+                material.SetColor("_BaseColor", new Color(219 / 255f, 176 / 255f, 51 / 255f)); // Gold
+                break;
+            case ContainerRarity.Legendary:
+                material.SetColor("_BaseColor", new Color(219 / 255f, 176 / 255f, 51 / 255f)); // Gold
+
+                // Set the other children materials to material as well
+                foreach (Transform child in transform.Find(Type.ToString()))
+                {
+                    if (child.name == "MODULATE") continue;
+                    child.GetComponent<Renderer>().material = material;
+                }
+                break;
+        }
+    }
+
+    void SetRenderers(GameObject obj, bool enabled)
+    {
+        foreach (var renderer in obj.GetComponentsInChildren<Renderer>())
+        {
+            renderer.enabled = enabled;
+        }
+    }
 }

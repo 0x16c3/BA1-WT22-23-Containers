@@ -98,6 +98,15 @@ public class AIBehavior : MonoBehaviour, IDamageable
         }
     }
 
+    public void ResetToDefault()
+    {
+        _state = AIBehaviorState.Idle;
+        _prevState = AIBehaviorState.Wander;
+        _nextState = AIBehaviorState.Wander;
+        _nextActionTime = -1f;
+        Health = MaxHealth;
+    }
+
     public void ResetTimers(bool addRandomDelay = true)
     {
         _nextActionTime = Time.time + (addRandomDelay ? Random.Range(IdleDuration.x, IdleDuration.y) : 0f);
@@ -180,6 +189,9 @@ public class AIBehavior : MonoBehaviour, IDamageable
             _wander.enabled = true;
             if (Health < MaxHealth)
                 SetHealth(MaxHealth);
+
+            if (!_wander.RandomWander)
+                _wander.RandomWander = true;
         }
 
     }

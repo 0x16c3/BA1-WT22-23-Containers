@@ -63,6 +63,17 @@ public class WhirlwindController : MonoBehaviour, IEvent
         _initialWaveStrength = _darkOceanMat.GetFloat("_Wave_Strength");
         _initialWaveHeight = _darkOceanMat.GetFloat("_Wave_Height");
         _initialWaveSpeed = _darkOceanMat.GetFloat("_Wave_Speed");
+
+        // Get all AI behavior components
+        var aiBehaviors = FindObjectsOfType<AIBehavior>();
+        foreach (var ai in aiBehaviors)
+        {
+            if (ai.CustomBehavior == null)
+                continue;
+
+            ai.CustomBehavior.Enabled = false;
+            ai.ResetToDefault();
+        }
     }
 
     /// <param name="_whirlwindPower">0 = small wave, 1 = medium wave, 2 = big wave</param>

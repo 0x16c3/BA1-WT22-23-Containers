@@ -135,8 +135,14 @@ public class PathFinder
 
     public void FindPath()
     {
-        if (!ToSearch.Any() || EndTile == null)
+        if (EndTile == null || StartTile == null)
             return;
+        if (!ToSearch.Any())
+        {
+            InitPath();
+            PathProgress = null;
+            return;
+        }
 
         var current = ToSearch[0];
 

@@ -61,6 +61,13 @@ public class ShredderController : MonoBehaviour, IEvent
             foreach (var shredder in shredders)
             {
                 shredder.Enabled = false;
+
+                // Get AIBehavior component
+                var ai = shredder.GetComponent<AIBehavior>();
+                if (ai == null)
+                    Debug.LogError("AIShredder does not have AIBehavior component!");
+
+                ai.ResetToDefault();
                 Destroy(gameObject);
             }
         }

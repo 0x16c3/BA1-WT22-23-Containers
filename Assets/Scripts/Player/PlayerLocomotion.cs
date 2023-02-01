@@ -36,6 +36,8 @@ public class PlayerLocomotion : MonoBehaviour
     [HideInInspector]
     public bool OnRamp = false;
     [HideInInspector]
+    public bool OnSecondFloor = false;
+    [HideInInspector]
     public bool HasSlowEffect = false;
 
     float _setInAir = -1f;
@@ -99,6 +101,11 @@ public class PlayerLocomotion : MonoBehaviour
 
         if (_grab == null)
             Debug.LogError("PlayerGrab not found on object");
+
+        // Get outline and enable it
+        Outline outline = GetComponentInChildren<Outline>();
+        if (outline != null)
+            outline.enabled = true;
     }
 
     void Update()
@@ -201,8 +208,18 @@ public class PlayerLocomotion : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        // Calculate force vector
-        var forceVector = new Vector3(h, 0, v);
+        // Adjust to camera
+        Vector3 cameraForward = Camera.main.transform.forward;
+        Vector3 cameraRight = Camera.main.transform.right;
+
+        cameraForward.y = 0;
+        cameraRight.y = 0;
+
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        // Calculate direction
+        var forceVector = cameraForward * v + cameraRight * h;
 
         if (forceVector.magnitude > 1)
             forceVector.Normalize();

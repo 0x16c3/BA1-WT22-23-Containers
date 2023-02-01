@@ -104,12 +104,8 @@ public class AIWander : MonoBehaviour
     {
         TileGeneric randomTile = _tileGrid.RandomTile();
 
-        // If not walkable, find a new one
-        while (!randomTile.Walkable && _curIteration < MAX_ITERATIONS)
-        {
-            randomTile = _tileGrid.RandomTile();
-            _curIteration++;
-        }
+        if (randomTile == null)
+            return;
 
         _lastRandPoint = randomTile.WorldCenter;
 
@@ -120,6 +116,7 @@ public class AIWander : MonoBehaviour
         _reachedTarget = false;
         _firstUpdate = true;
         _inactive = false;
+        _inactiveTimer = 0f;
     }
 
     public void SetTarget(Vector3 target)
@@ -136,22 +133,6 @@ public class AIWander : MonoBehaviour
         _lastRandPoint = target;
 
         var tile = _tileGrid.GetTile(target);
-
-        /*
-        if (!tile.Walkable)
-        {
-            // If not, find a new one
-            var tiles = tile.GetNeighbors();
-            foreach (var t in tiles)
-            {
-                if (t.Walkable)
-                {
-                    tile = t;
-                    break;
-                }
-            }
-        }*/
-
         if (!tile.Walkable)
             return;
 
@@ -166,6 +147,7 @@ public class AIWander : MonoBehaviour
         _reachedTarget = false;
         _firstUpdate = true;
         _inactive = false;
+        _inactiveTimer = 0f;
     }
 
     void ResetPathData()
@@ -238,7 +220,10 @@ public class AIWander : MonoBehaviour
     void LookTowards(TileGeneric target)
     {
         if (target == null)
+        {
+            Halt();
             return;
+        }
 
         // Calculate direction towards target
         Vector3 direction = target.WorldCenter - transform.position;
@@ -258,7 +243,7 @@ public class AIWander : MonoBehaviour
         ApplyTorque(direction);
 
         // If direction is low enough, mark it as corrected
-        if (angle < 0.05f)
+        if (angle < 0.1f)
             _correctedRotation = true;
     }
 
@@ -384,8 +369,8 @@ public class AIWander : MonoBehaviour
             return;
 
         // Do some random shaking when inactive for a while to get the AI moving again 
-        _rb.AddForce(new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * 1f, ForceMode.Impulse);
-        _rb.AddTorque(new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * 1f, ForceMode.Impulse);
+        //_rb.AddForce(new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * 1f, ForceMode.Impulse);
+        //_rb.AddTorque(new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)) * 1f, ForceMode.Impulse);
         _shake = true;
     }
 

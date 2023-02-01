@@ -3,7 +3,12 @@ guid: 8db7771e36108204c9436243cef945c5
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glowie_Cat
+    second: {fileID: 2100000, guid: 729e88ca00e6b45a18622bacadf7289e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

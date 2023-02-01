@@ -14,6 +14,7 @@ public class MainMenuController : MonoBehaviour
 
     private void Start()
     {
+        AudioController.instance.StopAudio("Main Theme");
         AudioController.instance.PlayAudio("Menu Theme");
         OptionsMenu.SetActive(false);
         MainMenu.SetActive(false);

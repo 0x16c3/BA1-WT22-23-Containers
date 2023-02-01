@@ -27200,7 +27200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jsonDatabase: {fileID: 4900000, guid: 2930495126b7bdc49b35e3f28201c7cb, type: 3}
-  TileBreakPoints: 2
+  TileBreakPoints: 5
   TileRepairPoints: 1
 --- !u!4 &1099246756
 Transform:

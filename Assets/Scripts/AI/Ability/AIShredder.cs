@@ -77,6 +77,8 @@ public class AIShredder : MonoBehaviour, ICustomBehavior
         var currentTile = _grid.GetTile(transform.position);
         if (currentTile == null)
             return;
+        if (_targetTile == null)
+            return;
 
         if (currentTile.GridPosition != _targetTile.GridPosition)
             FindNewNeigbor();
@@ -145,7 +147,7 @@ public class AIShredder : MonoBehaviour, ICustomBehavior
 
     void EatContainer()
     {
-        
+
         if (_nextEat <= 0f)
         {
             _nextEat = Time.time + Random.Range(EatDelay.x, EatDelay.y);
@@ -160,7 +162,7 @@ public class AIShredder : MonoBehaviour, ICustomBehavior
                 Instantiate(WoodenParticles, transform.position, Quaternion.LookRotation(particleDirection));
                 _targetContainer.Damage(Damage);
             }
-                
+
 
             _nextEat = -1f;
 

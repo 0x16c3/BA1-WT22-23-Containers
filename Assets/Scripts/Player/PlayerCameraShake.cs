@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCameraShake : MonoBehaviour
+public class PlayerCameraShake
 {
     [Header("Shake Settings")]
     [Range(0f, 10f)]
@@ -13,24 +13,7 @@ public class PlayerCameraShake : MonoBehaviour
     Vector3 _originalPosition;
     Quaternion _originalRotation;
 
-    void OnEnable()
-    {
-        _originalPosition = transform.localPosition;
-        _originalRotation = transform.localRotation;
-    }
-
-    void OnDisable()
-    {
-        transform.localPosition = _originalPosition;
-        transform.localRotation = _originalRotation;
-    }
-
-    void Update()
-    {
-        SailingShake();
-    }
-
-    void SailingShake()
+    public Vector3 GetShake()
     {
         float freq = SailingFrequency / 10f;
         float mag = ShakeMagnitude / 10f;
@@ -41,9 +24,6 @@ public class PlayerCameraShake : MonoBehaviour
         float z = Mathf.PerlinNoise(Time.time * freq, Time.time * freq) * 2f - 1f;
 
         Vector3 shake = new Vector3(x, y, z) * mag;
-        transform.localPosition = _originalPosition + shake;
-
-        // Apply rotation
-        transform.localRotation = _originalRotation * Quaternion.Euler(shake * 2f);
+        return shake;
     }
 }

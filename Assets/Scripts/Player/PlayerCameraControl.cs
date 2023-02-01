@@ -13,12 +13,21 @@ public class PlayerCameraControl : MonoBehaviour
     [DllImport("user32.dll")]
     static extern bool SetCursorPos(int X, int Y);
 
-
     private Vector3 _lastMousePos;
+
+    PlayerCameraShake _shake;
+    Vector3 _originalPosition;
+    Quaternion _originalRotation;
+
+    GameObject _clone;
 
     private void Start()
     {
         _lastMousePos = Input.mousePosition;
+        _shake = new PlayerCameraShake();
+        _clone = transform.parent.Find("Camera Rotation").gameObject;
+        _originalPosition = transform.localPosition;
+        _originalRotation = transform.localRotation;
     }
 
     bool _resetMousePos = false;
@@ -30,7 +39,12 @@ public class PlayerCameraControl : MonoBehaviour
         {
             // Rotate around player on the Y axis
             Vector3 mouseDelta = Input.mousePosition - _lastMousePos;
-            transform.RotateAround(transform.parent.position, Vector3.up, mouseDelta.x * _rotationSpeed * Time.deltaTime);
+            _clone.transform.RotateAround(transform.parent.position, Vector3.up, mouseDelta.x * _rotationSpeed * Time.deltaTime);
+
+            // Update original rotation
+            _originalPosition = _clone.transform.localPosition;
+            _originalRotation = _clone.transform.localRotation;
+
             _resetMousePos = true;
         }
         else if (_resetMousePos)
@@ -49,6 +63,10 @@ public class PlayerCameraControl : MonoBehaviour
             SetCursorPos(mousePos.x, mousePos.y);
             _resetMousePos = false;
         }
+
+        var shake = _shake.GetShake();
+        transform.localPosition = _originalPosition + shake;
+        transform.localRotation = _originalRotation * Quaternion.Euler(shake * 2f);
 
         _lastMousePos = Input.mousePosition;
     }

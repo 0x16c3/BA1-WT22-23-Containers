@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1719549, g: 0.065367214, b: 0.12123382, a: 1}
+  m_IndirectSpecularColor: {r: 0.1719549, g: 0.065367214, b: 0.121233836, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18792,9 +18792,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoundTime: 420
-  MaxEvents: 5
+  MaxEvents: 6
   GracePeriod: 0
-  TimeBetweenEvents: {x: 110, y: 120}
+  TimeBetweenEvents: {x: 20, y: 30}
   EventPrefabs:
   - {fileID: 1083230702021558301, guid: fe0328f4b4bceb048aa3adcf50862f1d, type: 3}
   - {fileID: 1013873214667500896, guid: 608349b8b40490545b0e2a288ee0d38d, type: 3}
@@ -32239,7 +32239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51680bb203c9fa4da8d91e1fefb8da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 6
+  FireRate: 24
   Damage: 1
   ProjectileRadius: 3
   ProjectileSpeed: 6
@@ -53348,7 +53348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d51680bb203c9fa4da8d91e1fefb8da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FireRate: 6
+  FireRate: 24
   Damage: 1
   ProjectileRadius: 3
   ProjectileSpeed: 6

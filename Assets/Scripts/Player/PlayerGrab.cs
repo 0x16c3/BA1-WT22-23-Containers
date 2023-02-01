@@ -85,10 +85,8 @@ public class PlayerGrab : MonoBehaviour
                 outline.enabled = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && !_locomotion.OnSecondFloor)
+        if (Input.GetKeyDown(KeyCode.E) && !_locomotion.OnSecondFloor && closestObject != null && GrabbedObject == null)
         {
-            if (closestObject != null && GrabbedObject == null)
-            {
                 _playerAnimator.SetBool("IsGrabbing", true);
 
                 GrabbedObject = closestObject;
@@ -100,17 +98,18 @@ public class PlayerGrab : MonoBehaviour
                 // Disable collisions only with the player and disable gravity
                 Physics.IgnoreCollision(GrabbedObject.GetComponent<Collider>(), GetComponent<Collider>());
                 GrabbedObject.GetComponent<Rigidbody>().useGravity = false;
-            }
-            else if (GrabbedObject != null)
-            {
-                // Enable collisions with the player and gravity
-                Physics.IgnoreCollision(GrabbedObject.GetComponent<Collider>(), GetComponent<Collider>(), false);
-                GrabbedObject.GetComponent<Rigidbody>().useGravity = true;
-
-                GrabbedObject.transform.SetParent(null);
-                GrabbedObject = null;
-            }
         }
+
+        if (Input.GetKeyDown(KeyCode.X) && GrabbedObject != null)
+        {
+            // Enable collisions with the player and gravity
+            Physics.IgnoreCollision(GrabbedObject.GetComponent<Collider>(), GetComponent<Collider>(), false);
+            GrabbedObject.GetComponent<Rigidbody>().useGravity = true;
+
+            GrabbedObject.transform.SetParent(null);
+            GrabbedObject = null;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.R))
         {

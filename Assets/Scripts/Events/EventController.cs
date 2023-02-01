@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using GD.MinMaxSlider;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 
 [System.Serializable]
@@ -21,7 +20,7 @@ public class EventController : MonoBehaviour
     public float RoundTime = 420;
     public static float RoundTimeStatic = 420;
     public static List<float> EventTimeStatic;
-    public int MaxEvents = 8;
+    public int MaxEvents = 6;
     public int GracePeriod = 30;
 
     [MinMaxSlider(0f, 420f)]
@@ -46,7 +45,7 @@ public class EventController : MonoBehaviour
     void OnEnable()
     {
         _enabledAt = Time.time + 0.1f; // Add a small delay to make sure everything is initialized
-        _eventCount = Random.Range(3, MaxEvents > 0 ? MaxEvents : 3);
+        _eventCount = Random.Range(5, MaxEvents > 0 ? MaxEvents : 5);
 
         for (int i = 0; i < _eventCount; i++)
         {
@@ -56,7 +55,7 @@ public class EventController : MonoBehaviour
             eventData.Prefab = EventPrefabs[Random.Range(0, EventPrefabs.Count)];
 
             if (prevEvent != null)
-                eventData.StartsAt = prevEvent.StartsAt /* used to be prevEvent.EndsAt */ + Random.Range(TimeBetweenEvents.x, TimeBetweenEvents.y);
+                eventData.StartsAt = prevEvent.EndsAt /* used to be prevEvent.EndsAt */ + Random.Range(TimeBetweenEvents.x, TimeBetweenEvents.y);
             else
                 eventData.StartsAt = _enabledAt + GracePeriod + Random.Range(TimeBetweenEvents.x, TimeBetweenEvents.y);
 

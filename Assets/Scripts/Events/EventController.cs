@@ -34,7 +34,6 @@ public class EventController : MonoBehaviour
 
     float _enabledAt = -1f;
     int _eventCount = 0;
-    float _time;
 
     List<EventData> _eventList = new List<EventData>();
     List<float> _eventTimes = new List<float>();
@@ -88,11 +87,6 @@ public class EventController : MonoBehaviour
 
     void Update()
     {
-        _time += Time.deltaTime;
-        if (_time >= RoundTime)
-        {
-            // SceneManager.LoadScene("Score");
-        }
 
         if (_eventTimes.Count > 0 && Time.time >= _eventTimes[0])
         {

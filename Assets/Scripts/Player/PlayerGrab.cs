@@ -106,6 +106,11 @@ public class PlayerGrab : MonoBehaviour
                 GrabbedObject = null;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            transform.position = new Vector3(-2f, 0f, 0f);
+        }
     }
 
     void FixedUpdate()
